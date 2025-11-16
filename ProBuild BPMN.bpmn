@@ -20,7 +20,9 @@
     <bpmn:extensionElements>
       <zeebe:versionTag value="1.0" />
     </bpmn:extensionElements>
-    <bpmn:sequenceFlow id="Flow_06zij8f" name="available" sourceRef="Gateway_0xnqgfn" targetRef="Activity_0u0bvis" />
+    <bpmn:sequenceFlow id="Flow_06zij8f" name="available" sourceRef="Gateway_0xnqgfn" targetRef="Activity_0u0bvis">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=availabilityCheck = "available"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_1yu68i8" name="buy" sourceRef="Gateway_0h5upem" targetRef="Activity_1wauq2u">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=customerChoice = "buy"
 </bpmn:conditionExpression>
@@ -36,6 +38,7 @@
       <bpmn:userTask id="Activity_1jo05i2" name="customer checks online">
         <bpmn:extensionElements>
           <zeebe:userTask />
+          <zeebe:formDefinition formId="onlineCheck" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1uazv6d</bpmn:incoming>
         <bpmn:outgoing>Flow_1dfehka</bpmn:outgoing>
@@ -49,9 +52,13 @@
       <bpmn:sequenceFlow id="Flow_02cdpl7" sourceRef="Gateway_1sex765" targetRef="Event_13uhik4" />
       <bpmn:sequenceFlow id="Flow_0ysclgn" sourceRef="Event_0sivnms" targetRef="Gateway_1v9w3oa" />
       <bpmn:sequenceFlow id="Flow_1053jdg" sourceRef="Activity_0utc4m7" targetRef="Gateway_1sex765" />
-      <bpmn:sequenceFlow id="Flow_11e3ipt" sourceRef="Gateway_1v9w3oa" targetRef="Activity_0utc4m7" />
+      <bpmn:sequenceFlow id="Flow_11e3ipt" sourceRef="Gateway_1v9w3oa" targetRef="Activity_0utc4m7">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=checkMethod = "online"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="Flow_1dfehka" sourceRef="Activity_1jo05i2" targetRef="Gateway_1sex765" />
-      <bpmn:sequenceFlow id="Flow_1uazv6d" sourceRef="Gateway_1v9w3oa" targetRef="Activity_1jo05i2" />
+      <bpmn:sequenceFlow id="Flow_1uazv6d" sourceRef="Gateway_1v9w3oa" targetRef="Activity_1jo05i2">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=checkMethod = "online"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:inclusiveGateway id="Gateway_1sex765">
         <bpmn:incoming>Flow_1dfehka</bpmn:incoming>
         <bpmn:incoming>Flow_1053jdg</bpmn:incoming>
@@ -165,6 +172,7 @@
       <bpmn:userTask id="Activity_0fsah7v" name="customer pays by card">
         <bpmn:extensionElements>
           <zeebe:userTask />
+          <zeebe:formDefinition formId="paymentMethod" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0cpersw</bpmn:incoming>
         <bpmn:outgoing>Flow_08lgpte</bpmn:outgoing>
@@ -176,6 +184,7 @@
       <bpmn:userTask id="Activity_07ofkdi" name="customer pays through finance">
         <bpmn:extensionElements>
           <zeebe:userTask />
+          <zeebe:formDefinition formId="paymentMethod" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_1s2zqrp</bpmn:incoming>
         <bpmn:outgoing>Flow_0l2n1sc</bpmn:outgoing>
@@ -188,14 +197,22 @@
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="Flow_06potu3" sourceRef="Gateway_0wap295" targetRef="Event_1y6vmuj" />
       <bpmn:sequenceFlow id="Flow_08lgpte" sourceRef="Activity_0fsah7v" targetRef="Activity_1lligam" />
-      <bpmn:sequenceFlow id="Flow_0cpersw" sourceRef="Gateway_03ibaqi" targetRef="Activity_0fsah7v" />
-      <bpmn:sequenceFlow id="Flow_0rf9f0o" sourceRef="Gateway_03ibaqi" targetRef="Activity_0h719i1" />
+      <bpmn:sequenceFlow id="Flow_0cpersw" sourceRef="Gateway_03ibaqi" targetRef="Activity_0fsah7v">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=paymentMethod = "card"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0rf9f0o" sourceRef="Gateway_03ibaqi" targetRef="Activity_0h719i1">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=paymentMethod = "cash"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="Flow_163rh7d" sourceRef="Event_0o5q8zx" targetRef="Gateway_03ibaqi" />
       <bpmn:sequenceFlow id="Flow_19agiyx" sourceRef="Activity_0h719i1" targetRef="Activity_1q6hlpf" />
-      <bpmn:sequenceFlow id="Flow_1mj0xal" sourceRef="Gateway_1pf1w31" targetRef="Gateway_0wap295" />
+      <bpmn:sequenceFlow id="Flow_1mj0xal" name="sucess" sourceRef="Gateway_1pf1w31" targetRef="Gateway_0wap295">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=paymentVerification = "yes"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:sequenceFlow id="Flow_1mxtg42" sourceRef="Activity_1q6hlpf" targetRef="Gateway_1xe26rz" />
       <bpmn:sequenceFlow id="Flow_1p7o99f" sourceRef="Activity_1lligam" targetRef="Gateway_1pf1w31" />
-      <bpmn:sequenceFlow id="Flow_1s2zqrp" sourceRef="Gateway_03ibaqi" targetRef="Activity_07ofkdi" />
+      <bpmn:sequenceFlow id="Flow_1s2zqrp" sourceRef="Gateway_03ibaqi" targetRef="Activity_07ofkdi">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=paymentMethod = "finance"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
       <bpmn:exclusiveGateway id="Gateway_03ibaqi">
         <bpmn:incoming>Flow_163rh7d</bpmn:incoming>
         <bpmn:incoming>Flow_1yf7tgn</bpmn:incoming>
@@ -227,18 +244,28 @@
         <bpmn:outgoing>Flow_0afs0yp</bpmn:outgoing>
       </bpmn:exclusiveGateway>
       <bpmn:sequenceFlow id="Flow_0l2n1sc" name="Is customer an eligible member?" sourceRef="Activity_07ofkdi" targetRef="Gateway_0md9ypd" />
-      <bpmn:sequenceFlow id="Flow_1yf7tgn" name="no" sourceRef="Gateway_0md9ypd" targetRef="Gateway_03ibaqi" />
-      <bpmn:sequenceFlow id="Flow_19iicfc" name="no" sourceRef="Gateway_1pf1w31" targetRef="Gateway_03ibaqi" />
-      <bpmn:sequenceFlow id="Flow_05rxfug" name="no" sourceRef="Gateway_1xe26rz" targetRef="Gateway_03ibaqi" />
-      <bpmn:serviceTask id="Activity_1lligam" name="payment successful">
+      <bpmn:sequenceFlow id="Flow_1yf7tgn" name="no" sourceRef="Gateway_0md9ypd" targetRef="Gateway_03ibaqi">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=elgibility = "no"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_19iicfc" name="declined" sourceRef="Gateway_1pf1w31" targetRef="Gateway_03ibaqi">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=paymentVerification = "no"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_05rxfug" name="no" sourceRef="Gateway_1xe26rz" targetRef="Gateway_03ibaqi">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=cashVerification = "no"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:serviceTask id="Activity_1lligam" name="payment verification">
         <bpmn:extensionElements>
-          <zeebe:taskDefinition />
+          <zeebe:taskDefinition type="payment-verification" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_08lgpte</bpmn:incoming>
         <bpmn:outgoing>Flow_1p7o99f</bpmn:outgoing>
       </bpmn:serviceTask>
-      <bpmn:sequenceFlow id="Flow_019rw6b" name="yes" sourceRef="Gateway_0md9ypd" targetRef="Gateway_0wap295" />
-      <bpmn:sequenceFlow id="Flow_0afs0yp" name="yes" sourceRef="Gateway_1xe26rz" targetRef="Gateway_0wap295" />
+      <bpmn:sequenceFlow id="Flow_019rw6b" name="yes" sourceRef="Gateway_0md9ypd" targetRef="Gateway_0wap295">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=elgibility = "yes"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0afs0yp" name="yes" sourceRef="Gateway_1xe26rz" targetRef="Gateway_0wap295">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=cashVerification = "yes"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
     </bpmn:subProcess>
     <bpmn:subProcess id="Activity_0f9kit1" name="customer pays deposit">
       <bpmn:incoming>Flow_0i75z8e</bpmn:incoming>
@@ -312,6 +339,7 @@
       <bpmn:userTask id="Activity_1nk3sic" name="Client purchase online">
         <bpmn:extensionElements>
           <zeebe:userTask />
+          <zeebe:formDefinition formId="onlinePurchase" />
         </bpmn:extensionElements>
         <bpmn:incoming>Flow_0afdgfa</bpmn:incoming>
         <bpmn:outgoing>Flow_165uwsv</bpmn:outgoing>
@@ -333,6 +361,7 @@
       <bpmn:sequenceFlow id="Flow_165uwsv" sourceRef="Activity_1nk3sic" targetRef="Gateway_15ump1z" />
       <bpmn:sequenceFlow id="Flow_1c3aix6" sourceRef="Gateway_15ump1z" targetRef="Event_169jlf4" />
       <bpmn:exclusiveGateway id="Gateway_134waw7">
+        <bpmn:extensionElements />
         <bpmn:incoming>Flow_10uzft2</bpmn:incoming>
         <bpmn:outgoing>Flow_0afdgfa</bpmn:outgoing>
         <bpmn:outgoing>Flow_0zj8wor</bpmn:outgoing>
@@ -353,6 +382,7 @@
     <bpmn:userTask id="Activity_0u0bvis" name="customer selects the rental time">
       <bpmn:extensionElements>
         <zeebe:userTask />
+        <zeebe:formDefinition formId="rentalTime" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_06zij8f</bpmn:incoming>
       <bpmn:outgoing>Flow_0i75z8e</bpmn:outgoing>
@@ -386,8 +416,12 @@
       <bpmn:outgoing>Flow_0jd1kf5</bpmn:outgoing>
       <bpmn:outgoing>Flow_06zij8f</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0hdb7pe" name="not availble so check again" sourceRef="Gateway_0xnqgfn" targetRef="Activity_1g3dnor" />
-    <bpmn:sequenceFlow id="Flow_0jd1kf5" name="not availble so quit" sourceRef="Gateway_0xnqgfn" targetRef="Event_0ck2u4b" />
+    <bpmn:sequenceFlow id="Flow_0hdb7pe" name="not availble so check with different method" sourceRef="Gateway_0xnqgfn" targetRef="Activity_1g3dnor">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=availabilityCheck = "check again"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0jd1kf5" name="not availble so quit" sourceRef="Gateway_0xnqgfn" targetRef="Event_0ck2u4b">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=availabilityCheck = "quit"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:subProcess id="selectedID" name="recieves their money back">
       <bpmn:startEvent id="Event_01lt2dq">
         <bpmn:outgoing>Flow_1c1ih13</bpmn:outgoing>
@@ -872,7 +906,7 @@
         <di:waypoint x="710" y="580" />
         <di:waypoint x="710" y="540" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="745" y="586" width="71" height="27" />
+          <dc:Bounds x="741" y="586" width="80" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0jd1kf5_di" bpmnElement="Flow_0jd1kf5">
@@ -1359,6 +1393,9 @@
       <bpmndi:BPMNEdge id="Flow_1mj0xal_di" bpmnElement="Flow_1mj0xal">
         <di:waypoint x="845" y="170" />
         <di:waypoint x="935" y="170" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="873" y="152" width="35" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1mxtg42_di" bpmnElement="Flow_1mxtg42">
         <di:waypoint x="740" y="-120" />
@@ -1394,7 +1431,7 @@
         <di:waypoint x="440" y="50" />
         <di:waypoint x="440" y="145" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="624" y="32" width="13" height="14" />
+          <dc:Bounds x="610" y="32" width="41" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_05rxfug_di" bpmnElement="Flow_05rxfug">
