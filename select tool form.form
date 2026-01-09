@@ -1,0 +1,45 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "d6fa432"
+  },
+  "schemaVersion": 19,
+  "id": "Form_1o4ag6n",
+  "components": [
+    {
+      "label": "select tools to rent",
+      "values": [
+        {
+          "label": "cement mixer",
+          "value": "cement ,ixer"
+        },
+        {
+          "label": "Scaffolding",
+          "value": "Scaffolding"
+        },
+        {
+          "label": "Pressure washer",
+          "value": "Pressure washer"
+        },
+        {
+          "label": "Tile cutter",
+          "value": "value4Tile cutter"
+        },
+        {
+          "label": "Heavy duty drill",
+          "value": "Heavy duty drill"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_10nihpb",
+        "columns": null
+      },
+      "id": "Field_0z74h6m",
+      "key": "selectedTool"
+    }
+  ],
+  "type": "default"
+}
