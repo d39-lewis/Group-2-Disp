@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="063b968" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0">
+  <bpmn:collaboration id="onlinehiring">
+    <bpmn:documentation>onlinehiring</bpmn:documentation>
+    <bpmn:participant id="Participant_1s4gq2s" name="customer- renting" processRef="Process_11lidks" />
+    <bpmn:participant id="Participant_1av09sj" name="FinTrust" processRef="Process_1kwzimz" />
+    <bpmn:participant id="Participant_1sftdzr" name="FixPro lts" processRef="Process_0c6d9wt" />
+    <bpmn:participant id="Participant_0o27eg5" name="Supplieers" processRef="Process_1acsl6p" />
+    <bpmn:participant id="Participant_1hn4xv0" name="Probuild" processRef="Process_1hxfgf6" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_11lidks" isExecutable="false"><bpmn:extensionElements><zeebe:versionTag value="2.0"></zeebe:versionTag></bpmn:extensionElements>
+    <bpmn:exclusiveGateway id="hiringType" name="hiring type">
+      <bpmn:incoming>Flow_17xwuh8</bpmn:incoming>
+      <bpmn:outgoing>Flow_0hxg84g</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:startEvent id="Event_1tun1fz">
+      <bpmn:outgoing>Flow_17xwuh8</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_17xwuh8" name="customer decides to hire in store or in erson" sourceRef="Event_1tun1fz" targetRef="hiringType" />
+    <bpmn:sequenceFlow id="Flow_0hxg84g" name="onlinehiring" sourceRef="hiringType" targetRef="Activity_1xifbbj">
+      <bpmn:documentation>online hiring</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=onlinehiring</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="Activity_1xifbbj" name="customer searches for tools to hire online">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hxg84g</bpmn:incoming>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:process id="Process_1kwzimz" isExecutable="false" />
+  <bpmn:process id="Process_0c6d9wt" isExecutable="false" />
+  <bpmn:process id="Process_1acsl6p" isExecutable="false" />
+  <bpmn:process id="Process_1hxfgf6" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0dnwgnw">
+      <bpmn:lane id="Lane_0vte31f" name="sales team" />
+      <bpmn:lane id="Lane_00lh97b" name="tool hire team" />
+      <bpmn:lane id="Lane_1nt5w37" name="warehouse team" />
+      <bpmn:lane id="Lane_1o1hbn5" name="tool managment team" />
+    </bpmn:laneSet>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="onlinehiring">
+      <bpmndi:BPMNShape id="Participant_1hn4xv0_di" bpmnElement="Participant_1hn4xv0" isHorizontal="true">
+        <dc:Bounds x="1160" y="780" width="600" height="550" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0vte31f_di" bpmnElement="Lane_0vte31f" isHorizontal="true">
+        <dc:Bounds x="1190" y="1205" width="570" height="125" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_00lh97b_di" bpmnElement="Lane_00lh97b" isHorizontal="true">
+        <dc:Bounds x="1190" y="960" width="570" height="125" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1nt5w37_di" bpmnElement="Lane_1nt5w37" isHorizontal="true">
+        <dc:Bounds x="1190" y="1085" width="570" height="120" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1o1hbn5_di" bpmnElement="Lane_1o1hbn5" isHorizontal="true">
+        <dc:Bounds x="1190" y="780" width="570" height="180" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1sftdzr_di" bpmnElement="Participant_1sftdzr" isHorizontal="true">
+        <dc:Bounds x="1910" y="910" width="600" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1av09sj_di" bpmnElement="Participant_1av09sj" isHorizontal="true">
+        <dc:Bounds x="1220" y="1370" width="600" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0o27eg5_di" bpmnElement="Participant_0o27eg5" isHorizontal="true">
+        <dc:Bounds x="1920" y="1210" width="600" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_1s4gq2s_di" bpmnElement="Participant_1s4gq2s" isHorizontal="true">
+        <dc:Bounds x="380" y="960" width="720" height="290" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0zmr145_di" bpmnElement="hiringType" isMarkerVisible="true">
+        <dc:Bounds x="505" y="1065" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="505" y="1122" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1tun1fz_di" bpmnElement="Event_1tun1fz">
+        <dc:Bounds x="422" y="1072" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18i9prl_di" bpmnElement="Activity_1xifbbj">
+        <dc:Bounds x="610" y="1050" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_17xwuh8_di" bpmnElement="Flow_17xwuh8">
+        <di:waypoint x="458" y="1090" />
+        <di:waypoint x="505" y="1090" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="438" y="1005" width="87" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hxg84g_di" bpmnElement="Flow_0hxg84g">
+        <di:waypoint x="555" y="1090" />
+        <di:waypoint x="610" y="1090" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="554" y="1072" width="57" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
