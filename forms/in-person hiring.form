@@ -1,0 +1,151 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "9b0b274"
+  },
+  "schemaVersion": 19,
+  "id": "in-personHiring",
+  "components": [
+    {
+      "text": "### Tool Hire Request",
+      "type": "text",
+      "id": "Heading_1",
+      "layout": {
+        "row": "Row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "id": "Field_0o9i8u7",
+      "key": "customerName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_2",
+        "col": 8
+      }
+    },
+    {
+      "label": "Email address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_2",
+        "columns": null
+      },
+      "id": "Field_12zxshg",
+      "key": "emailAddress"
+    },
+    {
+      "text": "##### Hire Details",
+      "type": "text",
+      "id": "Subheading_1",
+      "layout": {
+        "row": "Row_3",
+        "col": 16
+      }
+    },
+    {
+      "label": "select tool",
+      "values": [
+        {
+          "label": "cement mixer",
+          "value": "cementMixer"
+        },
+        {
+          "label": "scaffolding",
+          "value": "Scaffolding"
+        },
+        {
+          "label": "pressure washer",
+          "value": "pressureWasher"
+        },
+        {
+          "label": "tile cutter",
+          "value": "tileCutter"
+        },
+        {
+          "label": "heavy duty drill",
+          "value": "heavyDutyDrill"
+        }
+      ],
+      "type": "checklist",
+      "layout": {
+        "row": "Row_0n46zea",
+        "columns": null
+      },
+      "id": "Field_003r3es",
+      "key": "checklist_l6bjo4"
+    },
+    {
+      "label": "Hire Period",
+      "values": [
+        {
+          "label": "12 Hours",
+          "value": "12h"
+        },
+        {
+          "label": "1 Day",
+          "value": "1d"
+        },
+        {
+          "label": "2 Days",
+          "value": "2d"
+        },
+        {
+          "label": "3 Days",
+          "value": "3d"
+        },
+        {
+          "label": "1 Week",
+          "value": "1w"
+        },
+        {
+          "label": "2 Weeks",
+          "value": "2w"
+        },
+        {
+          "label": "1 Month",
+          "value": "1m"
+        }
+      ],
+      "type": "select",
+      "id": "Field_5f6g7h8",
+      "key": "hirePeriod",
+      "defaultValue": "1d",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Customer has a Trade Card Membership (10% Discount)",
+      "type": "checkbox",
+      "id": "Field_9j8k7l6",
+      "key": "hasTradeCard",
+      "layout": {
+        "row": "Row_6",
+        "col": 16
+      }
+    },
+    {
+      "label": "Calculate & Submit",
+      "action": "submit",
+      "type": "button",
+      "id": "Button_0m9n8b7",
+      "layout": {
+        "row": "Row_7",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

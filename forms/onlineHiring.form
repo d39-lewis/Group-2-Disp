@@ -1,0 +1,258 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "80a5306"
+  },
+  "schemaVersion": 19,
+  "id": "onlineHiring",
+  "components": [
+    {
+      "text": "### Rental Selection",
+      "id": "Heading_rental_selection",
+      "type": "text",
+      "layout": {
+        "row": "Row_0kd0xcv",
+        "col": 16
+      }
+    },
+    {
+      "label": "Jack Hammer",
+      "type": "checkbox",
+      "layout": {
+        "row": "row_6",
+        "columns": null
+      },
+      "id": "Field_0a68k7r",
+      "key": "jackHammer"
+    },
+    {
+      "label": "Cement Mixer",
+      "type": "checkbox",
+      "layout": {
+        "row": "row_6",
+        "columns": null
+      },
+      "id": "Field_0egp0uc",
+      "key": "cementMixer"
+    },
+    {
+      "label": "Plate Compactor",
+      "type": "checkbox",
+      "layout": {
+        "row": "row_6",
+        "columns": null
+      },
+      "id": "Field_1plp2wh",
+      "key": "plateCompactor"
+    },
+    {
+      "label": "Scaffolding",
+      "type": "checkbox",
+      "layout": {
+        "row": "row_6",
+        "columns": null
+      },
+      "id": "Field_0ajmznz",
+      "key": "Scaffolding"
+    },
+    {
+      "label": "Duration Unit",
+      "values": [
+        {
+          "label": "12hr",
+          "value": "halfDay"
+        },
+        {
+          "label": "1 Day",
+          "value": "1day"
+        },
+        {
+          "label": "2 Days",
+          "value": "2day"
+        },
+        {
+          "label": "3 Days",
+          "value": "3day"
+        },
+        {
+          "label": "4 Days",
+          "value": "4day"
+        },
+        {
+          "label": "5 Days",
+          "value": "5day"
+        },
+        {
+          "label": "6 Days",
+          "value": "6day"
+        },
+        {
+          "label": "1 Week",
+          "value": "1week"
+        },
+        {
+          "label": "2 weeks",
+          "value": "2week"
+        },
+        {
+          "label": "3 Weeks",
+          "value": "3week"
+        },
+        {
+          "label": "1Month",
+          "value": "1month"
+        }
+      ],
+      "id": "Select_duration_unit",
+      "type": "select",
+      "layout": {
+        "row": "Row_1byvzuh",
+        "col": 4
+      },
+      "key": "rentalDurationUnit",
+      "validate": {
+        "required": true
+      },
+      "readonly": true
+    },
+    {
+      "label": "Trading card member",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0rz6b6i",
+        "columns": null
+      },
+      "id": "Field_1ags141",
+      "key": "tradeCard"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_0rkicab",
+        "columns": null
+      },
+      "id": "Field_1ia2gbo"
+    },
+    {
+      "text": "# Customer Details",
+      "type": "text",
+      "layout": {
+        "row": "Row_0dlh8cp",
+        "columns": null
+      },
+      "id": "Field_0t1hsh0"
+    },
+    {
+      "label": "First Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jlpq22",
+        "columns": null
+      },
+      "id": "Field_1kl4ap7",
+      "key": "fristName"
+    },
+    {
+      "label": "Surname",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jlpq22",
+        "columns": null
+      },
+      "id": "Field_1dsstyw",
+      "key": "Surname"
+    },
+    {
+      "label": "Mobile Number",
+      "type": "number",
+      "layout": {
+        "row": "Row_0imx65v",
+        "columns": null
+      },
+      "id": "Field_1odhb8x",
+      "key": "mobileNumber",
+      "decimalDigits": 0
+    },
+    {
+      "label": "Email Address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1tcgz2j",
+        "columns": null
+      },
+      "id": "Field_1m40au3",
+      "key": "emailAddress"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_172gruz",
+        "columns": null
+      },
+      "id": "Field_19bffby"
+    },
+    {
+      "text": "# Payment ",
+      "type": "text",
+      "layout": {
+        "row": "Row_0lixq4f",
+        "columns": null
+      },
+      "id": "Field_1txaku9"
+    },
+    {
+      "label": "Name On Card",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_01ez1qn",
+        "columns": null
+      },
+      "id": "Field_0e1egda",
+      "key": "cardName"
+    },
+    {
+      "label": "16 Digit Number",
+      "type": "number",
+      "layout": {
+        "row": "Row_1vr5nzq",
+        "columns": null
+      },
+      "id": "Field_09vaav2",
+      "key": "longNumber"
+    },
+    {
+      "label": "Expiration Date",
+      "type": "number",
+      "layout": {
+        "row": "Row_0lit6ky",
+        "columns": null
+      },
+      "id": "Field_0okcm4f",
+      "key": "expirayDate"
+    },
+    {
+      "label": "Security Code",
+      "type": "number",
+      "layout": {
+        "row": "Row_0lit6ky",
+        "columns": null
+      },
+      "id": "Field_0yer5if",
+      "key": "securityCode"
+    },
+    {
+      "label": "Submit",
+      "action": "submit",
+      "type": "button",
+      "layout": {
+        "row": "Row_1uuogqe",
+        "columns": null
+      },
+      "id": "Field_0qzudi4"
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}
