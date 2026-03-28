@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: camunda-worker-foundation
+
+camunda:
+  client:
+    mode: saas
+    auth:
+      client-id: ${CAMUNDA_CLIENT_ID}
+      client-secret: ${CAMUNDA_CLIENT_SECRET}
+    cloud:
+      cluster-id: ${CAMUNDA_CLUSTER_ID}
+      region: ${CAMUNDA_REGION}
+    # Keep disabled because your BPMN is already managed/deployed in university cluster.
+    deployment:
+      enabled: false
+    worker:
+      defaults:
+        max-jobs-active: 10
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

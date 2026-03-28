@@ -1,0 +1,797 @@
+Date: Sat, 28 Mar 2026 12:59:28 +0000 (UTC)
+Message-ID: <1958535638.149.1774702768932@c5b5203ac98e>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_148_1221750388.1774702768932"
+
+------=_Part_148_1221750388.1774702768932
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>service task descriptions</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>service task descriptions</h1>
+    <div class=3D"Section1">
+        <p local-id=3D"39e0572c0499">Customer pool</p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"350c038c-bd30-4c72-982a-f92=
+0be398301" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"601c3090-0548-4e5d-ba16-0b7fbd5122bf">
+<td data-local-id=3D"f43613ce-99cd-484f-bf20-c568de42a5d8" class=3D"conflue=
+nceTd">
+<p local-id=3D"760e1d55ca82">Service task</p></td>
+<td data-local-id=3D"ae585e1f-68db-4b61-bb10-e63fafdddc12" class=3D"conflue=
+nceTd">
+<p local-id=3D"3f4ed327ce92">JobType</p></td>
+<td data-local-id=3D"872b8200-d4b0-4a68-8144-1a41105b1304" class=3D"conflue=
+nceTd">
+<p local-id=3D"c7ee9cb70b1d">Description of what the code should do</p></td=
+>
+<td colspan=3D"3" data-local-id=3D"827cc090-e5a6-4743-8189-08252d7ed818" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"1f1f0146a6f1">completed</p></td>
+</tr>
+<tr data-local-id=3D"f51770a7-86cb-449b-bb49-b94ae679d8de">
+<td data-local-id=3D"429770a9-c4bf-4f87-aeb8-bc8a6e927c4c" class=3D"conflue=
+nceTd">
+<p local-id=3D"0d2d3d44e2bc">available tools online</p></td>
+<td data-local-id=3D"fd51ef87-b2e8-438c-9b89-5ab21dab2adb" class=3D"conflue=
+nceTd">
+<p local-id=3D"343aabb0883e">warehouse.IMS</p></td>
+<td data-local-id=3D"302c5918-c119-4b2c-a3eb-0f46ac2abe37" class=3D"conflue=
+nceTd">
+<p local-id=3D"bdd70e930668">This code is actually just the IMS service tas=
+k in the customer pool. This service task allows the website user task to a=
+ccess the data in the IMS&nbsp;</p></td>
+<td colspan=3D"3" data-local-id=3D"43446eb5-3b80-4256-969e-65e9b549e9fa" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"b0305d201e97"></p></td>
+</tr>
+<tr data-local-id=3D"2a0269f1-5f80-4a86-b93a-b87805a3ac32">
+<td data-local-id=3D"2679e525-d3ec-4f8e-8c59-15c2c8f5df62" class=3D"conflue=
+nceTd">
+<p local-id=3D"a988d658e6e9">trading card database</p></td>
+<td data-local-id=3D"21297528-d091-4b1f-9f6d-38ac64a29d78" class=3D"conflue=
+nceTd">
+<p local-id=3D"f487d9cf7aed">warehouse.tradeDatabase</p></td>
+<td data-local-id=3D"1ac23771-c829-48e4-adcc-ab3712d41529" class=3D"conflue=
+nceTd">
+<p local-id=3D"3677bcefd4c6">The code connects to the tradecard membership =
+in the membership lane in the probuild pool. It allows the user task in web=
+site to connect to the trade card membership database</p></td>
+<td colspan=3D"3" data-local-id=3D"4bca7b73-dda3-4f65-8496-cdbad72a323a" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"4fd2cc84f535"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"69cb22b7977d">&nbsp;</p>
+<p local-id=3D"8b31c12b94a3">(Don't focus on the service tasks in the custo=
+mer pool, as they are mainly just connected to pre-developed service tasks)=
+</p>
+<p local-id=3D"9f3e6f7ed6b0"></p>
+<p local-id=3D"12ad8e044ec2">Probuild pool</p>
+<p local-id=3D"7299f693ed0f">Sales team lane</p>
+<p local-id=3D"497878e2e9dd"></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"07440a3d-92c2-4870-82e9-8a6=
+be63abf99" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"cf991899-9474-4d09-bc3d-1044b6970f7f">
+<td data-local-id=3D"13d658dc-87ce-4550-a276-22fbb380cfd0" class=3D"conflue=
+nceTd">
+<p local-id=3D"056c40994e7d">Process Order</p></td>
+<td data-local-id=3D"9943ebb1-040c-49a4-84ae-dc49e05cf3f2" class=3D"conflue=
+nceTd">
+<p local-id=3D"25762a24050d">processOrder</p></td>
+<td data-local-id=3D"485cd48d-ca73-42b6-8d2d-f902d01bf8d0" class=3D"conflue=
+nceTd">
+<p local-id=3D"3f507434715c">This service task processes online orders and =
+connects to the website form to get key info.</p>
+<p local-id=3D"4115b49b703d"></p>
+<ol start=3D"1" local-id=3D"7c8a8c8e-71ba-49f1-95b7-59470fcd925b">
+<li local-id=3D"84e5e3f0-0edb-4b41-9f47-075020308d67">
+<p local-id=3D"e683c63dd671">Code must generate an order ID</p></li>
+<li local-id=3D"3f7e3d6b-960d-4453-b8a4-b9b141053e2c">
+<p local-id=3D"a8daf42dbb99">What the process is (buy, hire, membership act=
+ivation) key: mainSelection</p></li>
+<li local-id=3D"f469b536-c95a-48b7-992e-e544eff5d6c8">
+<p local-id=3D"a0ebd554b869">Must get the cost of the order</p></li>
+<li local-id=3D"5c1c6117-f2db-48a2-9159-7dbaf65aa87d">
+<p local-id=3D"319e05c550bb">The selected goods</p></li>
+<li local-id=3D"37a7db59-1eba-4573-abb6-83a98f7f1c6a">
+<p local-id=3D"adeb01fd872d">Address of customer path =3DAddress</p></li>
+<li local-id=3D"69c1eb3c-f486-449d-8c8c-67cacc1318cd">
+<p local-id=3D"d7eb11479035">Payment type: finance or card key: purchasePay=
+ment</p></li>
+<li local-id=3D"6dce2149-818b-4815-8dd8-c24d388a14b0">
+<p local-id=3D"f104c9d101cf">Trade card membership details path: TradeCard<=
+/p></li>
+</ol>
+<p local-id=3D"145a149f5a22"></p></td>
+<td data-local-id=3D"ede52cc6-5cae-4053-aaa9-eafb059cd860" class=3D"conflue=
+nceTd">
+<p local-id=3D"e9975bf69726"></p></td>
+</tr>
+<tr data-local-id=3D"a6e98f9e-462e-4743-a1a4-9c498c865151">
+<td data-local-id=3D"7c14563d-56a3-458c-851e-2e4198ac4f87" class=3D"conflue=
+nceTd">
+<p local-id=3D"915592c38c01">Check if credentials are valid</p></td>
+<td data-local-id=3D"c1e20676-95c7-4003-87d1-775c18fd81ec" class=3D"conflue=
+nceTd">
+<p local-id=3D"a35d7164b38b">credentialCheck</p></td>
+<td data-local-id=3D"3a3d4983-83fe-4c97-a394-332508219656" class=3D"conflue=
+nceTd">
+<p local-id=3D"7f997101ca48">Check for invalidations in the sign up for the=
+ trade card membership.</p>
+<ol start=3D"1" local-id=3D"a648ddf6-2a05-4299-863f-c15110eb77fc">
+<li local-id=3D"b435ad1f-350b-452c-a5a0-cf7bdd9d636b">
+<p local-id=3D"44cb952a4d04">Already used username</p></li>
+<li local-id=3D"49f604c6-8fce-47f2-9d7c-ec1b90e3e0be">
+<p local-id=3D"a03c652d725a">Invalid password</p></li>
+<li local-id=3D"ecc4336e-b19c-48cc-b334-a83bd08c06c5">
+<p local-id=3D"059b78968f31">Whatever you can think of</p></li>
+</ol></td>
+<td data-local-id=3D"2764e858-2f7b-4b01-9992-92138621e571" class=3D"conflue=
+nceTd">
+<p local-id=3D"c42228e807ae"></p></td>
+</tr>
+<tr data-local-id=3D"a74f9de0-0563-487d-9283-56fdd9aa07ba">
+<td data-local-id=3D"546ab4cf-e755-41d3-a4f3-2b02326a1715" class=3D"conflue=
+nceTd">
+<p local-id=3D"ddb9a1b3011e">update membership database</p></td>
+<td data-local-id=3D"be6f1531-18d1-4351-88c4-9315be631038" class=3D"conflue=
+nceTd">
+<p local-id=3D"ec85a51ae2ac">updateMembership</p></td>
+<td data-local-id=3D"586ce6db-19f0-43f8-b349-8982a9d0b990" class=3D"conflue=
+nceTd">
+<p local-id=3D"8adef0549b29">Add the new member to the database</p></td>
+<td data-local-id=3D"b0521b19-7731-43b2-adda-c5cc4dfc6eb6" class=3D"conflue=
+nceTd">
+<p local-id=3D"ce55c11c2b83"></p></td>
+</tr>
+<tr data-local-id=3D"d62b2d01-bd30-481f-aaaa-00b2c705cd5e">
+<td data-local-id=3D"8bb176f7-b4bc-421f-a51b-dec91e7883cd" class=3D"conflue=
+nceTd">
+<p local-id=3D"a7c08edb327c">display failed inputs</p></td>
+<td data-local-id=3D"9b4e5c07-b886-4eb5-b085-e837878bd1bf" class=3D"conflue=
+nceTd">
+<p local-id=3D"88cb1610fe1e">credentialCheck</p></td>
+<td data-local-id=3D"1d88f302-1e8a-4b95-b58c-f190aa6e09b9" class=3D"conflue=
+nceTd">
+<p local-id=3D"9787185e2a57">Display the invalid credentials in the user ta=
+sk</p></td>
+<td data-local-id=3D"27f3a4e4-ddb3-429f-a915-cc2dcd1240d0" class=3D"conflue=
+nceTd">
+<p local-id=3D"3201a29a6936"></p></td>
+</tr>
+<tr data-local-id=3D"237d59a1-f705-45de-8547-b33187053e33">
+<td data-local-id=3D"bb462bdf-1ef9-4bef-b116-91bd32ab1b4a" class=3D"conflue=
+nceTd">
+<p local-id=3D"b82809ca7e62">give membership benefits</p></td>
+<td data-local-id=3D"a59beacd-762e-45d9-a89e-10d582dad923" class=3D"conflue=
+nceTd">
+<p local-id=3D"78369e4090b3">membershipDiscount</p></td>
+<td data-local-id=3D"36b893fb-a68b-44a5-b217-eae71a78ac55" class=3D"conflue=
+nceTd">
+<p local-id=3D"76ad62956514">Grant membership benefits</p>
+<p local-id=3D"798407a33887"></p></td>
+<td data-local-id=3D"e291e865-e002-4b2b-b459-c0a4fbacce9d" class=3D"conflue=
+nceTd">
+<p local-id=3D"b6c94b620945"></p></td>
+</tr>
+<tr data-local-id=3D"1cf71554-de42-472f-a6e8-3797c74d802e">
+<td data-local-id=3D"7538df92-e942-46b6-a3fd-5bc8ed55fd52" class=3D"conflue=
+nceTd">
+<p local-id=3D"6fd0fbbc57ce">process order (in-person)</p></td>
+<td data-local-id=3D"0422537a-688c-49d8-baa4-e497db5daa8b" class=3D"conflue=
+nceTd">
+<p local-id=3D"cbcf53e9e2cf">processOrderInPerson</p></td>
+<td data-local-id=3D"1a084d6f-0afd-422c-bcdc-781e7275be0b" class=3D"conflue=
+nceTd">
+<p local-id=3D"53a1fe3806d6">Same as the online process order but different=
+ way of getting data</p>
+<p local-id=3D"d424a5ac2447"></p></td>
+<td data-local-id=3D"f8b667c4-33db-4358-b86c-ffd18d5f900f" class=3D"conflue=
+nceTd">
+<p local-id=3D"7b61139ee608"></p></td>
+</tr>
+<tr data-local-id=3D"ef73509d-dcb5-4e21-8002-fe29e3e8e23b">
+<td data-local-id=3D"594e8025-6282-4976-a336-e71c4257bc28" class=3D"conflue=
+nceTd">
+<p local-id=3D"7d3aabe9e422">place customer in queue granting prioity to me=
+mbers (if applicable)</p></td>
+<td data-local-id=3D"e89cc148-2a03-4b52-a7dd-13f87e2e5504" class=3D"conflue=
+nceTd">
+<p local-id=3D"aaf07e002806">Queue</p></td>
+<td data-local-id=3D"47a011c4-ab6a-4af2-93bf-e62ab0218b2a" class=3D"conflue=
+nceTd">
+<p local-id=3D"e98ebfc091f9">Place the customer in a queue. If the customer=
+ has membership they get priority. key=3D isMember</p></td>
+<td data-local-id=3D"4658c847-c629-4388-a0c4-1e76bd38f720" class=3D"conflue=
+nceTd">
+<p local-id=3D"528f66cbef59"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"c2d07f76400c">Probuild pool</p>
+<p local-id=3D"4545c4d5bfdc">Sales team lane</p>
+<p local-id=3D"26b5f1bd353f">Subprocesses</p>
+<p local-id=3D"58689c8bc268"></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"b2f64055-ee7d-451d-863e-49e=
+bf005235d" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"f7875bdb-be2c-4647-ac7d-4c7f872850ad">
+<td data-local-id=3D"24f3e206-ff03-4007-839a-1dafd4cfdaf5" class=3D"conflue=
+nceTd">
+<p local-id=3D"142d82093c74">subprocess</p></td>
+<td data-local-id=3D"9692a0f0-12a5-4228-ae3e-408c89b67c56" class=3D"conflue=
+nceTd">
+<p local-id=3D"395ab8abc18b">Service task</p></td>
+<td data-local-id=3D"153f005a-915e-4901-8a2e-cf9a22a81aec" class=3D"conflue=
+nceTd">
+<p local-id=3D"8de600d5ba53">JobType</p></td>
+<td data-local-id=3D"ce4f4343-c8e3-46f2-8883-1ed2b4031a2b" class=3D"conflue=
+nceTd">
+<p local-id=3D"b80194f6dbb4">Description of what the code should do</p></td=
+>
+<td colspan=3D"3" data-local-id=3D"ff9afd34-0536-49c5-9c70-82b1d56f16b4" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"289b977bf364">completed</p></td>
+</tr>
+<tr data-local-id=3D"60ba7c76-4fc2-43a5-8ffc-35a5b2a21c0e">
+<td data-local-id=3D"0274bb92-e940-47eb-8c41-8020d4d38540" class=3D"conflue=
+nceTd">
+<p local-id=3D"56bba1c5fa03">Process Payment (Online)</p></td>
+<td data-local-id=3D"ae9214e4-915a-408b-ae28-c20e17b7e455" class=3D"conflue=
+nceTd">
+<p local-id=3D"3bfa7cf44203">rental amount</p></td>
+<td data-local-id=3D"ee8c8a0c-7808-46fd-8d58-3deb656d6863" class=3D"conflue=
+nceTd">
+<p local-id=3D"546c5fd872ac">calculate-rental-amount</p></td>
+<td data-local-id=3D"c490d16d-35fa-4863-8a25-b591cdccf45a" class=3D"conflue=
+nceTd">
+<p local-id=3D"5a291d0286ad">Get the price of the order&nbsp;</p></td>
+<td colspan=3D"3" data-local-id=3D"057c4c30-874f-4aff-b6fa-a9398aab6141" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"93bef22da0ed"></p></td>
+</tr>
+<tr data-local-id=3D"1ed69e6c-420f-40eb-b51f-40b64800c2b5">
+<td data-local-id=3D"b3a41d9a-868a-4480-bacd-131d8ebc42ed" class=3D"conflue=
+nceTd">
+<p local-id=3D"decf570f3aaa">Process Payment (Online)</p></td>
+<td data-local-id=3D"a1f1c51a-97f4-483c-803e-18ed74b4f81b" class=3D"conflue=
+nceTd">
+<p local-id=3D"b2c64ef48784">recieve card details</p></td>
+<td data-local-id=3D"16b46b95-b0a8-447f-8e49-fc2709ae1167" class=3D"conflue=
+nceTd">
+<p local-id=3D"dad3ffc94dab">receive-card-payment</p></td>
+<td data-local-id=3D"68ad8958-dc48-4645-9335-e72e45da29ad" class=3D"conflue=
+nceTd">
+<p local-id=3D"37ed671a3577">Get the card details from the website. Path =
+=3D hire.payment</p></td>
+<td colspan=3D"3" data-local-id=3D"3b5ef484-eec8-40a4-ab40-e583ae4f1655" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"de499ac6e1ed"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"b4ec9e432243"></p>
+<p local-id=3D"a2a6f980fb5c">Probuild pool</p>
+<p local-id=3D"63d914fe786c">Warehouse lane</p>
+<p local-id=3D"45132630041c"></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"81b2f886-4e7a-4883-85d1-8ad=
+95a923e0f" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"6f416fce-8f28-4897-bc94-c901fae24976">
+<td data-local-id=3D"9d0a1559-1fd3-48b3-a528-039247c97e09" class=3D"conflue=
+nceTd">
+<p local-id=3D"8d91268e4253">tradecard membership</p></td>
+<td data-local-id=3D"0337316e-96b1-4757-ae9e-ff16571c4a05" class=3D"conflue=
+nceTd">
+<p local-id=3D"8ddfccad74d9">tradeDatabase</p></td>
+<td data-local-id=3D"b02b7b2e-caef-4528-8182-aa12c28b6c4b" class=3D"conflue=
+nceTd">
+<p local-id=3D"2b99854d872f">Don't think this will be in the actual BPMN, b=
+ut we need a database for the trading card</p></td>
+<td data-local-id=3D"d88b739e-5359-4612-8763-94d9461001d2" class=3D"conflue=
+nceTd">
+<p local-id=3D"159c0e30bd48"></p></td>
+</tr>
+<tr data-local-id=3D"2bc181b7-2a97-4fbf-a94f-44f3a555a676">
+<td data-local-id=3D"83d1ba9e-d485-4583-a173-e622e2d67336" class=3D"conflue=
+nceTd">
+<p local-id=3D"ca706b72b803">IMS</p></td>
+<td data-local-id=3D"912bfc14-56f9-4e5b-a08b-24fd344406f4" class=3D"conflue=
+nceTd">
+<p local-id=3D"67baa3eeb906">IMS</p></td>
+<td data-local-id=3D"fa0a9084-1902-4249-88b6-79b95fc7a651" class=3D"conflue=
+nceTd">
+<p local-id=3D"5960b59ffe66">This is a database with all the tools and the =
+amount in stock</p></td>
+<td data-local-id=3D"ee70db3f-a1d5-4f33-ae70-e5a693bb408a" class=3D"conflue=
+nceTd">
+<p local-id=3D"7463b9629913"></p></td>
+</tr>
+<tr data-local-id=3D"e3643f03-ce58-4a89-868d-9165deb121ec">
+<td data-local-id=3D"91d94642-75bc-4705-a3b6-55ddedd87f81" class=3D"conflue=
+nceTd">
+<p local-id=3D"e15d1e307488">generate audit ID</p></td>
+<td data-local-id=3D"002c8c4b-8cbf-41ea-ba9e-871c03cf497e" class=3D"conflue=
+nceTd">
+<p local-id=3D"ef84ee567ae6">auditID</p></td>
+<td data-local-id=3D"21cbb022-58e8-4659-aee7-e4ae32e1b1ba" class=3D"conflue=
+nceTd">
+<p local-id=3D"ff9ffdc1b14c">Each audit must generate a random audit ID and=
+ put it in a database</p></td>
+<td data-local-id=3D"e2d98fa7-798c-4b6b-92ee-0ab638f7e886" class=3D"conflue=
+nceTd">
+<p local-id=3D"7d6489fe5517"></p></td>
+</tr>
+<tr data-local-id=3D"81fb9559-5081-458c-9f07-485cf7a8eacf">
+<td data-local-id=3D"c951453b-9767-408b-bc6b-f3cad3c822b6" class=3D"conflue=
+nceTd">
+<p local-id=3D"71845482b98f">update IMS</p></td>
+<td data-local-id=3D"8a2a04ca-18b9-46fe-8abf-9fa5279df898" class=3D"conflue=
+nceTd">
+<p local-id=3D"1cb47bcbfc0c">routineIMSUpdate</p></td>
+<td data-local-id=3D"48b923e2-ee2c-4edb-8812-47f75fa9a025" class=3D"conflue=
+nceTd">
+<p local-id=3D"c6b4facf3920">Allows stock change&nbsp; to the IMS</p></td>
+<td data-local-id=3D"fed5ac38-87e1-4291-b4b3-999b0346cc78" class=3D"conflue=
+nceTd">
+<p local-id=3D"aac5043d119e"></p></td>
+</tr>
+<tr data-local-id=3D"e52d657a-7bfc-492c-9dcb-7d2012169945">
+<td data-local-id=3D"61daca05-0d0b-4da0-9542-60419442e373" class=3D"conflue=
+nceTd">
+<p local-id=3D"e225335bbf4d">deduct from the IMS</p></td>
+<td data-local-id=3D"3bf589b4-9e54-4a9a-9bbd-b0f82335e76b" class=3D"conflue=
+nceTd">
+<p local-id=3D"2135a9034358">deductionIMS</p></td>
+<td data-local-id=3D"7ac19244-7a7e-4afa-9c0c-41302c19b9bd" class=3D"conflue=
+nceTd">
+<p local-id=3D"b04d1bdb6377">Deduct from the stock based on the transaction=
+.&nbsp;</p></td>
+<td data-local-id=3D"2d3a0c49-ba5e-415b-92ee-50f6b87b8b43" class=3D"conflue=
+nceTd">
+<p local-id=3D"8c9a3ee38fbb"></p></td>
+</tr>
+<tr data-local-id=3D"f9c89334-d867-4ba1-a5e9-c3130d04a9ff">
+<td data-local-id=3D"301ba414-46e6-4c64-9446-ab74ac62b66d" class=3D"conflue=
+nceTd">
+<p local-id=3D"87d14abaec39">Update the IMS levels</p></td>
+<td data-local-id=3D"a19914fe-46ab-42ac-9ee6-45b230fa7fe1" class=3D"conflue=
+nceTd">
+<p local-id=3D"1bf761a58270">IMSUpdate</p></td>
+<td data-local-id=3D"eaf17003-ff26-41fa-8b4c-4cb2841e79f8" class=3D"conflue=
+nceTd">
+<p local-id=3D"584bb8662fe6">Increase stock based on =E2=80=9Cfetch goods a=
+nd receipt=E2=80=9D data</p></td>
+<td data-local-id=3D"585142a8-7541-4f37-8a49-d7f31bb8f386" class=3D"conflue=
+nceTd">
+<p local-id=3D"2c0e2786dcd7"></p></td>
+</tr>
+<tr data-local-id=3D"bf63e698-2ecd-4484-811f-77d0a9045b20">
+<td data-local-id=3D"de2597a6-a8bc-464e-9b14-d8b6cb49eed0" class=3D"conflue=
+nceTd">
+<p local-id=3D"629c592c9394">fetch goods and receipt</p></td>
+<td data-local-id=3D"4d50afe1-89b6-4627-8627-5680e173f420" class=3D"conflue=
+nceTd">
+<p local-id=3D"4f8543b3bff2">fetchDelivery</p></td>
+<td data-local-id=3D"831cb0c5-6bf4-4854-8ee6-1af7dc7331a0" class=3D"conflue=
+nceTd">
+<p local-id=3D"34aed638feac">Get the delivered goods from FixPro with a rec=
+eipt</p></td>
+<td data-local-id=3D"f7a9d869-9a0e-47ec-85e4-1ae69527c858" class=3D"conflue=
+nceTd">
+<p local-id=3D"5c02d4711377"></p></td>
+</tr>
+<tr data-local-id=3D"6cc8ad50-5351-4890-90c5-f883930f3dbf">
+<td data-local-id=3D"6951b1fe-a583-4121-8ecf-aceac0a7239d" class=3D"conflue=
+nceTd">
+<p local-id=3D"da28380bb98a">Store all the tools that are going to maintena=
+nce</p></td>
+<td data-local-id=3D"9524a896-8139-4583-83a1-e41fb1565b8a" class=3D"conflue=
+nceTd">
+<p local-id=3D"eb834c12cbba">storeRetrieveTool</p></td>
+<td data-local-id=3D"f0cf4fa2-8b80-426c-b6ce-959d15781397" class=3D"conflue=
+nceTd">
+<p local-id=3D"9dc71e983a0a">Stores the tools that arrive at probuild post =
+rental process to be sent to FixPro</p></td>
+<td data-local-id=3D"259875c9-062e-4b7d-966e-704e11f2eb64" class=3D"conflue=
+nceTd">
+<p local-id=3D"352f497ed9fd"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"99acc226482a"></p>
+<p local-id=3D"d8ea7b3c71e0">Probuild pool</p>
+<p local-id=3D"3efe8c83a441">warehouse team lane</p>
+<p local-id=3D"d3bb01068af6">Subprocesses</p>
+<p local-id=3D"2a52bb5dc723"></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"a39ed210-e0f4-499b-bf0a-bff=
+8c985d3fd" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"c8465757-6a8f-45c0-8c6f-60a50646c71c">
+<td data-local-id=3D"349fdf19-86c1-4f0b-98a7-ac3a8f577bc4" class=3D"conflue=
+nceTd">
+<p local-id=3D"66c5bb9a36a7">subprocess</p></td>
+<td data-local-id=3D"8dfbf217-7ad6-4227-b8ed-2cf7edadadb9" class=3D"conflue=
+nceTd">
+<p local-id=3D"a6d09d92155e">Service task</p></td>
+<td data-local-id=3D"32eba29e-2d2a-404b-a38d-d533a2703fbb" class=3D"conflue=
+nceTd">
+<p local-id=3D"a5ea7b33aa54">JobType</p></td>
+<td data-local-id=3D"519e4c20-6626-4dc5-8954-1307ef342162" class=3D"conflue=
+nceTd">
+<p local-id=3D"fa78d44b132e">Description of what the code should do</p></td=
+>
+<td colspan=3D"3" data-local-id=3D"08aa2d61-fd4f-4b2b-af34-e148085b3802" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"82f79f135a90">completed</p></td>
+</tr>
+<tr data-local-id=3D"c946aa4e-99d5-4828-9f59-9902dc206cb8">
+<td data-local-id=3D"f33e5c88-49eb-445b-97a8-365aa656bb2b" class=3D"conflue=
+nceTd">
+<p local-id=3D"8fcb23571df5">Prepare to send to FixPro</p></td>
+<td data-local-id=3D"89df6193-4ee8-40b9-9268-18e771bdd620" class=3D"conflue=
+nceTd">
+<p local-id=3D"fc91acc1b4d2">log for maintence</p></td>
+<td data-local-id=3D"ed5c783a-55e8-4d6b-b879-42351fbff69c" class=3D"conflue=
+nceTd">
+<p local-id=3D"00d36193fb48">maintenaceLog</p></td>
+<td data-local-id=3D"69adf899-3006-4d54-a2a5-02a2932e6d3b" class=3D"conflue=
+nceTd">
+<p local-id=3D"f560af5c3ce5">Give the maintenance an ID</p></td>
+<td colspan=3D"3" data-local-id=3D"d16342fe-a0b0-4dc5-9610-4c383c304c44" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"40eed1f1bee1"></p></td>
+</tr>
+<tr data-local-id=3D"99025c22-0a48-4ea2-bf17-1a80eea3b32c">
+<td data-local-id=3D"b955bfee-ac0d-45c6-bcf4-046730e7fcd6" class=3D"conflue=
+nceTd">
+<p local-id=3D"dfa128815c5f"></p></td>
+<td data-local-id=3D"ea080ea3-746b-4bad-b1f9-d3c169627beb" class=3D"conflue=
+nceTd">
+<p local-id=3D"05a2a0577876">calculate rough cost for damages</p></td>
+<td data-local-id=3D"0927867f-50bf-4618-8a36-89b1b5ba593e" class=3D"conflue=
+nceTd">
+<p local-id=3D"d6c3b634e653">damageCost</p></td>
+<td data-local-id=3D"7a6eff4d-48a2-4139-aa6e-bf87451d73ed" class=3D"conflue=
+nceTd">
+<p local-id=3D"0c02abec2de8">Idk how this would work tbh</p></td>
+<td colspan=3D"3" data-local-id=3D"ef5e70cc-caa9-414b-9e88-8c88f3876be8" cl=
+ass=3D"confluenceTd">
+<p local-id=3D"f0ce5a7f9383"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"5e45d617e693"></p>
+<p local-id=3D"54102dd9858c">Supplier Pool</p>
+<p local-id=3D"587e4c975b66"></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"e0fab1ca-b106-4618-813c-08f=
+e798bf64f" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"fa2c008f-7527-4e1b-8097-52cb4896bf29">
+<td data-local-id=3D"c088d679-5297-4d56-84ce-feadf0fce8e2" class=3D"conflue=
+nceTd">
+<p local-id=3D"bb2e893f5361">fetch goods</p></td>
+<td data-local-id=3D"44eaec70-4210-439f-9916-9b4e920da5fd" class=3D"conflue=
+nceTd">
+<p local-id=3D"0b7b21ac639a">goodsDelivery</p></td>
+<td data-local-id=3D"fb2ef832-d466-40d3-bd44-a5c2682c436b" class=3D"conflue=
+nceTd">
+<p local-id=3D"4c1bca3bb06f">The service task generates the stock to give t=
+o ProBuild</p></td>
+<td data-local-id=3D"231cac97-686e-4038-a75a-296eed726115" class=3D"conflue=
+nceTd">
+<p local-id=3D"aca1e703210a"></p></td>
+</tr>
+<tr data-local-id=3D"860d42f3-7b86-4b20-8f2e-9084dcbcc040">
+<td data-local-id=3D"89ed871d-e8ad-4ed8-8ec0-a6e7cf660d81" class=3D"conflue=
+nceTd">
+<p local-id=3D"2af4cf685d19">generate recipet with delivery ID</p></td>
+<td data-local-id=3D"9860d385-ca5d-44cf-b53f-453b445d4387" class=3D"conflue=
+nceTd">
+<p local-id=3D"8ca0caea0826">supplierDelivery</p></td>
+<td data-local-id=3D"e31b229b-cd86-4f00-8ad5-b5c8f36028cd" class=3D"conflue=
+nceTd">
+<p local-id=3D"7f2e2721ab2a">Generate delivery ID and receipt of all stock =
+being delivered</p></td>
+<td data-local-id=3D"070cc1ec-f849-4567-81f5-9fb3736fa3f3" class=3D"conflue=
+nceTd">
+<p local-id=3D"df3b2d4f148c"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"5f3f40a0ba73"></p>
+<p local-id=3D"69829e807941">FinTrust Pool</p>
+<p local-id=3D"070a301e967f"></p>
+<div class=3D"table-wrap">
+<table data-layout=3D"default" data-local-id=3D"289b35ad-fddc-4111-973e-e70=
+18473e09d" class=3D"confluenceTable">
+<tbody>
+<tr data-local-id=3D"0919ce34-f894-4697-9593-000c0a9829d9">
+<td data-local-id=3D"3f882960-d34d-4db9-9f7b-0b85760e4e4f" class=3D"conflue=
+nceTd">
+<p local-id=3D"a1daf4690f47">pay customer bill</p></td>
+<td data-local-id=3D"5f2f8c46-db23-4daf-8b46-3a0759b0b026" class=3D"conflue=
+nceTd">
+<p local-id=3D"1f9b17a9c9f8">payBill</p></td>
+<td data-local-id=3D"7b16e410-d6a7-4244-bdbc-320ccf16016c" class=3D"conflue=
+nceTd">
+<p local-id=3D"b0af0b40a0e8">Get the order price from online or in person o=
+rder to be paid</p></td>
+<td data-local-id=3D"f924f900-0c18-42a5-8a2e-f32e6df0a9e6" class=3D"conflue=
+nceTd">
+<p local-id=3D"0ec169d4299e"></p></td>
+</tr>
+<tr data-local-id=3D"5127221a-7b0a-4186-a120-854a32d61547">
+<td data-local-id=3D"db466a77-07fb-4a2b-a264-dd340efecd50" class=3D"conflue=
+nceTd">
+<p local-id=3D"e9610f890c6f">calculate amount customer owes per month</p></=
+td>
+<td data-local-id=3D"633dc505-73a4-460d-ad7b-fb75152a8a8c" class=3D"conflue=
+nceTd">
+<p local-id=3D"213c5e80137c">6Installment</p></td>
+<td data-local-id=3D"0baff31c-0fb2-405e-ab85-111b3adb15ca" class=3D"conflue=
+nceTd">
+<p local-id=3D"587a7171478a">Divide the order cost by 6 to pay each install=
+ment</p></td>
+<td data-local-id=3D"528e780d-9b09-45d8-b336-bf8ca0302a2e" class=3D"conflue=
+nceTd">
+<p local-id=3D"a568ad0cde81"></p></td>
+</tr>
+<tr data-local-id=3D"dc8a78cc-3d6b-4d06-b240-d0d518e3d7a6">
+<td data-local-id=3D"5da04059-fd9f-4b5b-9560-2152e5981049" class=3D"conflue=
+nceTd">
+<p local-id=3D"3bfa3c59089e">calculate amount owed per month</p></td>
+<td data-local-id=3D"de5e068b-06e6-4eb8-ad24-1f3db46472cc" class=3D"conflue=
+nceTd">
+<p local-id=3D"bb55821d7e74">12Installment</p></td>
+<td data-local-id=3D"3678d9dc-d689-4db5-bd22-0cafb365cf84" class=3D"conflue=
+nceTd">
+<p local-id=3D"e26104bcae28">Divide the order cost by 12 to pay each instal=
+lment</p></td>
+<td data-local-id=3D"9187ca83-d2e5-45b4-8676-b758313e70bd" class=3D"conflue=
+nceTd">
+<p local-id=3D"a2971976268e"></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p local-id=3D"db545d0ede04"></p>
+    </div>
+</body>
+</html>
+------=_Part_148_1221750388.1774702768932--
