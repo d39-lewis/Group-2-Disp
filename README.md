@@ -11,6 +11,7 @@ Initial Java worker foundation has been added under [camunda-worker-foundation](
 - Config template: [camunda-worker-foundation/.env.example](camunda-worker-foundation/.env.example)
 - Testing outline: [docs/camunda8-testing-outline.md](docs/camunda8-testing-outline.md)
 - Traceability matrix: [docs/service-task-traceability.md](docs/service-task-traceability.md)
+- GitHub sync playbook: [docs/camunda-github-sync-playbook.md](docs/camunda-github-sync-playbook.md)
 
 The worker app is configured for Camunda 8 SaaS and keeps deployment disabled by default, because the BPMN is already managed in your university cluster.
 
