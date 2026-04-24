@@ -1,0 +1,209 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "serviceLabel",
+  "components": [
+    {
+      "text": "### Tool Service Return Form",
+      "type": "text",
+      "id": "Heading_Main",
+      "layout": {
+        "row": "Row_0",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Return Information",
+      "type": "text",
+      "id": "Subheading_ReturnInfo",
+      "layout": {
+        "row": "Row_1",
+        "col": 16
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_ReturnDate",
+      "key": "returnDate",
+      "dateLabel": "Return Date",
+      "layout": {
+        "row": "Row_2",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Return ID / Reference Number",
+      "type": "textfield",
+      "id": "Field_ReturnID",
+      "key": "returnId",
+      "layout": {
+        "row": "Row_2",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "##### Serviced Tools",
+      "type": "text",
+      "id": "Subheading_ServicedTools",
+      "layout": {
+        "row": "Row_4",
+        "col": 16
+      }
+    },
+    {
+      "text": "Complete the following details for each tool returned. If multiple tools are being returned, this form should be duplicated for each.",
+      "type": "text",
+      "id": "Paragraph_ServicedTools",
+      "layout": {
+        "row": "Row_5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool ID ",
+      "type": "textfield",
+      "id": "Field_ToolID",
+      "key": "toolId",
+      "layout": {
+        "row": "Row_6",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Tool Name ",
+      "type": "textfield",
+      "id": "Field_ToolName",
+      "key": "toolName",
+      "layout": {
+        "row": "Row_6",
+        "col": 8
+      }
+    },
+    {
+      "label": "Service Type Performed",
+      "values": [
+        {
+          "label": "decommision",
+          "value": "decommision"
+        },
+        {
+          "label": "maintenance",
+          "value": "maintenance"
+        },
+        {
+          "label": "repairs",
+          "value": "repairs"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_08qqswl",
+        "columns": null
+      },
+      "id": "Field_056gmes",
+      "key": "serviceType"
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_ServiceCompletionDate",
+      "key": "serviceCompletionDate",
+      "dateLabel": "Service Completion Date",
+      "layout": {
+        "row": "Row_8",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Service Technician Name/ID",
+      "type": "textfield",
+      "id": "Field_ServiceTech",
+      "key": "serviceTechnician",
+      "layout": {
+        "row": "Row_8",
+        "col": 8
+      }
+    },
+    {
+      "label": "Service Notes/Comments",
+      "type": "textarea",
+      "id": "Field_ServiceNotes",
+      "key": "serviceNotes",
+      "layout": {
+        "row": "Row_10",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Parts Replaced",
+      "type": "text",
+      "id": "Subheading_PartsReplaced",
+      "layout": {
+        "row": "Row_11",
+        "col": 16
+      }
+    },
+    {
+      "text": "List parts replaced for the tool above. This section represents one part; add rows as needed in the final implementation.",
+      "type": "text",
+      "id": "Paragraph_PartsReplaced",
+      "layout": {
+        "row": "Row_12",
+        "col": 16
+      }
+    },
+    {
+      "label": "Part Number",
+      "type": "textfield",
+      "id": "Field_PartNumber",
+      "key": "partNumber",
+      "layout": {
+        "row": "Row_13",
+        "col": 6
+      }
+    },
+    {
+      "label": "Part Description",
+      "type": "textfield",
+      "id": "Field_PartDescription",
+      "key": "partDescription",
+      "layout": {
+        "row": "Row_13",
+        "col": 6
+      }
+    },
+    {
+      "label": "Quantity",
+      "type": "number",
+      "id": "Field_PartQuantity",
+      "key": "partQuantity",
+      "layout": {
+        "row": "Row_13",
+        "col": 4
+      },
+      "validate": {
+        "min": 1
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

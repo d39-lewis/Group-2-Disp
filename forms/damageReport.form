@@ -1,0 +1,250 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "damageReport",
+  "components": [
+    {
+      "text": "##### Reporter's Information",
+      "type": "text",
+      "id": "Reporter-info-heading",
+      "layout": {
+        "row": "row_5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Full Name",
+      "type": "textfield",
+      "id": "Reporter-name-field",
+      "key": "reporterName",
+      "layout": {
+        "row": "row_6",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Contact Phone Number",
+      "type": "textfield",
+      "id": "Reporter-phone-field",
+      "key": "reporterPhone",
+      "layout": {
+        "row": "row_7",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Email Address",
+      "type": "textfield",
+      "id": "Reporter-email-field",
+      "key": "reporterEmail",
+      "layout": {
+        "row": "row_7",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Report-date-field",
+      "key": "reportDate",
+      "dateLabel": "Date of Report",
+      "layout": {
+        "row": "row_8",
+        "col": 16
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "##### Damaged Property/Asset",
+      "type": "text",
+      "id": "Property-info-heading",
+      "layout": {
+        "row": "row_9",
+        "col": 16
+      }
+    },
+    {
+      "label": "Item/Property Name or Description",
+      "type": "textfield",
+      "id": "Item-name-field",
+      "key": "itemName",
+      "layout": {
+        "row": "row_10",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Serial Number / Asset Tag",
+      "type": "textfield",
+      "id": "Item-serial-field",
+      "key": "itemSerial",
+      "layout": {
+        "row": "row_10",
+        "col": 8
+      }
+    },
+    {
+      "label": "Owner of the Property",
+      "type": "textfield",
+      "id": "Item-owner-field",
+      "key": "itemOwner",
+      "layout": {
+        "row": "row_11",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Extent of Damage",
+      "values": [
+        {
+          "label": "Minor",
+          "value": "minor"
+        },
+        {
+          "label": "Moderate",
+          "value": "moderate"
+        },
+        {
+          "label": "Severe",
+          "value": "severe"
+        }
+      ],
+      "type": "select",
+      "id": "Damage-extent-field",
+      "key": "damageExtent",
+      "layout": {
+        "row": "row_11",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Detailed Description of Damage",
+      "type": "textarea",
+      "id": "Damage-desc-field",
+      "key": "damageDescription",
+      "layout": {
+        "row": "row_12",
+        "col": 16
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "##### Incident Description",
+      "type": "text",
+      "id": "Incident-desc-heading",
+      "layout": {
+        "row": "row_13",
+        "col": 16
+      }
+    },
+    {
+      "label": "Detailed narrative of how the damage occurred",
+      "type": "textarea",
+      "id": "Incident-narrative-field",
+      "key": "incidentNarrative",
+      "layout": {
+        "row": "row_14",
+        "col": 16
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "##### Signatures",
+      "type": "text",
+      "id": "Signature-heading",
+      "layout": {
+        "row": "row_30",
+        "col": 16
+      }
+    },
+    {
+      "label": "Signature of Person Reporting (Type Full Name)",
+      "type": "textfield",
+      "id": "Reporter-signature-field",
+      "key": "reporterSignature",
+      "layout": {
+        "row": "row_31",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Reporter-sign-date-field",
+      "key": "reporterSignDate",
+      "dateLabel": "Date Signed",
+      "layout": {
+        "row": "row_31",
+        "col": 8
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Supervisor's Name",
+      "type": "textfield",
+      "id": "Supervisor-name-field",
+      "key": "supervisorName",
+      "layout": {
+        "row": "row_32",
+        "col": 5
+      }
+    },
+    {
+      "label": "Supervisor's Signature (Type Full Name)",
+      "type": "textfield",
+      "id": "Supervisor-signature-field",
+      "key": "supervisorSignature",
+      "layout": {
+        "row": "row_32",
+        "col": 5
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Supervisor-review-date-field",
+      "key": "supervisorReviewDate",
+      "dateLabel": "Date of Supervisor Review",
+      "layout": {
+        "row": "row_32",
+        "col": 6
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

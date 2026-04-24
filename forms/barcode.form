@@ -1,0 +1,197 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "barcode",
+  "components": [
+    {
+      "text": "### Delivery Receipt",
+      "type": "text",
+      "id": "Field_0u8j2k1",
+      "layout": {
+        "row": "Row_01",
+        "col": 16
+      }
+    },
+    {
+      "label": "Delivery ID",
+      "type": "textfield",
+      "id": "Field_1wxyq5t",
+      "key": "deliveryId",
+      "readonly": true,
+      "layout": {
+        "row": "Row_02",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Delivered Items",
+      "type": "text",
+      "id": "Field_0p5r7s9",
+      "layout": {
+        "row": "Row_03",
+        "col": 16
+      }
+    },
+    {
+      "label": "Cement Mixers",
+      "type": "number",
+      "id": "Field_0a1b2c3",
+      "key": "cementMixerQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(cementMixerQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_04",
+        "col": 4
+      }
+    },
+    {
+      "label": "Scaffolding (units)",
+      "type": "number",
+      "id": "Field_0d4e5f6",
+      "key": "scaffoldingQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(scaffoldingQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_04",
+        "col": 4
+      }
+    },
+    {
+      "label": "Pressure Washers",
+      "type": "number",
+      "id": "Field_0g7h8i9",
+      "key": "pressureWasherQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(pressureWasherQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_04",
+        "col": 4
+      }
+    },
+    {
+      "label": "Tile Cutters",
+      "type": "number",
+      "id": "Field_0j1k2l3",
+      "key": "tileCutterQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(tileCutterQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_04",
+        "col": 4
+      }
+    },
+    {
+      "label": "Heavy-Duty Drills",
+      "type": "number",
+      "id": "Field_0m4n5o6",
+      "key": "heavyDutyDrillQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(heavyDutyDrillQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_05",
+        "col": 4
+      }
+    },
+    {
+      "label": "Timber (pieces)",
+      "type": "number",
+      "id": "Field_0p7q8r9",
+      "key": "timberQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(timberQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_05",
+        "col": 4
+      }
+    },
+    {
+      "label": "Insulation (rolls)",
+      "type": "number",
+      "id": "Field_0s1t2u3",
+      "key": "insulationQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(insulationQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_05",
+        "col": 4
+      }
+    },
+    {
+      "label": "Plasterboard (sheets)",
+      "type": "number",
+      "id": "Field_0v4w5x6",
+      "key": "plasterboardQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(plasterboardQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_05",
+        "col": 4
+      }
+    },
+    {
+      "label": "Power Tools (mixed)",
+      "type": "number",
+      "id": "Field_0y7z8a9",
+      "key": "powerToolsQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(powerToolsQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_06",
+        "col": 4
+      }
+    },
+    {
+      "label": "Fasteners (boxes)",
+      "type": "number",
+      "id": "Field_1b1c2d3",
+      "key": "fastenersQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(fastenersQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_06",
+        "col": 4
+      }
+    },
+    {
+      "label": "Adhesives (tubes)",
+      "type": "number",
+      "id": "Field_1e4f5g6",
+      "key": "adhesivesQuantity",
+      "readonly": true,
+      "conditional": {
+        "hide": "=not(adhesivesQuantity > 0)"
+      },
+      "layout": {
+        "row": "Row_06",
+        "col": 4
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

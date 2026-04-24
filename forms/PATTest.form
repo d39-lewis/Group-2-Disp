@@ -1,0 +1,178 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "PATTest",
+  "components": [
+    {
+      "text": "### Tool Test & Service Record",
+      "type": "text",
+      "id": "Heading_main",
+      "layout": {
+        "row": "row_0",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Identification",
+      "type": "text",
+      "id": "Heading_identification",
+      "level": "h2",
+      "layout": {
+        "row": "row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool ID ",
+      "type": "textfield",
+      "id": "Field_toolId",
+      "key": "toolId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 5
+      }
+    },
+    {
+      "label": "Technician ID",
+      "type": "textfield",
+      "id": "Field_technicianId",
+      "key": "technicianId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 6
+      }
+    },
+    {
+      "text": "### Test Details",
+      "type": "text",
+      "id": "Heading_testDetails",
+      "level": "h2",
+      "layout": {
+        "row": "row_3",
+        "col": 16
+      }
+    },
+    {
+      "label": "Test Type",
+      "values": [
+        {
+          "label": "PAT",
+          "value": "pat"
+        },
+        {
+          "label": "Other",
+          "value": "other"
+        }
+      ],
+      "type": "select",
+      "id": "Field_testType",
+      "key": "testType",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_4",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_testDate",
+      "key": "testDate",
+      "dateLabel": "Test Date",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_4",
+        "col": 8
+      }
+    },
+    {
+      "label": "Test Result",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "pass"
+        },
+        {
+          "label": "Fail",
+          "value": "fail"
+        }
+      ],
+      "type": "radio",
+      "id": "Field_testResult",
+      "key": "testResult",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Specific Test Readings/Values",
+      "type": "textarea",
+      "id": "Field_testReadings",
+      "key": "testReadings",
+      "description": "Enter any specific measurements or observations, if applicable.",
+      "layout": {
+        "row": "row_6",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Service Label Information",
+      "type": "text",
+      "id": "Heading_serviceLabel",
+      "level": "h2",
+      "layout": {
+        "row": "row_7",
+        "col": 16
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_serviceDate",
+      "key": "serviceDate",
+      "dateLabel": "Date of Service",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_8",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_nextServiceDate",
+      "key": "nextServiceDate",
+      "dateLabel": "Next Service Due Date",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_8",
+        "col": 8
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}
