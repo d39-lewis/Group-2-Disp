@@ -1,9 +1,10 @@
-# Camunda 8 testing outline (using existing deployed model)
+# Camunda 8 testing outline (local self-managed setup)
 
 ## 1) Preconditions
 
-- BPMN in cluster is confirmed identical to [../daniel_local.bpmn](../daniel_local.bpmn).
-- Worker app is configured with valid SaaS credentials.
+- Local Camunda 8 Docker Compose environment is running (`http://localhost:8080`).
+- BPMN in cluster is confirmed identical to [../daniel_local.bpmn](../daniel_local.bpmn) (or latest local variant).
+- Worker app uses local self-managed config (`camunda.client.mode=self-managed`).
 - Target process IDs are executable in deployed model.
 
 ## 2) Worker registration check

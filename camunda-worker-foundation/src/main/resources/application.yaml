@@ -6,14 +6,13 @@ spring:
 
 camunda:
   client:
-    mode: saas
+    # Default to a local Camunda 8 Self-Managed instance.
+    mode: self-managed
     auth:
-      client-id: ${CAMUNDA_CLIENT_ID}
-      client-secret: ${CAMUNDA_CLIENT_SECRET}
-    cloud:
-      cluster-id: ${CAMUNDA_CLUSTER_ID}
-      region: ${CAMUNDA_REGION}
-    # Keep disabled because your BPMN is already managed/deployed in university cluster.
+      method: none
+    grpc-address: ${CAMUNDA_GRPC_ADDRESS:http://localhost:26500}
+    rest-address: ${CAMUNDA_REST_ADDRESS:http://localhost:8080}
+    # Keep disabled by default; deploy BPMN from Modeler/CLI as needed.
     deployment:
       enabled: false
     worker:
@@ -26,3 +25,19 @@ management:
     web:
       exposure:
         include: health,info,metrics
+
+---
+spring:
+  config:
+    activate:
+      on-profile: saas
+
+camunda:
+  client:
+    mode: saas
+    auth:
+      client-id: ${CAMUNDA_CLIENT_ID}
+      client-secret: ${CAMUNDA_CLIENT_SECRET}
+    cloud:
+      cluster-id: ${CAMUNDA_CLUSTER_ID}
+      region: ${CAMUNDA_REGION}
