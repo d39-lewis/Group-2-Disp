@@ -1,7 +1,9 @@
 package au.edu.group2.disp.workers;
 
+import io.camunda.client.CamundaClient;
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.client.api.response.ActivatedJob;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +33,12 @@ import org.springframework.stereotype.Component;
 public class ProBuildWorkers {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProBuildWorkers.class);
+
+    private final CamundaClient camundaClient;
+
+    public ProBuildWorkers(CamundaClient camundaClient) {
+        this.camundaClient = camundaClient;
+    }
 
     // Inputs: unitPrice, rentalDays, quantity
     // Outputs: orderTotal (double), itemCount (int)
@@ -556,6 +564,106 @@ public class ProBuildWorkers {
         result.put("deliveryAddress", "123 ProBuild Way, Bristol, BS1 1AA");
         result.put("addressVerified", true);
         result.put("postcode", "BS1 1AA");
+        return result;
+    }
+
+    // Inputs: customerId, mainSelection, isMember (+ any other form variables)
+    // Outputs: orderDispatched (boolean), orderId, dispatchedAt
+    // Publishes the "sendOrder" Zeebe message to trigger the Pro process start event.
+    @JobWorker(type = "sendOrder")
+    public Map<String, Object> sendOrder(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        String orderId = "ORD-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        LOGGER.info("sendOrder: customerId={}", customerId);
+
+        Map<String, Object> messageVars = new HashMap<>(vars);
+        messageVars.put("orderId", orderId);
+
+        camundaClient.newPublishMessageCommand()
+                .messageName("sendOrder")
+                .correlationKey("")
+                .timeToLive(Duration.ofMinutes(30))
+                .variables(messageVars)
+                .send()
+                .join();
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("orderDispatched", true);
+        result.put("orderId", orderId);
+        result.put("dispatchedAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: customerId, orderId
+    // Outputs: orderResent (boolean), resentAt
+    // Publishes the "resendOrder" Zeebe message for retry scenarios.
+    @JobWorker(type = "resendOrder")
+    public Map<String, Object> resendOrder(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        String orderId = (String) vars.getOrDefault("orderId", "ORD-UNKNOWN");
+        LOGGER.info("resendOrder: customerId={}, orderId={}", customerId, orderId);
+
+        camundaClient.newPublishMessageCommand()
+                .messageName("resendOrder")
+                .correlationKey("")
+                .timeToLive(Duration.ofMinutes(30))
+                .variables(vars)
+                .send()
+                .join();
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("orderResent", true);
+        result.put("resentAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: customerId
+    // Outputs: checkedIn (boolean), serviceTicket, checkedInAt
+    @JobWorker(type = "frontDesk")
+    public Map<String, Object> frontDesk(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        LOGGER.info("frontDesk: customerId={}", customerId);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("checkedIn", true);
+        result.put("serviceTicket", "TKT-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        result.put("checkedInAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: customerId, isMember
+    // Outputs: queuePosition (int), estimatedWaitMinutes (int), queuedAt
+    @JobWorker(type = "joinQueue")
+    public Map<String, Object> joinQueue(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        boolean isMember = Boolean.TRUE.equals(vars.getOrDefault("isMember", false));
+        LOGGER.info("joinQueue: customerId={}, isMember={}", customerId, isMember);
+
+        int position = isMember ? 1 : 5;
+        Map<String, Object> result = new HashMap<>();
+        result.put("queuePosition", position);
+        result.put("estimatedWaitMinutes", position * 5);
+        result.put("queuedAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: toolId, customerId
+    // Outputs: toolGiven (boolean), handoverReference, handoverAt
+    @JobWorker(type = "giveTool")
+    public Map<String, Object> giveTool(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String toolId = (String) vars.getOrDefault("toolId", "TOOL-UNKNOWN");
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        LOGGER.info("giveTool: toolId={}, customerId={}", toolId, customerId);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("toolGiven", true);
+        result.put("handoverReference", "HDO-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        result.put("handoverAt", Instant.now().toString());
         return result;
     }
 }

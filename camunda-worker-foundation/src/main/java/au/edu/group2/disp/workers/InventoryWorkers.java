@@ -219,6 +219,7 @@ public class InventoryWorkers {
         Map<String, Object> result = new HashMap<>();
         result.put("available", true);
         result.put("availableQty", 10);
+        result.put("onlineavailability", 10);
         result.put("expectedRestockDate", LocalDateHelper.plusDays(7));
         return result;
     }
