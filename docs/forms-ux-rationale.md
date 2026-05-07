@@ -311,6 +311,114 @@ Queue registration for in-store customers waiting for counter service. Minimal f
 
 ---
 
+## 15. qualityInpect.form
+
+**Form ID:** `qualityInspect`
+**BPMN link:** "quality inspection check" user task (warehouse/goods receipt path)
+**Actor:** Warehouse staff + supervisor
+
+### Purpose
+Structured quality inspection checklist for incoming goods or returned tools. Replaces a `bpmn:manualTask` that previously passed through silently, leaving the downstream `qualityInspect` gateway with no variable to evaluate.
+
+### Key UX decisions
+- **Four checklist items** each with a status select and comments field — covers condition, completeness, safety, and documentation.
+- **`overallResult` select** ("pass"/"fail") drives the gateway directly. Positioned prominently after the checklist so the inspector makes a considered judgement rather than defaulting.
+- **Dual signoff** (inspector + supervisor signatures with dates) — mirrors `damageReport.form` for consistency across inspection workflows.
+- **`reasonForFailure` and `defectsDescription` text areas** provide the paper trail needed if goods are rejected or a tool is flagged for repair.
+
+### Validation
+`overallResult` is required — the gateway will error if left blank. Inspector signature and date are required; supervisor fields are recommended but not mandatory to allow single-person inspections in low-staffing scenarios.
+
+### Variable contract
+| Variable | Direction | Notes |
+|---|---|---|
+| `overallResult` | Output | `"pass"` or `"fail"` — read by `qualityInspect` gateway |
+| `inspectorName` | Output | Audit trail |
+| `defectsDescription` | Output | Passed to downstream repair/rejection tasks |
+| `supervisorSignature` | Output | Compliance signoff |
+
+---
+
+## 16. toolRepairs.form
+
+**Form ID:** `toolRepairs`
+**BPMN link:** "what work is required of the tool?" user task (FixPro maintenance path)
+**Actor:** Workshop / maintenance staff
+
+### Purpose
+Captures the repair decision for a tool that has been returned or flagged for servicing. Replaces a `bpmn:manualTask` that previously left the `toolRepairs` gateway unable to evaluate its condition.
+
+### Key UX decisions
+- **`requestedAction` select** ("repair"/"maintenace"/"dispose") maps directly to the three gateway branches. The BPMN uses "maintenace" (matching the typo in the gateway condition) so the form value must match exactly.
+- **`urgencyLevel` select** gives the workshop a priority signal without adding a gateway — informational only.
+- **Requester section** (name, employee ID, department) provides accountability for the disposal/repair decision.
+
+### Validation
+`requestedAction` and `toolName` are required. `requestReason` is required to ensure disposals are justified.
+
+### Variable contract
+| Variable | Direction | Notes |
+|---|---|---|
+| `requestedAction` | Output | `"repair"` / `"maintenace"` / `"dispose"` — read by `toolRepairs` gateway |
+| `toolName` | Output | Identifies the asset |
+| `urgencyLevel` | Output | Informational priority flag |
+
+---
+
+## 17. read the service report.form
+
+**Form ID:** `read-the-service-report-09meolu`
+**BPMN link:** "read the service report" user task (post-service tool review path)
+**Actor:** Supervisor / warehouse manager
+
+### Purpose
+After a tool has been serviced by FixPro, a supervisor reviews the service report and decides whether the tool needs replacing. Replaces a `bpmn:task` that previously passed through silently, leaving the `replaceTools` gateway with no variable.
+
+### Key UX decisions
+- **`replacing` select** ("yes"/"no") drives the gateway. Placed in the top-level form (not inside the repeatable section) so it's always visible and required before submission.
+- **Repeatable tool info section** allows the form to cover multi-tool service reports in a single submission.
+- **Replacement justification fields** (reason, last service date, issue description, estimated cost) build the case for a replace decision — discourages casual replacements.
+- **Dual approval** (supervisor name + approval status + signature) mirrors the handover form pattern.
+
+### Validation
+`replacing` is required. `supervisorName` and `approvalStatus` are required for the approval record.
+
+### Variable contract
+| Variable | Direction | Notes |
+|---|---|---|
+| `replacing` | Output | `"yes"` or `"no"` — read by `replaceTools` gateway |
+| `approvalStatus` | Output | Records formal approval decision |
+| `supervisorSignature` | Output | Compliance signoff |
+
+---
+
+## 18. detect for discrepency.form
+
+**Form ID:** `detect-for-discrepency-1wc1ur3`
+**BPMN link:** "detect for discrepency" user task (warehouse audit / goods receipt path)
+**Actor:** Stock controller / warehouse staff
+
+### Purpose
+Formal report when a discrepancy is detected between expected and actual stock or delivery contents. The `discrepencies` output drives the downstream gateway to route to the resolution path or continue normally.
+
+### Key UX decisions
+- **`discrepencies` select** ("yes"/"no") is the gateway-driving field, positioned early in the form so staff are forced to make the binary decision before entering detail.
+- **Repeatable discrepancy items section** (`discrepencies` array) allows multiple line items to be reported in a single submission.
+- **Declaration checkbox + signature** provide a formal attestation that the report is accurate — important for supplier dispute resolution.
+- **Reporter info section** (name, email, department, date) ensures the report is traceable to a specific individual.
+
+### Validation
+`discrepencies` (the select), `reporterFullName`, and `reporterSignature` are required. The declaration checkbox must be ticked before submission.
+
+### Variable contract
+| Variable | Direction | Notes |
+|---|---|---|
+| `discrepencies` | Output | `"yes"` or `"no"` — read by discrepancy gateway |
+| `reporterFullName` | Output | Audit trail |
+| `reporterSignature` | Output | Formal attestation |
+
+---
+
 ## Summary Table
 
 | Form | Actor | Editable fields | Readonly fields | Conditional logic | Multi-signoff |
@@ -329,3 +437,7 @@ Queue registration for in-store customers waiting for counter service. Minimal f
 | toolInspection.form | Warehouse staff | 2 + checklist | 0 | Yes (hasDefects) | No |
 | in-person hiring.form | Counter staff | 4 + checklist | 0 | No | No |
 | in-person Queue.form | Customer / staff | 5 | 0 | No | No |
+| qualityInpect.form | Warehouse staff + supervisor | 10+ checklist | 0 | No | Yes (2-tier) |
+| toolRepairs.form | Workshop staff | 7 | 0 | No | No |
+| read the service report.form | Supervisor | 12+ repeatable | 0 | Yes (replacing) | Yes (2-tier) |
+| detect for discrepency.form | Stock controller | 8+ repeatable | 0 | No | No |

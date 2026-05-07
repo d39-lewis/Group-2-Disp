@@ -25,7 +25,7 @@ Process automation system for ProBuild Supplies Ltd. Built on Camunda 8 (self-ma
 │              Spring Boot Worker Application                  │
 │  FoundationWorkers  │  ProBuildWorkers  │  InventoryWorkers  │
 │       ToolRentalWorkers  │  FinTrustWorkers               │
-│                 46 @JobWorker methods total                   │
+│                 51 @JobWorker methods total                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -104,7 +104,7 @@ See [docs/camunda8-testing-outline.md](docs/camunda8-testing-outline.md) for all
 Group-2-Disp/
 ├── operational BPMN V2.bpmn        ← Canonical BPMN (5 pools, 46 service tasks)
 ├── ProBuild strategic.bpmn            ← AS-IS strategic BPMN model
-├── forms/                             ← 14 Camunda 8 forms (.form JSON)
+├── forms/                             ← 18 Camunda 8 forms (.form JSON)
 │   ├── Website.form                   ← Customer hire/purchase/membership portal
 │   ├── audit.form                     ← Dual-mode warehouse audit (daily/weekly)
 │   ├── damageReport.form              ← Tool damage incident report (dual signoff)
@@ -118,19 +118,23 @@ Group-2-Disp/
 │   ├── stockLevel.form                ← IMS stock level display
 │   ├── toolInspection.form            ← Tool return inspection
 │   ├── in-person hiring.form          ← Counter-staff assisted hire request
-│   └── in-person Queue.form           ← In-store queue registration
+│   ├── in-person Queue.form           ← In-store queue registration
+│   ├── qualityInpect.form             ← Quality inspection checklist (pass/fail gateway)
+│   ├── toolRepairs.form               ← Tool repair/maintenance/dispose request
+│   ├── read the service report.form   ← Service report review with replacement decision
+│   └── detect for discrepency.form   ← Inventory discrepancy detection report
 ├── camunda-worker-foundation/
 │   └── src/main/java/au/edu/group2/disp/workers/
 │       ├── WorkerApplication.java     ← Spring Boot entry point
 │       ├── FoundationWorkers.java     ← processOrder, financeRequest, payBill (3 workers)
-│       ├── ProBuildWorkers.java       ← membership, queue, payment, shipment (17 workers)
+│       ├── ProBuildWorkers.java       ← membership, queue, payment, order dispatch (22 workers)
 │       ├── ToolRentalWorkers.java     ← rental lifecycle, damage, FixPro dispatch (8 workers)
 │       ├── InventoryWorkers.java      ← IMS updates, delivery, stock (13 workers)
 │       └── FinTrustWorkers.java       ← installment plans, finance emails (5 workers)
 └── docs/
-    ├── service-task-traceability.md   ← All 46 worker types mapped to BPMN elements
+    ├── service-task-traceability.md   ← All 51 worker types mapped to BPMN elements
     ├── camunda8-testing-outline.md    ← Full test results: 5 test cases, 5 defects resolved
-    ├── forms-ux-rationale.md          ← UX design rationale for all 15 forms
+    ├── forms-ux-rationale.md          ← UX design rationale for all 18 forms
     └── camunda-github-sync-playbook.md ← Git workflow and deployment conventions
 ```
 
@@ -142,7 +146,7 @@ Group-2-Disp/
 |---|---|
 | [docs/service-task-traceability.md](docs/service-task-traceability.md) | Maps every BPMN `zeebe:taskDefinition` type to its Java worker, with inputs, outputs, and status |
 | [docs/camunda8-testing-outline.md](docs/camunda8-testing-outline.md) | Full test strategy, 5 happy-path results, defect log (5 found and resolved) |
-| [docs/forms-ux-rationale.md](docs/forms-ux-rationale.md) | UX design rationale and variable contracts for all 15 forms |
+| [docs/forms-ux-rationale.md](docs/forms-ux-rationale.md) | UX design rationale and variable contracts for all 18 forms |
 | [docs/camunda-github-sync-playbook.md](docs/camunda-github-sync-playbook.md) | Git branching strategy, deployment policy, anti-drift checklist |
 
 ---

@@ -47,6 +47,11 @@ Source BPMN: [../operational BPMN V2.bpmn](../operational%20BPMN%20V2.bpmn)
 | `membership` | Pro | **Implemented** | `customerId`, `membershipType` | `membershipValid`, `membershipId`, `membershipExpiry` |
 | `financeDuration` | Pro | **Implemented** | `financeInstallments` (int or String) | `financeDurationMonths`, `financeEndDate`, `monthlyDueDate` |
 | `customerAddress` | Pro | **Implemented** | `customerId`, `orderType` | `deliveryAddress`, `addressVerified`, `postcode` |
+| `sendOrder` | Customer | **Implemented** | `customerId`, `mainSelection` (+ form vars) | `orderDispatched`, `orderId` — also publishes Zeebe message `sendOrder` |
+| `resendOrder` | Customer | **Implemented** | `customerId`, `orderId` | `orderResent`, `resentAt` — publishes Zeebe message `resendOrder` |
+| `frontDesk` | Pro | **Implemented** | `customerId` | `checkedIn`, `serviceTicket` |
+| `joinQueue` | Pro | **Implemented** | `customerId`, `isMember` | `queuePosition`, `estimatedWaitMinutes` |
+| `giveTool` | Pro | **Implemented** | `toolId`, `customerId` | `toolGiven`, `handoverReference` |
 
 ### ToolRentalWorkers.java
 
@@ -75,7 +80,7 @@ Source BPMN: [../operational BPMN V2.bpmn](../operational%20BPMN%20V2.bpmn)
 | `goodsDelivery` | Suppliers | **Implemented** (when Suppliers enabled) | `orderId` | `goodsDelivered`, `deliverySignature` |
 | `servicedTools` | FixPro lts | **Implemented** | `toolId`, `serviceReferenceNumber` | `toolServiced` |
 | `updateStock` | Pro | **Implemented** | `productId`, `stockDelta`, `currentStock` | `imsUpdated`, `newStockLevel`, `updateReference` |
-| `customerIMSAvail` | Pro | **Implemented** | `productId`, `requestedQty` | `available`, `availableQty`, `expectedRestockDate` |
+| `customerIMSAvail` | Pro | **Implemented** | `productId`, `requestedQty` | `available`, `availableQty`, `onlineavailability`, `expectedRestockDate` |
 | `shipGoods` | Pro | **Implemented** | `orderId`, `deliveryAddress` | `goodsShipped`, `shipmentReference`, `estimatedDelivery` |
 
 ### FinTrustWorkers.java
@@ -92,7 +97,7 @@ Source BPMN: [../operational BPMN V2.bpmn](../operational%20BPMN%20V2.bpmn)
 
 ## Unimplemented BPMN service tasks (gaps — last checked 2026-05-07)
 
-All service task types in `operational BPMN V2.bpmn` have corresponding `@JobWorker` implementations. No open gaps.
+All 51 service task types in `operational BPMN V2.bpmn` have corresponding `@JobWorker` implementations. No open gaps.
 
 ---
 
@@ -103,6 +108,8 @@ All service task types in `operational BPMN V2.bpmn` have corresponding `@JobWor
 | `financeInstallments` arrives as String from `Website.form`; workers cast to Number | `financeEmail` | **Fixed** — `financeEmail` now safely parses String or Number |
 | `damageReport.form` wrote `damageExtent` ("minor"/"moderate"/"severe"); worker reads `damageLevel` ("minor"/"major"/"write-off") | `damageCost` | **Fixed** — form key changed to `damageLevel`, values aligned to "minor"/"major"/"write-off" |
 | `paymentSuccessful` is a String "yes"/"no"; BPMN gateway must use `= "yes"` not `= true` | `receive-card-payment` | Verify gateway expressions in BPMN Modeler |
+| `customerIMSAvail` output was `availableQty`; `Gateway_0yv5pm4` reads `onlineavailability` | `customerIMSAvail` | **Fixed** — worker now outputs both `availableQty` and `onlineavailability` |
+| Hire path gateways `Gateway_0gc4c48` and `Gateway_1shzodz` read `hirePayment` and `financeDuration`; both are output by `Website.form` (field keys match exactly) — no gap when form is completed in Tasklist | hire flow gateways | No action needed |
 
 ---
 
