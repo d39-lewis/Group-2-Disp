@@ -85,7 +85,7 @@ https://docs.camunda.io/docs/self-managed/setup/deploy/local/docker-compose/
    cd camunda-worker-foundation
    mvn spring-boot:run
    ```
-   On startup, the log confirms all 46 workers are subscribed: `Started WorkerApplication in ~2 seconds`
+   On startup, the log confirms all 51 workers are subscribed: `Started WorkerApplication in ~2 seconds`
 
 5. Trigger process instances via the REST API (Pro process is message-driven — no plain start event):
    ```bash
@@ -102,7 +102,7 @@ See [docs/camunda8-testing-outline.md](docs/camunda8-testing-outline.md) for all
 
 ```
 Group-2-Disp/
-├── operational BPMN V2.bpmn        ← Canonical BPMN (5 pools, 46 service tasks)
+├── operational BPMN V2.bpmn        ← Canonical BPMN
 ├── ProBuild strategic.bpmn            ← AS-IS strategic BPMN model
 ├── forms/                             ← 18 Camunda 8 forms (.form JSON)
 │   ├── Website.form                   ← Customer hire/purchase/membership portal

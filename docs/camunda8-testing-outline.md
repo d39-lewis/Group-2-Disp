@@ -37,7 +37,7 @@ Started WorkerApplication in 2.673 seconds (process running for 3.006)
 ```
 
 ![Worker startup — registrations begin](images/project-launch-top.jpg)
-![Worker startup — all 46 subscribed, application started](images/project-launch-bottom.jpg)
+![Worker startup — all 51 subscribed, application started](images/project-launch-bottom.jpg)
 
 ---
 
