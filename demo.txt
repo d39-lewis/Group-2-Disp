@@ -1,0 +1,17 @@
+Flow 1 - Full online hire (start customer process, then complete Website form in Tasklist)
+
+curl -s -X POST http://localhost:8080/v2/process-instances -H "Content-Type: application/json" -d "{\"processDefinitionId\":\"Process_1hz3vp5\",\"variables\":{\"customerId\":\"CUST-DEMO\",\"productId\":\"PROD-001\",\"isMember\":true,\"shoppingChoice\":\"online\",\"hirePayment\":\"card\",\"financeDuration\":\"1d\",\"mainSelection\":\"hire\"}}"
+
+Flow 2 - FinTrust 6-month installment plan
+
+curl -s -X POST http://localhost:8080/v2/messages/publication -H "Content-Type: application/json" -d "{\"name\":\"financeRequest\",\"correlationKey\":\"\",\"timeToLive\":30000,\"variables\":{\"orderTotal\":1500.0,\"financeInstallments\":6,\"customerId\":\"CUST-DEMO\",\"financeRequestId\":\"FIN-DEMO\",\"customerEmail\":\"customer@example.com\",\"installmentComplete\":\"FIN-DEMO\"}}"
+
+NOTE: installmentComplete is pre-seeded here because the FinTrust subprocess has a message catch event that uses it as a correlation key. The variable is never set by any earlier step in the process, so Zeebe fails to extract the key unless it is provided upfront.
+for installments 
+curl -s -X POST http://localhost:8080/v2/messages/publication -H "Content-Type: application/json" -d "{\"name\":\"installmentComplete\",\"correlationKey\":\"FIN-DEMO\",\"timeToLive\":30000,\"variables\":{\"allInstallmentsPaid\":false}}"
+
+
+
+Flow 3 - FixPro maintenance cycle
+
+curl -s -X POST http://localhost:8080/v2/messages/publication -H "Content-Type: application/json" -d "{\"name\":\"sendFixPro\",\"correlationKey\":\"\",\"timeToLive\":30000,\"variables\":{\"toolId\":\"TOOL-001\",\"damageReport\":\"Blade worn\",\"damageLevel\":\"minor\",\"serviceReferenceNumber\":\"FXP-DEMO\"}}"

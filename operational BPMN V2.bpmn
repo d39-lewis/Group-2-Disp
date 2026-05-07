@@ -80,7 +80,7 @@
     <bpmn:intermediateCatchEvent id="Event_0dka0q8" name="confirm installemt paid">
       <bpmn:incoming>Flow_1650mye</bpmn:incoming>
       <bpmn:outgoing>Flow_0w2v8cz</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0ust03r" messageRef="Message_0eoibbj" />
+      <bpmn:timerEventDefinition id="TimerEventDefinition_auto1"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:exclusiveGateway id="Gateway_0lsuw5i" name="recieve next installments">
       <bpmn:incoming>Flow_0w2v8cz</bpmn:incoming>
@@ -97,7 +97,7 @@
         <bpmn:incoming>Flow_1fw8nkx</bpmn:incoming>
         <bpmn:outgoing>Flow_0nzv9r9</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0hp73et">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_1fw8nkx" sourceRef="Event_0whbkaw" targetRef="Event_1r4th25" />
@@ -111,7 +111,7 @@
       <bpmn:intermediateCatchEvent id="Event_1qjkfux" name="confirm installemt paid">
         <bpmn:incoming>Flow_0h0rznz</bpmn:incoming>
         <bpmn:outgoing>Flow_0j1z08j</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0x29maw" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto2"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0h0rznz" sourceRef="Activity_108p6c4" targetRef="Event_1qjkfux" />
       <bpmn:sequenceFlow id="Flow_0nzv9r9" sourceRef="Event_1r4th25" targetRef="Activity_108p6c4" />
@@ -119,7 +119,7 @@
         <bpmn:incoming>Flow_0j1z08j</bpmn:incoming>
         <bpmn:outgoing>Flow_1j9oqys</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0bxglm5">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_079u0p0" name="send email getting customers card details and request first payment">
@@ -132,7 +132,7 @@
       <bpmn:intermediateCatchEvent id="Event_1m0r753" name="confirm installemt paid">
         <bpmn:incoming>Flow_00tympm</bpmn:incoming>
         <bpmn:outgoing>Flow_10880p2</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0ku99ek" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto3"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_1j9oqys" sourceRef="Event_1qb2irf" targetRef="Activity_079u0p0" />
       <bpmn:sequenceFlow id="Flow_00tympm" sourceRef="Activity_079u0p0" targetRef="Event_1m0r753" />
@@ -140,7 +140,7 @@
         <bpmn:incoming>Flow_10880p2</bpmn:incoming>
         <bpmn:outgoing>Flow_0ayzhzk</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_1coic0j">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_1v3luvo" name="send email getting customers card details and request first payment">
@@ -153,7 +153,7 @@
       <bpmn:intermediateCatchEvent id="Event_0ioju8r" name="confirm installemt paid">
         <bpmn:incoming>Flow_1x4ek3q</bpmn:incoming>
         <bpmn:outgoing>Flow_0o2hda7</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_07hmd1p" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto4"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0ayzhzk" sourceRef="Event_0h8h22q" targetRef="Activity_1v3luvo" />
       <bpmn:sequenceFlow id="Flow_1x4ek3q" sourceRef="Activity_1v3luvo" targetRef="Event_0ioju8r" />
@@ -161,7 +161,7 @@
         <bpmn:incoming>Flow_0o2hda7</bpmn:incoming>
         <bpmn:outgoing>Flow_0vloicr</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_18for8g">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_0d9pb35" name="send email getting customers card details and request first payment">
@@ -174,7 +174,7 @@
       <bpmn:intermediateCatchEvent id="Event_0l5p0d1" name="confirm installemt paid">
         <bpmn:incoming>Flow_177eijr</bpmn:incoming>
         <bpmn:outgoing>Flow_0ja1q6i</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0wzixac" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto5"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0vloicr" sourceRef="Event_0jm1p5k" targetRef="Activity_0d9pb35" />
       <bpmn:sequenceFlow id="Flow_177eijr" sourceRef="Activity_0d9pb35" targetRef="Event_0l5p0d1" />
@@ -185,7 +185,7 @@
         <bpmn:incoming>Flow_0ja1q6i</bpmn:incoming>
         <bpmn:outgoing>Flow_16wlmah</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_15rzbc4">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_1bibv0b" name="send email getting customers card details and request first payment">
@@ -198,7 +198,7 @@
       <bpmn:intermediateCatchEvent id="Event_0g1ee3i" name="confirm installemt paid">
         <bpmn:incoming>Flow_08e9vg2</bpmn:incoming>
         <bpmn:outgoing>Flow_0jj2wih</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_04h3gvz" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto6"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_16wlmah" sourceRef="Event_0cw0by1" targetRef="Activity_1bibv0b" />
       <bpmn:sequenceFlow id="Flow_08e9vg2" sourceRef="Activity_1bibv0b" targetRef="Event_0g1ee3i" />
@@ -218,7 +218,7 @@
         <bpmn:incoming>Flow_00awe0t</bpmn:incoming>
         <bpmn:outgoing>Flow_1wc7l4s</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0uurnxt">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_1tq840t" name="send email getting customers card details and request first payment">
@@ -231,13 +231,13 @@
       <bpmn:intermediateCatchEvent id="Event_0mn1xkc" name="confirm installemt paid">
         <bpmn:incoming>Flow_0ii9lcd</bpmn:incoming>
         <bpmn:outgoing>Flow_1dc0giq</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_17ogjfr" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto7"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:intermediateCatchEvent id="Event_0hn3zed" name="wiat a month for next installment">
         <bpmn:incoming>Flow_1dc0giq</bpmn:incoming>
         <bpmn:outgoing>Flow_02mkwvn</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0xpbhfh">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_0tss87h" name="send email getting customers card details and request first payment">
@@ -250,13 +250,13 @@
       <bpmn:intermediateCatchEvent id="Event_1r8hypp" name="confirm installemt paid">
         <bpmn:incoming>Flow_0qlc5i9</bpmn:incoming>
         <bpmn:outgoing>Flow_11qu1k0</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_01qx4j3" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto8"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:intermediateCatchEvent id="Event_1um9y1k" name="wiat a month for next installment">
         <bpmn:incoming>Flow_11qu1k0</bpmn:incoming>
         <bpmn:outgoing>Flow_13ocggs</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_1vk52pz">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_0rc4ytj" name="send email getting customers card details and request first payment">
@@ -269,13 +269,13 @@
       <bpmn:intermediateCatchEvent id="Event_1oauwjj" name="confirm installemt paid">
         <bpmn:incoming>Flow_0m6vh38</bpmn:incoming>
         <bpmn:outgoing>Flow_0lq68v8</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_1dwxhik" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto9"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:intermediateCatchEvent id="Event_0fxmvsw" name="wiat a month for next installment">
         <bpmn:incoming>Flow_0lq68v8</bpmn:incoming>
         <bpmn:outgoing>Flow_14ha5s7</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_0aom1ey">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_11w6zqm" name="send email getting customers card details and request first payment">
@@ -288,13 +288,13 @@
       <bpmn:intermediateCatchEvent id="Event_0jo48os" name="confirm installemt paid">
         <bpmn:incoming>Flow_0dtnvcg</bpmn:incoming>
         <bpmn:outgoing>Flow_1chesp9</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_05udl2o" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto10"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:intermediateCatchEvent id="Event_0ws27u4" name="wiat a month for next installment">
         <bpmn:incoming>Flow_1chesp9</bpmn:incoming>
         <bpmn:outgoing>Flow_03w2h75</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_1d1u6u4">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_02d3l0e" name="send email getting customers card details and request first payment">
@@ -307,7 +307,7 @@
       <bpmn:intermediateCatchEvent id="Event_0nzecjh" name="confirm installemt paid">
         <bpmn:incoming>Flow_0frn1wu</bpmn:incoming>
         <bpmn:outgoing>Flow_0lyds41</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0pmvlbj" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto11"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_00awe0t" sourceRef="Event_00lljky" targetRef="Event_0krwwks" />
       <bpmn:sequenceFlow id="Flow_1wc7l4s" sourceRef="Event_0krwwks" targetRef="Activity_1tq840t" />
@@ -328,7 +328,7 @@
         <bpmn:incoming>Flow_0lyds41</bpmn:incoming>
         <bpmn:outgoing>Flow_13hq23w</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_1mpb2p9">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_101836m" name="send email getting customers card details and request first payment">
@@ -341,7 +341,7 @@
       <bpmn:intermediateCatchEvent id="Event_1qq201f" name="confirm installemt paid">
         <bpmn:incoming>Flow_10gea4p</bpmn:incoming>
         <bpmn:outgoing>Flow_07q545l</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0hv6f8w" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto12"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_13hq23w" sourceRef="Event_0f1pmml" targetRef="Activity_101836m" />
       <bpmn:sequenceFlow id="Flow_10gea4p" sourceRef="Activity_101836m" targetRef="Event_1qq201f" />
@@ -349,7 +349,7 @@
         <bpmn:incoming>Flow_07q545l</bpmn:incoming>
         <bpmn:outgoing>Flow_0a7v5u6</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_05436aj">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_1syx9co" name="send email getting customers card details and request first payment">
@@ -362,7 +362,7 @@
       <bpmn:intermediateCatchEvent id="Event_0gsgm56" name="confirm installemt paid">
         <bpmn:incoming>Flow_1r1dovw</bpmn:incoming>
         <bpmn:outgoing>Flow_0dfix5f</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0d5lpez" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto13"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0a7v5u6" sourceRef="Event_0h0416c" targetRef="Activity_1syx9co" />
       <bpmn:sequenceFlow id="Flow_1r1dovw" sourceRef="Activity_1syx9co" targetRef="Event_0gsgm56" />
@@ -370,7 +370,7 @@
         <bpmn:incoming>Flow_0dfix5f</bpmn:incoming>
         <bpmn:outgoing>Flow_10kedwn</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_1g8myfs">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_1dxpf7j" name="send email getting customers card details and request first payment">
@@ -383,7 +383,7 @@
       <bpmn:intermediateCatchEvent id="Event_03qla0y" name="confirm installemt paid">
         <bpmn:incoming>Flow_1q6g25g</bpmn:incoming>
         <bpmn:outgoing>Flow_1cz3aj6</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_13cwgfa" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto14"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_10kedwn" sourceRef="Event_01tk1cn" targetRef="Activity_1dxpf7j" />
       <bpmn:sequenceFlow id="Flow_1q6g25g" sourceRef="Activity_1dxpf7j" targetRef="Event_03qla0y" />
@@ -391,7 +391,7 @@
         <bpmn:incoming>Flow_1cz3aj6</bpmn:incoming>
         <bpmn:outgoing>Flow_0c3p0uv</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_110jekd">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_184basf" name="send email getting customers card details and request first payment">
@@ -404,7 +404,7 @@
       <bpmn:intermediateCatchEvent id="Event_0jjqkhf" name="confirm installemt paid">
         <bpmn:incoming>Flow_1f1v6lu</bpmn:incoming>
         <bpmn:outgoing>Flow_01al7ob</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_046ebec" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto15"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0c3p0uv" sourceRef="Event_0f396qk" targetRef="Activity_184basf" />
       <bpmn:sequenceFlow id="Flow_1f1v6lu" sourceRef="Activity_184basf" targetRef="Event_0jjqkhf" />
@@ -412,7 +412,7 @@
         <bpmn:incoming>Flow_01al7ob</bpmn:incoming>
         <bpmn:outgoing>Flow_0xdof2n</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_07ddecn">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_12otkpj" name="send email getting customers card details and request first payment">
@@ -425,7 +425,7 @@
       <bpmn:intermediateCatchEvent id="Event_0mhaz1v" name="confirm installemt paid">
         <bpmn:incoming>Flow_0yba8r9</bpmn:incoming>
         <bpmn:outgoing>Flow_0i4ajdz</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_08a0qje" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto16"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0xdof2n" sourceRef="Event_1u54fne" targetRef="Activity_12otkpj" />
       <bpmn:sequenceFlow id="Flow_0yba8r9" sourceRef="Activity_12otkpj" targetRef="Event_0mhaz1v" />
@@ -433,7 +433,7 @@
         <bpmn:incoming>Flow_0i4ajdz</bpmn:incoming>
         <bpmn:outgoing>Flow_1sc40i8</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_01s7f8e">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sendTask id="Activity_08jagxx" name="send email getting customers card details and request first payment">
@@ -446,7 +446,7 @@
       <bpmn:intermediateCatchEvent id="Event_0l1zhvy" name="confirm installemt paid">
         <bpmn:incoming>Flow_0rwmn0f</bpmn:incoming>
         <bpmn:outgoing>Flow_0bvi2hr</bpmn:outgoing>
-        <bpmn:messageEventDefinition id="MessageEventDefinition_0oqepgn" messageRef="Message_0eoibbj" />
+        <bpmn:timerEventDefinition id="TimerEventDefinition_auto17"><bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration></bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_1sc40i8" sourceRef="Event_0tv61dp" targetRef="Activity_08jagxx" />
       <bpmn:sequenceFlow id="Flow_0rwmn0f" sourceRef="Activity_08jagxx" targetRef="Event_0l1zhvy" />
@@ -1859,7 +1859,7 @@
         <bpmn:incoming>Flow_02l7h0e</bpmn:incoming>
         <bpmn:outgoing>Flow_1pu7u8k</bpmn:outgoing>
         <bpmn:timerEventDefinition id="TimerEventDefinition_17yi4aw">
-          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
         </bpmn:timerEventDefinition>
       </bpmn:intermediateCatchEvent>
       <bpmn:sequenceFlow id="Flow_0crpy1y" name="12 hours" sourceRef="Gateway_0tjyh53" targetRef="Event_0u6f8c8">
@@ -2217,7 +2217,7 @@
       <bpmn:incoming>Flow_02xkthu</bpmn:incoming>
       <bpmn:outgoing>Flow_06bj8g8</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_1il2s7b">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">P28D</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2S</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:intermediateCatchEvent id="Event_1p1mkdj">
@@ -2297,10 +2297,13 @@
       <bpmn:outgoing>Flow_0ijtwhp</bpmn:outgoing>
       <bpmn:outgoing>Flow_02cdxw4</bpmn:outgoing>
     </bpmn:inclusiveGateway>
-    <bpmn:manualTask id="Activity_1sd9jjn" name="assist customer">
+    <bpmn:userTask id="Activity_1sd9jjn" name="assist customer">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="in-personHiring" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1ogsezf</bpmn:incoming>
       <bpmn:outgoing>Flow_1y8xacv</bpmn:outgoing>
-    </bpmn:manualTask>
+    </bpmn:userTask>
     <bpmn:endEvent id="Event_0sn51gi" name="send email to customer informing they are in a queue">
       <bpmn:extensionElements>
         <zeebe:taskDefinition type="queueEmail" />
@@ -2376,10 +2379,13 @@
         <bpmn:outgoing>Flow_01cumvj</bpmn:outgoing>
       </bpmn:manualTask>
       <bpmn:sequenceFlow id="Flow_01cumvj" sourceRef="Activity_03lnfp7" targetRef="Event_1tfwu6w" />
-      <bpmn:manualTask id="Activity_0lioulb" name="photograph tool">
+      <bpmn:userTask id="Activity_0lioulb" name="photograph and inspect returned tool">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formId="toolInspection" />
+        </bpmn:extensionElements>
         <bpmn:incoming>Flow_0cty6tp</bpmn:incoming>
         <bpmn:outgoing>Flow_1wlohpl</bpmn:outgoing>
-      </bpmn:manualTask>
+      </bpmn:userTask>
       <bpmn:sequenceFlow id="Flow_1wlohpl" sourceRef="Activity_0lioulb" targetRef="Activity_1crz19a" />
       <bpmn:serviceTask id="Activity_0dctl0g" name="log for maintence">
         <bpmn:extensionElements>

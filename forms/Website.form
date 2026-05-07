@@ -357,54 +357,54 @@
           "label": "Unavailable tools",
           "components": [
             {
-              "label": "Scaffolding",
+              "label": "Jackhammer",
               "type": "checkbox",
               "layout": {
                 "row": "Row_0cz5ebj",
                 "columns": null
               },
               "id": "Field_1u9cza7",
-              "key": "unvScaffolding"
+              "key": "unvJackhammer"
             },
             {
-              "label": "cerement mixer",
+              "label": "Concrete Mixer (Large)",
               "type": "checkbox",
               "layout": {
                 "row": "Row_15p5xez",
                 "columns": null
               },
               "id": "Field_0bbl5ey",
-              "key": "unvcerementMixer"
+              "key": "unvConcreteMixer"
             },
             {
-              "label": "Pressure Washer",
+              "label": "Angle Grinder",
               "type": "checkbox",
               "layout": {
                 "row": "Row_1bfp124",
                 "columns": null
               },
               "id": "Field_0h7dj6h",
-              "key": "unvpressureWasher"
+              "key": "unvAngleGrinder"
             },
             {
-              "label": "Tile Cutter",
+              "label": "Circular Saw",
               "type": "checkbox",
               "layout": {
                 "row": "Row_1lsddy5",
                 "columns": null
               },
               "id": "Field_0j5r9w1",
-              "key": "unvtileCutter"
+              "key": "unvCircularSaw"
             },
             {
-              "label": "Heavy-Duty Drill",
+              "label": "Rotary Hammer",
               "type": "checkbox",
               "layout": {
                 "row": "Row_1xluqze",
                 "columns": null
               },
               "id": "Field_0vqs9a6",
-              "key": "unvheavyDrill"
+              "key": "unvRotaryHammer"
             }
           ],
           "showOutline": true,
