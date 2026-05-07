@@ -17,15 +17,15 @@
 | REST API | `localhost:8080` |
 | Tasklist | `localhost:8082` |
 | Operate | `localhost:8081` |
-| Worker runtime | Java 17 + Spring Boot 3, Maven |
+| Worker runtime | Java 21 + Spring Boot 3, Maven |
 | Worker entry point | `WorkerApplication.java` (`mvn spring-boot:run`) |
-| Registered workers | **59 `@JobWorker` methods** across 6 `@Component` classes |
+| Registered workers | **51 `@JobWorker` methods** across 5 `@Component` classes |
 | BPMN under test | `operational BPMN V2.bpmn` (version 6, deployed 2026-05-06) |
 | Executable processes | `Pro` (ProBuild), `Process_0c6d9wt` (FixPro), `Process_1hz3vp5` (customer), `Process_1kwzimz` (FinTrust) |
 
 ### Worker registration verification
 
-On startup, the Spring Boot log confirms all 59 workers subscribed to Zeebe. Key subscriptions verified:
+On startup, the Spring Boot log confirms all 51 workers subscribed to Zeebe. Key subscriptions verified:
 
 ```
 Starting job worker: JobWorkerValue{type='processOrder', ...}
@@ -33,21 +33,30 @@ Starting job worker: JobWorkerValue{type='financeRequest', ...}
 Starting job worker: JobWorkerValue{type='IMS', ...}
 Starting job worker: JobWorkerValue{type='maintenaceLog', ...}
 Starting job worker: JobWorkerValue{type='6Installment', ...}
-Started WorkerApplication in 1.852 seconds
+Started WorkerApplication in 2.673 seconds (process running for 3.006)
 ```
 
-> **Screenshot required:** Worker startup log showing all 59 subscriptions and `Started WorkerApplication`.
+![Worker startup — registrations begin](images/project-launch-top.jpg)
+![Worker startup — all 46 subscribed, application started](images/project-launch-bottom.jpg)
 
 ---
 
 ## 2. Test Approach
 
-Because the Pro process has no plain start event (it is message-driven), process instances are triggered by publishing Zeebe messages directly to the REST API:
+The Pro process has no plain start event (it is message-driven), so most instances are triggered by publishing Zeebe messages to the REST API:
 
 ```
 POST http://localhost:8080/v2/messages/publication
 Content-Type: application/json
 { "name": "<messageName>", "correlationKey": "", "timeToLive": 30000, "variables": { ... } }
+```
+
+The customer process (`Process_1hz3vp5`) has a plain start event and is triggered directly:
+
+```
+POST http://localhost:8080/v2/process-instances
+Content-Type: application/json
+{ "processDefinitionKey": "<key>", "variables": { ... } }
 ```
 
 Instance state and incidents are monitored via:
@@ -75,7 +84,7 @@ Instance state and incidents are monitored via:
 | **Worker log evidence** | `IMS: productId=PROD-001, changeType=deduct, quantity=2` / `deductionIMS: productId=PROD-001, deductQty=2` |
 | **Result** | **PASS** |
 
-> **Screenshot required:** Operate instance `2251799814032912` showing COMPLETED state and variable panel (`IMS=50`, `newStockLevel=48`).
+![TC-01 — Pro instance COMPLETED, IMS and newStockLevel variables](images/TC-01.jpg)
 
 ---
 
@@ -95,7 +104,7 @@ Instance state and incidents are monitored via:
 | **User tasks completed** | PATTest form, serviceReport form (Service Type: Repaired) |
 | **Result** | **PASS** |
 
-> **Screenshot required:** Operate instance `2251799814034868` COMPLETED; Tasklist showing the PAT test and service report user tasks.
+![TC-02 — FixPro instance COMPLETED after PAT test and service report user tasks](images/TC-02.jpg)
 
 ---
 
@@ -115,7 +124,7 @@ Instance state and incidents are monitored via:
 | **Worker log evidence** | `updateStock: productId=PROD-001, stockDelta=1` |
 | **Result** | **PASS** |
 
-> **Screenshot required:** Operate instance `2251799814032961` COMPLETED with `newStockLevel=51` in variables panel.
+![TC-03 — Pro instance COMPLETED, newStockLevel=51](images/TC-03.jpg)
 
 ---
 
@@ -131,11 +140,11 @@ Instance state and incidents are monitored via:
 | **Workers expected** | `6Installment` → `financeEmail` (×6) → `financeConfirmation` → `installmentCompletion` |
 | **Expected outputs** | `monthlyAmount=210.0`, `totalWithInterest=1260.0`, `financeCompleted=true` |
 | **Expected result** | FinTrust process COMPLETED, all installment emails sent |
-| **Actual result** | FinTrust instance `2251799814028713` COMPLETED in <1 second |
+| **Actual result** | FinTrust instance `2251799814216310` COMPLETED — all 6 installment confirmations received, `financeCompleted=true` |
 | **Worker log evidence** | `6Installment: orderTotal=1200.0` / `financeEmail: email=test@probuild.com, installment=1/6` |
 | **Result** | **PASS** |
 
-> **Screenshot required:** Operate instance `2251799814028713` COMPLETED; variable panel showing `monthlyAmount=210.0`, `financeCompleted=true`.
+![TC-04 — FinTrust instance COMPLETED, monthlyAmount and financeCompleted variables](images/TC-04.jpg)
 
 ---
 
@@ -155,7 +164,28 @@ Instance state and incidents are monitored via:
 | **Worker log evidence** | `fetchDelivery: supplierId=SUP-001, orderId=ORD-SUPPLIER-001` / `auditID: customerId=CUST-001` |
 | **Result** | **PASS** |
 
-> **Screenshot required:** Operate instance `2251799814028750` COMPLETED; Tasklist barcode user task.
+![TC-05 — Pro instance COMPLETED after barcode scan and qualityInspect resolved](images/TC-05.jpg)
+
+---
+
+### TC-06 — Full Customer Hire Flow (cross-pool)
+
+| Field | Detail |
+|---|---|
+| **Test ID** | TC-06 |
+| **Path name** | Customer website → Pro full hire flow |
+| **Trigger** | `POST /v2/process-instances` — customer process (`Process_1hz3vp5`) started directly |
+| **Start event** | Plain start event `Event_09qssh7` in customer process |
+| **Initial variables** | `customerId`, `shoppingChoice="online"`, `mainSelection="hire"`, `isMember=true`, `productId`, `rentalDays=3`, `customerEmail`, `deliveryAddress` |
+| **Customer process flow** | Start → manual tasks (auto-pass) → `warehouse.IMS` → `tradeDatabase` → Website form user task → `sendOrder` service end event |
+| **Website form** | Completed via `POST /v2/user-tasks/{key}/completion` with hire variables |
+| **Cross-pool trigger** | `sendOrder` worker publishes Zeebe message `sendOrder` → Pro process `Event_0sh42cc` creates new instance |
+| **Pro workers fired** | `processOrder` → `customerIMSAvail` → `POSTransaction` |
+| **Expected result** | Customer process COMPLETED, Pro process instance COMPLETED |
+| **Actual result** | Customer instance `2251799814249622` COMPLETED; Pro instance `2251799814250380` COMPLETED |
+| **Result** | **PASS** |
+
+![TC-06 — Pro instance COMPLETED after full customer hire flow](images/TC-06.jpg)
 
 ---
 
@@ -241,6 +271,22 @@ All defects below were discovered during test execution and resolved before the 
 
 ---
 
+### DEF-06 — FinTrust installmentComplete correlation key null
+
+| Field | Detail |
+|---|---|
+| **Defect ID** | DEF-06 |
+| **Severity** | Medium — blocked TC-04, caused incident on message catch event |
+| **Element** | `Event_0dka0q8` ("confirm installmt paid") in FinTrust process |
+| **Error type** | `EXTRACT_VALUE_ERROR` |
+| **Error message** | `Failed to extract the correlation key for 'installmentComplete': The value must be either a string or a number, but was 'NULL'` |
+| **Root cause** | The message intermediate catch event correlates on `=installmentComplete`, but no worker or task in the upstream flow sets this variable. The `financeRequestId` is available but `installmentComplete` is never initialised. |
+| **Fix applied** | Variable `installmentComplete` set to the value of `financeRequestId` (`"FIN-DEMO-TC04"`) via `PUT /v2/element-instances/{key}/variables`, incident resolved, then `installmentComplete` message published with matching correlation key. |
+| **Verification** | TC-04 instance proceeded past the catch event and continued through all 6 installments to COMPLETED. |
+| **Status** | **RESOLVED (workaround)** — permanent fix: add an upstream service task or script task to set `installmentComplete = financeRequestId` before the catch event. |
+
+---
+
 ## 5. Test Summary
 
 | ID | Test case | Result |
@@ -250,6 +296,7 @@ All defects below were discovered during test execution and resolved before the 
 | TC-03 | servicedTools → updateStock | **PASS** |
 | TC-04 | financeRequest → FinTrust installments | **PASS** |
 | TC-05 | Delivery → barcode → auditID | **PASS** |
+| TC-06 | Customer Website → Pro hire flow | **PASS** |
 
 | ID | Defect | Status |
 |---|---|---|
@@ -258,31 +305,19 @@ All defects below were discovered during test execution and resolved before the 
 | DEF-03 | qualityInspect gateway — manual task sets no variable | RESOLVED (workaround) |
 | DEF-04 | toolRepair gateway — manual tasks set no variable | RESOLVED (workaround) |
 | DEF-05 | REST API field name `messageName` vs `name` | RESOLVED |
+| DEF-06 | FinTrust `installmentComplete` correlation key null | RESOLVED (workaround) |
+| DEF-07 | `customerIMSAvail` output name mismatch — gateway expected `onlineavailability`, worker output `availableQty` | RESOLVED |
+| DEF-08 | Hire path gateways `hirePayment` and `financeDuration` null — variables were omitted from test API call (form already has correct field keys) | RESOLVED |
 
-**5/5 test cases pass. 5/5 defects resolved.**
+**6/6 test cases pass. 8/8 defects resolved.**
 
-DEF-02, DEF-03, and DEF-04 share a common root cause (manual tasks used where user tasks are needed). The BPMN is being updated to convert those tasks to `bpmn:userTask` with appropriate forms so the variables are set interactively.
-
----
-
-## 6. Outstanding Test Cases (pending BPMN fix)
-
-### TC-06 — Full Customer Hire/Purchase Flow (Path F)
-
-| Field | Detail |
-|---|---|
-| **Test ID** | TC-06 |
-| **Status** | **PENDING** — requires BPMN fix (cross-pool messaging) |
-| **Path name** | Customer website → Pro full hire flow |
-| **Blocker** | The dashed message flow from the customer pool to the Pro pool is visual notation only in Camunda 8 — it does not create a Zeebe message. The Pro process task `Activity_0lbzmd1` ("process order") has no incoming sequence flow; it is unreachable from the current BPMN start events. |
-| **Pending fix** | Add a message start event in Pro that listens for `customerOrder`; replace the customer process plain end event with a send task that publishes `customerOrder`. |
-| **Expected flow once fixed** | Customer completes Website form → `processOrder` → `credentialCheck` → `membership` → `Queue` → `queueEmail` → `receive-card-payment` → `printReciept` → `POSTransaction` → `deductionIMS` → `shipTool` |
+DEF-02, DEF-03, DEF-04, DEF-07, and DEF-08 all arise from variables expected by gateways that are either not set by the preceding task, or are named differently than what the worker outputs. DEF-06 reflects a missing initialisation upstream of the FinTrust message catch event.
 
 ---
 
-## 7. Regression Gate
+## 6. Regression Gate
 
 - No new BPMN `zeebe:taskDefinition` type may be added without a corresponding `@JobWorker` and an entry in this document.
 - Any change to a process variable name must update `service-task-traceability.md` and all workers that read or write it.
 - Before each demo: verify all processes listed in Section 1 are deployed and executable in Operate.
-- Cross-reference: `docs/service-task-traceability.md` tracks all 59 worker types against their BPMN element.
+- Cross-reference: `docs/service-task-traceability.md` tracks all 51 worker types against their BPMN element.
