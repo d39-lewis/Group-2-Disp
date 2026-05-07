@@ -123,17 +123,17 @@
           "value": "minor"
         },
         {
-          "label": "Moderate",
-          "value": "moderate"
+          "label": "Major",
+          "value": "major"
         },
         {
-          "label": "Severe",
-          "value": "severe"
+          "label": "Write-Off",
+          "value": "write-off"
         }
       ],
       "type": "select",
       "id": "Damage-extent-field",
-      "key": "damageExtent",
+      "key": "damageLevel",
       "layout": {
         "row": "row_11",
         "col": 8
