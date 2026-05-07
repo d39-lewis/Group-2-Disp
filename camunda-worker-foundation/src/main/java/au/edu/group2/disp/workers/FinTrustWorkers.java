@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * Workers for the FinTrust finance process (Process_1kwzimz).
- * Note: that process is currently isExecutable="false" in the BPMN, so these
- * workers are ready but will not receive jobs until the process is made executable.
+ * Handles installment plan calculation, monthly email notifications,
+ * finance confirmation, and installment completion.
  * The 6Installment / 12Installment types use numeric-leading names exactly as
  * defined in the BPMN zeebe:taskDefinition elements.
  */
@@ -68,7 +68,11 @@ public class FinTrustWorkers {
         String customerEmail = (String) vars.getOrDefault("customerEmail", "unknown@example.com");
         Number monthlyAmount = (Number) vars.getOrDefault("monthlyAmount", 0);
         Number installmentNumber = (Number) vars.getOrDefault("installmentNumber", 1);
-        Number totalInstallments = (Number) vars.getOrDefault("financeInstallments", 12);
+        // financeInstallments may arrive as String "6"/"12" from Website.form or as Integer from 6Installment/12Installment workers
+        Object rawInstallments = vars.getOrDefault("financeInstallments", 12);
+        int totalInstallments = rawInstallments instanceof Number
+                ? ((Number) rawInstallments).intValue()
+                : Integer.parseInt(rawInstallments.toString());
         LOGGER.info("financeEmail: email={}, installment={}/{}, amount={}",
                 customerEmail, installmentNumber, totalInstallments, monthlyAmount);
 
