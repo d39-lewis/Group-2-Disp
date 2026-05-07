@@ -584,7 +584,7 @@
       </bpmn:exclusiveGateway>
       <bpmn:sequenceFlow id="Flow_1oicnr6" sourceRef="Activity_15knr19" targetRef="Gateway_109stoj" />
       <bpmn:sequenceFlow id="Flow_0hixbq9" name="requires maintenance" sourceRef="toolRepairs" targetRef="Activity_0ioe4yk">
-        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requestedAction = "maintenace"</bpmn:conditionExpression>
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=requestedAction = "maintenance"</bpmn:conditionExpression>
       </bpmn:sequenceFlow>
       <bpmn:subProcess id="Activity_0ioe4yk" name="carry out maintence process">
         <bpmn:incoming>Flow_0hixbq9</bpmn:incoming>
