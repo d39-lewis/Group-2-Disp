@@ -1,0 +1,234 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "116eb56"
+  },
+  "schemaVersion": 19,
+  "id": "toolRepairs",
+  "components": [
+    {
+      "text": "### Tool Maintenance Request Form",
+      "type": "text",
+      "id": "Heading_main",
+      "layout": {
+        "row": "row_0",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Tool Information",
+      "type": "text",
+      "id": "Subheading_tool_info",
+      "layout": {
+        "row": "row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool Name",
+      "type": "textfield",
+      "id": "Field_toolName",
+      "key": "toolName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 8
+      }
+    },
+    {
+      "text": "##### Request Details",
+      "type": "text",
+      "id": "Subheading_request_details",
+      "layout": {
+        "row": "row_4",
+        "col": 16
+      }
+    },
+    {
+      "label": "Requested Action",
+      "values": [
+        {
+          "label": "Repair",
+          "value": "repair"
+        },
+        {
+          "label": "Maintenance",
+          "value": "maintenance"
+        },
+        {
+          "label": "Dispose",
+          "value": "dispose"
+        }
+      ],
+      "type": "select",
+      "id": "Field_requestedAction",
+      "key": "requestedAction",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_5",
+        "col": 8
+      }
+    },
+    {
+      "label": "Urgency Level",
+      "values": [
+        {
+          "label": "Low",
+          "value": "low"
+        },
+        {
+          "label": "Medium",
+          "value": "medium"
+        },
+        {
+          "label": "High",
+          "value": "high"
+        }
+      ],
+      "type": "select",
+      "id": "Field_urgencyLevel",
+      "key": "urgencyLevel",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_5",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_dateOfRequest",
+      "key": "dateOfRequest",
+      "dateLabel": "Date of Request",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_6",
+        "col": 16
+      }
+    },
+    {
+      "label": "Reason for Request / Description of Issue",
+      "type": "textarea",
+      "id": "Field_requestReason",
+      "key": "requestReason",
+      "validate": {
+        "required": true,
+        "minLength": 10
+      },
+      "layout": {
+        "row": "row_7",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Requester Information",
+      "type": "text",
+      "id": "Subheading_requester_info",
+      "layout": {
+        "row": "row_8",
+        "col": 16
+      }
+    },
+    {
+      "label": "Requester Name",
+      "type": "textfield",
+      "id": "Field_requesterName",
+      "key": "requesterName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_9",
+        "col": 8
+      }
+    },
+    {
+      "label": "Requester Employee ID",
+      "type": "textfield",
+      "id": "Field_requesterEmployeeId",
+      "key": "requesterEmployeeId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_9",
+        "col": 8
+      }
+    },
+    {
+      "label": "Requester Department",
+      "type": "textfield",
+      "id": "Field_requesterDepartment",
+      "key": "requesterDepartment",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_10",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Attachments",
+      "type": "text",
+      "id": "Subheading_attachments",
+      "layout": {
+        "row": "row_11",
+        "col": 16
+      }
+    },
+    {
+      "text": "A component for file uploads is not available. If required, please send photos of the tool/damage separately.",
+      "type": "text",
+      "id": "Paragraph_attachments",
+      "layout": {
+        "row": "row_12",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Confirmation",
+      "type": "text",
+      "id": "Subheading_confirmation",
+      "layout": {
+        "row": "row_13",
+        "col": 16
+      }
+    },
+    {
+      "label": "By checking this box, I confirm that the information provided is accurate and I am authorized to make this request.",
+      "type": "checkbox",
+      "id": "Field_requesterSignature",
+      "key": "requesterSignature",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_14",
+        "col": 16
+      }
+    },
+    {
+      "label": "Submit Request",
+      "action": "submit",
+      "type": "button",
+      "id": "Button_submit",
+      "layout": {
+        "row": "row_15",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

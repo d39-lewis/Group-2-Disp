@@ -1,0 +1,394 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "116eb56"
+  },
+  "schemaVersion": 19,
+  "id": "read-the-service-report-09meolu",
+  "components": [
+    {
+      "text": "### Tool Replacement Request",
+      "type": "text",
+      "id": "Heading_main",
+      "layout": {
+        "row": "row_0",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Requester Information",
+      "type": "text",
+      "id": "Heading_requester",
+      "layout": {
+        "row": "row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Requestor Name",
+      "type": "textfield",
+      "id": "Field_requesterName",
+      "key": "requesterName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 8
+      }
+    },
+    {
+      "label": "Employee ID",
+      "type": "textfield",
+      "id": "Field_employeeId",
+      "key": "employeeId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 8
+      }
+    },
+    {
+      "label": "Department",
+      "type": "textfield",
+      "id": "Field_department",
+      "key": "department",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_3",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_requestDate",
+      "key": "requestDate",
+      "dateLabel": "Date of Request",
+      "defaultValue": "=today()",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_3",
+        "col": 8
+      }
+    },
+    {
+      "text": "### Does tool need replacing",
+      "type": "text",
+      "layout": {
+        "row": "Row_0c5u59d",
+        "columns": null
+      },
+      "id": "Field_0fu8spc"
+    },
+    {
+      "label": "Radio group",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "type": "radio",
+      "layout": {
+        "row": "Row_1hcv5jw",
+        "columns": null
+      },
+      "id": "Field_1ae59vk",
+      "key": "replacing"
+    },
+    {
+      "label": "Group",
+      "components": [
+        {
+          "text": "### Tool Information",
+          "type": "text",
+          "id": "Heading_toolInfo",
+          "layout": {
+            "row": "Row_15rdck1",
+            "col": 16
+          }
+        },
+        {
+          "label": "Tool Name / Description",
+          "type": "textfield",
+          "id": "Field_toolName",
+          "key": "toolName",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_0lstvuk",
+            "col": 16
+          }
+        },
+        {
+          "text": "### Replacement Justification",
+          "type": "text",
+          "id": "Heading_justification",
+          "layout": {
+            "row": "Row_1yp17n1",
+            "col": 16
+          }
+        },
+        {
+          "label": "Reason for Replacement",
+          "values": [
+            {
+              "label": "Broken",
+              "value": "broken"
+            },
+            {
+              "label": "Worn Out",
+              "value": "worn_out"
+            },
+            {
+              "label": "Obsolete",
+              "value": "obsolete"
+            },
+            {
+              "label": "Lost",
+              "value": "lost"
+            },
+            {
+              "label": "Stolen",
+              "value": "stolen"
+            }
+          ],
+          "type": "select",
+          "id": "Field_replacementReason",
+          "key": "replacementReason",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_1v9i9fv",
+            "col": 8
+          }
+        },
+        {
+          "subtype": "date",
+          "type": "datetime",
+          "id": "Field_lastServiceDate",
+          "key": "lastServiceDate",
+          "dateLabel": "Date of Last Service/Inspection",
+          "layout": {
+            "row": "Row_1v9i9fv",
+            "col": 8
+          }
+        },
+        {
+          "label": "Detailed Description of the Issue",
+          "type": "textarea",
+          "id": "Field_issueDescription",
+          "key": "issueDescription",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_0ewo18l",
+            "col": 16
+          }
+        },
+        {
+          "label": "Has a repair been attempted?",
+          "values": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ],
+          "type": "radio",
+          "id": "Field_repairAttempted",
+          "key": "repairAttempted",
+          "layout": {
+            "row": "Row_164ofud",
+            "col": 16
+          }
+        },
+        {
+          "label": "Impact on Operations if not replaced",
+          "type": "textarea",
+          "id": "Field_impact",
+          "key": "impact",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_0b3epqy",
+            "col": 16
+          }
+        },
+        {
+          "text": "### Proposed Replacement",
+          "type": "text",
+          "id": "Heading_proposed",
+          "layout": {
+            "row": "Row_0amuupo",
+            "col": 16
+          }
+        },
+        {
+          "label": "Suggested Replacement Tool (Model, Brand)",
+          "type": "textfield",
+          "id": "Field_suggestedTool",
+          "key": "suggestedTool",
+          "layout": {
+            "row": "Row_0u0pdsj",
+            "col": 8
+          }
+        },
+        {
+          "label": "Estimated Cost",
+          "type": "number",
+          "id": "Field_estimatedCost",
+          "key": "estimatedCost",
+          "appearance": {
+            "prefixAdorner": "$"
+          },
+          "decimalDigits": 2,
+          "layout": {
+            "row": "Row_0u0pdsj",
+            "col": 8
+          }
+        },
+        {
+          "label": "Vendor/Supplier Information",
+          "type": "textfield",
+          "id": "Field_vendorInfo",
+          "key": "vendorInfo",
+          "layout": {
+            "row": "Row_1mz1upi",
+            "col": 16
+          }
+        },
+        {
+          "label": "Link to Product (if available)",
+          "type": "textfield",
+          "id": "Field_productLink",
+          "key": "productLink",
+          "layout": {
+            "row": "Row_0gzas5f",
+            "col": 8
+          }
+        },
+        {
+          "label": "Urgency Level",
+          "values": [
+            {
+              "label": "Low",
+              "value": "low"
+            },
+            {
+              "label": "Medium",
+              "value": "medium"
+            },
+            {
+              "label": "High",
+              "value": "high"
+            }
+          ],
+          "type": "select",
+          "id": "Field_urgency",
+          "key": "urgency",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_0gzas5f",
+            "col": 8
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "row_4",
+        "columns": null
+      },
+      "id": "Field_074h74t",
+      "conditional": {
+        "hide": "=replacing = \"no\""
+      }
+    },
+    {
+      "text": "### Approval Section",
+      "type": "text",
+      "id": "Heading_approval",
+      "layout": {
+        "row": "row_16",
+        "col": 16
+      }
+    },
+    {
+      "label": "Supervisor Name",
+      "type": "textfield",
+      "id": "Field_supervisorName",
+      "key": "supervisorName",
+      "layout": {
+        "row": "row_17",
+        "col": 8
+      }
+    },
+    {
+      "label": "Approval Status",
+      "values": [
+        {
+          "label": "Approved",
+          "value": "approved"
+        },
+        {
+          "label": "Denied",
+          "value": "denied"
+        }
+      ],
+      "type": "select",
+      "id": "Field_approvalStatus",
+      "key": "approvalStatus",
+      "layout": {
+        "row": "row_17",
+        "col": 8
+      }
+    },
+    {
+      "label": "Supervisor Signature",
+      "type": "textfield",
+      "id": "Field_supervisorSignature",
+      "key": "supervisorSignature",
+      "description": "Typing your name constitutes a legal signature.",
+      "layout": {
+        "row": "row_18",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_approvalDate",
+      "key": "approvalDate",
+      "dateLabel": "Date of Approval",
+      "layout": {
+        "row": "row_18",
+        "col": 8
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

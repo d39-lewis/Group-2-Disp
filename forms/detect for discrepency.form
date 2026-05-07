@@ -1,0 +1,261 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "116eb56"
+  },
+  "schemaVersion": 19,
+  "id": "detect-for-discrepency-1wc1ur3",
+  "components": [
+    {
+      "text": "### Discrepancy Report Form",
+      "type": "text",
+      "id": "Heading_reporter",
+      "layout": {
+        "row": "row-1",
+        "col": 16
+      }
+    },
+    {
+      "text": "Use this form to report any identified discrepancies in data, records, or transactions.",
+      "type": "text",
+      "id": "Paragraph_intro",
+      "layout": {
+        "row": "row-2",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Reporter Information",
+      "type": "text",
+      "id": "Heading_reporter_info",
+      "layout": {
+        "row": "row-3",
+        "col": 16
+      }
+    },
+    {
+      "label": "Full Name",
+      "type": "textfield",
+      "id": "Field_fullName",
+      "key": "reporterFullName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-4",
+        "col": 8
+      }
+    },
+    {
+      "label": "Email Address",
+      "type": "textfield",
+      "id": "Field_email",
+      "key": "reporterEmail",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-4",
+        "col": 8
+      }
+    },
+    {
+      "label": "Department/Role",
+      "type": "textfield",
+      "id": "Field_department",
+      "key": "reporterDepartment",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-5",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "datetime",
+      "type": "datetime",
+      "id": "Field_reportDate",
+      "key": "reportDate",
+      "dateLabel": "Date of Report",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-5",
+        "col": 8
+      },
+      "timeInterval": 15,
+      "timeLabel": "Time"
+    },
+    {
+      "label": "Radio group",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "type": "radio",
+      "layout": {
+        "row": "Row_0o9z3ib",
+        "columns": null
+      },
+      "id": "Field_0b0msb0",
+      "key": "discrepencies",
+      "defaultValue": "yes"
+    },
+    {
+      "label": "Dynamic list",
+      "components": [
+        {
+          "text": "### Subject of Discrepancy",
+          "type": "text",
+          "id": "Heading_subject",
+          "layout": {
+            "row": "Row_1gagilx",
+            "col": 16
+          }
+        },
+        {
+          "label": "Reference Number",
+          "type": "textfield",
+          "id": "Field_referenceNumber",
+          "key": "referenceNumber",
+          "description": "e.g., Invoice ID, Order #, Report Name, Employee ID",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_1c4bbu1",
+            "col": 8
+          }
+        },
+        {
+          "label": "Item Type",
+          "type": "textfield",
+          "id": "Field_itemType",
+          "key": "itemType",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_1c4bbu1",
+            "col": 8
+          }
+        },
+        {
+          "subtype": "datetime",
+          "type": "datetime",
+          "id": "Field_originalDate",
+          "key": "originalItemDate",
+          "dateLabel": "Date of Original Item/Transaction",
+          "validate": {
+            "required": true
+          },
+          "layout": {
+            "row": "Row_1vw6y04",
+            "col": 16
+          },
+          "timeInterval": 15,
+          "timeLabel": "Time"
+        },
+        {
+          "text": "### Discrepancy Details",
+          "type": "text",
+          "id": "Heading_details",
+          "layout": {
+            "row": "Row_17bjuwd",
+            "col": 16
+          }
+        },
+        {
+          "text": "Expected value",
+          "type": "text",
+          "layout": {
+            "row": "Row_1r0vslf",
+            "columns": null
+          },
+          "id": "Field_1kudeue"
+        },
+        {
+          "label": "expected value",
+          "type": "number",
+          "layout": {
+            "row": "Row_14ahouh",
+            "columns": null
+          },
+          "id": "Field_1p9ex0u",
+          "key": "number_z66sfm"
+        },
+        {
+          "text": "Actual value",
+          "type": "text",
+          "layout": {
+            "row": "Row_14opoja",
+            "columns": null
+          },
+          "id": "Field_18jifnf"
+        },
+        {
+          "label": "actual value",
+          "type": "number",
+          "layout": {
+            "row": "Row_1swtjv1",
+            "columns": null
+          },
+          "id": "Field_13lnx3b",
+          "key": "number_u4a3l0v"
+        }
+      ],
+      "showOutline": true,
+      "isRepeating": true,
+      "allowAddRemove": true,
+      "defaultRepetitions": 1,
+      "type": "dynamiclist",
+      "layout": {
+        "row": "row-6",
+        "columns": null
+      },
+      "id": "Field_06ql7ey",
+      "path": "discrepenciesInput",
+      "conditional": {
+        "hide": "=discrepencies = \"no\""
+      }
+    },
+    {
+      "label": "I confirm the details provided are accurate to the best of my knowledge.",
+      "type": "checkbox",
+      "id": "Field_declaration",
+      "key": "declaration",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-19",
+        "col": 16
+      }
+    },
+    {
+      "label": "Signature of Reporter (Type Full Name)",
+      "type": "textfield",
+      "id": "Field_signature",
+      "key": "reporterSignature",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-20",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

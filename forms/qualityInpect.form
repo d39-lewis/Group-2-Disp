@@ -1,0 +1,445 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "116eb56"
+  },
+  "schemaVersion": 19,
+  "id": "qualityInspect",
+  "components": [
+    {
+      "text": "### Quality Inspection Report",
+      "type": "text",
+      "id": "Heading_inspection_details",
+      "layout": {
+        "row": "row_0",
+        "col": 16
+      }
+    },
+    {
+      "label": "Inspection Report Number",
+      "type": "textfield",
+      "id": "Textfield_report_number",
+      "key": "inspectionReportNumber",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_1",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Date_inspection",
+      "key": "dateOfInspection",
+      "dateLabel": "Date of Inspection",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_1",
+        "col": 8
+      }
+    },
+    {
+      "label": "Inspector Name",
+      "type": "textfield",
+      "id": "Textfield_inspector_name",
+      "key": "inspectorName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 8
+      }
+    },
+    {
+      "text": "### Product Information",
+      "type": "text",
+      "id": "Heading_product_info",
+      "layout": {
+        "row": "row_3",
+        "col": 16
+      }
+    },
+    {
+      "label": "Product Name",
+      "type": "textfield",
+      "id": "Textfield_product_name",
+      "key": "productName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_4",
+        "col": 8
+      }
+    },
+    {
+      "label": "Batch / Lot Number",
+      "type": "textfield",
+      "id": "Textfield_batch_lot",
+      "key": "batchLotNumber",
+      "layout": {
+        "row": "row_5",
+        "col": 6
+      }
+    },
+    {
+      "label": "Quantity Inspected",
+      "type": "number",
+      "id": "Number_quantity",
+      "key": "quantityInspected",
+      "validate": {
+        "required": true,
+        "min": 1
+      },
+      "layout": {
+        "row": "row_5",
+        "col": 4
+      }
+    },
+    {
+      "text": "### Inspection Checklist",
+      "type": "text",
+      "id": "Heading_checklist",
+      "layout": {
+        "row": "row_6",
+        "col": 16
+      }
+    },
+    {
+      "text": "**Visual Appearance**",
+      "type": "text",
+      "id": "Subheading_checklist_1",
+      "layout": {
+        "row": "row_7",
+        "col": 16
+      }
+    },
+    {
+      "label": "Status",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "pass"
+        },
+        {
+          "label": "Fail",
+          "value": "fail"
+        }
+      ],
+      "type": "select",
+      "id": "Select_status_1",
+      "key": "checklistStatus1",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_8",
+        "col": 16
+      }
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "id": "Textarea_comments_1",
+      "key": "checklistComments1",
+      "layout": {
+        "row": "row_9",
+        "col": 16
+      }
+    },
+    {
+      "text": "**Dimensions**",
+      "type": "text",
+      "id": "Subheading_checklist_2",
+      "layout": {
+        "row": "row_10",
+        "col": 16
+      }
+    },
+    {
+      "label": "Status",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "pass"
+        },
+        {
+          "label": "Fail",
+          "value": "fail"
+        }
+      ],
+      "type": "select",
+      "id": "Select_status_2",
+      "key": "checklistStatus2",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_11",
+        "col": 16
+      }
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "id": "Textarea_comments_2",
+      "key": "checklistComments2",
+      "layout": {
+        "row": "row_12",
+        "col": 16
+      }
+    },
+    {
+      "text": "**Functionality**",
+      "type": "text",
+      "id": "Subheading_checklist_3",
+      "layout": {
+        "row": "row_13",
+        "col": 16
+      }
+    },
+    {
+      "label": "Status",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "pass"
+        },
+        {
+          "label": "Fail",
+          "value": "fail"
+        }
+      ],
+      "type": "select",
+      "id": "Select_status_3",
+      "key": "checklistStatus3",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_14",
+        "col": 16
+      }
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "id": "Textarea_comments_3",
+      "key": "checklistComments3",
+      "layout": {
+        "row": "row_15",
+        "col": 16
+      }
+    },
+    {
+      "text": "**Packaging**",
+      "type": "text",
+      "id": "Subheading_checklist_4",
+      "layout": {
+        "row": "row_16",
+        "col": 16
+      }
+    },
+    {
+      "label": "Status",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "pass"
+        },
+        {
+          "label": "Fail",
+          "value": "fail"
+        }
+      ],
+      "type": "select",
+      "id": "Select_status_4",
+      "key": "checklistStatus4",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_17",
+        "col": 16
+      }
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "id": "Textarea_comments_4",
+      "key": "checklistComments4",
+      "layout": {
+        "row": "row_18",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Overall Assessment",
+      "type": "text",
+      "id": "Heading_assessment",
+      "layout": {
+        "row": "row_19",
+        "col": 16
+      }
+    },
+    {
+      "label": "Overall Inspection Result",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "pass"
+        },
+        {
+          "label": "Fail",
+          "value": "fail"
+        }
+      ],
+      "type": "select",
+      "id": "Select_overall_result",
+      "key": "overallResult",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_20",
+        "col": 16
+      }
+    },
+    {
+      "label": "Reason for Failure",
+      "type": "textarea",
+      "id": "Textarea_reason_for_failure",
+      "key": "reasonForFailure",
+      "layout": {
+        "row": "row_21",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=overallResult != \"fail\""
+      }
+    },
+    {
+      "label": "Detailed Description of Defects",
+      "type": "textarea",
+      "id": "Textarea_defects_description",
+      "key": "defectsDescription",
+      "layout": {
+        "row": "row_22",
+        "col": 16
+      }
+    },
+    {
+      "label": "Corrective Action Taken/Recommended",
+      "type": "textarea",
+      "id": "Textarea_corrective_action",
+      "key": "correctiveAction",
+      "layout": {
+        "row": "row_23",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Attachments",
+      "type": "text",
+      "id": "Heading_attachments",
+      "layout": {
+        "row": "row_24",
+        "col": 16
+      }
+    },
+    {
+      "label": "Photo Evidence of Defects",
+      "values": [
+        {
+          "label": "Value",
+          "value": "value"
+        }
+      ],
+      "type": "taglist",
+      "id": "Taglist_photos",
+      "key": "photoEvidence",
+      "description": "Enter the filenames of the uploaded photos.",
+      "layout": {
+        "row": "row_25",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Signatures",
+      "type": "text",
+      "id": "Heading_signatures",
+      "layout": {
+        "row": "row_26",
+        "col": 16
+      }
+    },
+    {
+      "label": "Inspector's Signature (Type Full Name)",
+      "type": "textfield",
+      "id": "Textfield_inspector_signature",
+      "key": "inspectorSignature",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_27",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Date_inspector_signature",
+      "key": "inspectorSignatureDate",
+      "dateLabel": "Date",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_27",
+        "col": 8
+      }
+    },
+    {
+      "label": "Supervisor's Signature (Type Full Name)",
+      "type": "textfield",
+      "id": "Textfield_supervisor_signature",
+      "key": "supervisorSignature",
+      "description": "If required",
+      "layout": {
+        "row": "row_28",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Date_supervisor_signature",
+      "key": "supervisorSignatureDate",
+      "dateLabel": "Date",
+      "layout": {
+        "row": "row_28",
+        "col": 8
+      }
+    },
+    {
+      "label": "Submit Report",
+      "action": "submit",
+      "type": "button",
+      "id": "Button_submit",
+      "layout": {
+        "row": "row_29",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}
