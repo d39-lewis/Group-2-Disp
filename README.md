@@ -160,7 +160,9 @@ Commit conventions: `feat:`, `fix:`, `docs:`, `chore:` prefixes. All BPMN change
 
 ## Socio-Technical Model
 
-The i* model (`socio_technical_model.txt`) can be viewed using:
-1. Download `socio_technical_model.txt` from this repo
-2. Open the [piStar Tool](https://www.cin.ufpe.br/~jhcp/pistar/tool/#)
-3. Select **Load Model** and choose the downloaded file
+SR Model
+![SR Model](./docs/images/SR_diagram.svg)
+
+SD Model
+![SD Model](./docs/images/SD_diagram.svg)
+
