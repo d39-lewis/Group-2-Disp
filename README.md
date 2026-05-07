@@ -79,7 +79,7 @@ https://docs.camunda.io/docs/self-managed/setup/deploy/local/docker-compose/
    | Tasklist | `http://localhost:8082` |
    | Zeebe gRPC | `localhost:26500` |
 
-3. Open `DV operational BPMN V2.bpmn` in Camunda Modeler and click **Deploy** to the local cluster.
+3. Open `operational BPMN V2.bpmn` in Camunda Modeler and click **Deploy** to the local cluster.
 4. Start the Java workers:
    ```bash
    cd camunda-worker-foundation
@@ -102,7 +102,7 @@ See [docs/camunda8-testing-outline.md](docs/camunda8-testing-outline.md) for all
 
 ```
 Group-2-Disp/
-├── DV operational BPMN V2.bpmn        ← Canonical BPMN (5 pools, 46 service tasks)
+├── operational BPMN V2.bpmn        ← Canonical BPMN (5 pools, 46 service tasks)
 ├── ProBuild strategic.bpmn            ← AS-IS strategic BPMN model
 ├── forms/                             ← 14 Camunda 8 forms (.form JSON)
 │   ├── Website.form                   ← Customer hire/purchase/membership portal

@@ -1,7 +1,6 @@
 # Service Task Traceability
 
-Source BPMN: [../DV operational BPMN V2.bpmn](../DV%20operational%20BPMN%20V2.bpmn)
-*(Previously tracked against `daniel_local.bpmn` — that file is superseded.)*
+Source BPMN: [../operational BPMN V2.bpmn](../operational%20BPMN%20V2.bpmn)
 
 ---
 
@@ -93,7 +92,7 @@ Source BPMN: [../DV operational BPMN V2.bpmn](../DV%20operational%20BPMN%20V2.bp
 
 ## Unimplemented BPMN service tasks (gaps — last checked 2026-05-07)
 
-All service task types in `DV operational BPMN V2.bpmn` have corresponding `@JobWorker` implementations. No open gaps.
+All service task types in `operational BPMN V2.bpmn` have corresponding `@JobWorker` implementations. No open gaps.
 
 ---
 
