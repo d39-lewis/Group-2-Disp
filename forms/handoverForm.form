@@ -1,0 +1,156 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "handoverForm",
+  "components": [
+    {
+      "text": "### Tool Handover Form",
+      "type": "text",
+      "id": "Form-heading",
+      "layout": {
+        "row": "row-0",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Signatories",
+      "type": "text",
+      "id": "Signatories-subheading",
+      "layout": {
+        "row": "row-3",
+        "col": 16
+      }
+    },
+    {
+      "label": "ProBuild Supervisor Name",
+      "type": "textfield",
+      "id": "Supervisor-name-field",
+      "key": "supervisorName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-4",
+        "col": 8
+      }
+    },
+    {
+      "label": "FixPro Driver Name",
+      "type": "textfield",
+      "id": "Driver-name-field",
+      "key": "driverName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-4",
+        "col": 8
+      }
+    },
+    {
+      "label": "ProBuild Supervisor Signature",
+      "type": "textfield",
+      "id": "Supervisor-signature-field",
+      "key": "supervisorSignature",
+      "description": "Type full name to sign.",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-5",
+        "col": 8
+      }
+    },
+    {
+      "label": "FixPro Driver Signature",
+      "type": "textfield",
+      "id": "Driver-signature-field",
+      "key": "driverSignature",
+      "description": "Type full name to sign.",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-5",
+        "col": 8
+      }
+    },
+    {
+      "text": "##### Tool Handover List (Repeatable)",
+      "type": "text",
+      "id": "Tool-list-subheading",
+      "layout": {
+        "row": "row-6",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool ID",
+      "type": "textfield",
+      "id": "Tool-id-field",
+      "key": "toolId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-7",
+        "col": 8
+      },
+      "properties": { }
+    },
+    {
+      "label": "Expected Service Type",
+      "values": [
+        {
+          "label": "Repair",
+          "value": "repair"
+        },
+        {
+          "label": "Calibration",
+          "value": "calibration"
+        },
+        {
+          "label": "Routine Maintenance",
+          "value": "maintenance"
+        }
+      ],
+      "type": "select",
+      "id": "Service-type-field",
+      "key": "serviceType",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-7",
+        "col": 8
+      }
+    },
+    {
+      "label": "Condition Notes",
+      "type": "textarea",
+      "id": "Condition-notes-field",
+      "key": "conditionNotes",
+      "layout": {
+        "row": "row-8",
+        "col": 16
+      }
+    },
+    {
+      "label": "Fault Description",
+      "type": "textarea",
+      "id": "Fault-description-field",
+      "key": "faultDescription",
+      "layout": {
+        "row": "row-9",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

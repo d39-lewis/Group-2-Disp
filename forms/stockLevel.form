@@ -1,0 +1,181 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "stockLevel",
+  "components": [
+    {
+      "text": "### IMS Stock Level Report",
+      "type": "text",
+      "id": "Heading_01",
+      "layout": {
+        "row": "row_01",
+        "col": 16
+      }
+    },
+    {
+      "text": "The following stock levels were retrieved from the Inventory Management System.",
+      "type": "text",
+      "id": "Paragraph_01",
+      "layout": {
+        "row": "row_02",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Equipment",
+      "type": "text",
+      "id": "Subheading_01",
+      "layout": {
+        "row": "row_03",
+        "col": 16
+      }
+    },
+    {
+      "label": "Cement Mixers",
+      "type": "number",
+      "id": "Number_01",
+      "key": "stockCementMixers",
+      "layout": {
+        "row": "row_04",
+        "col": 5
+      },
+      "readonly": true
+    },
+    {
+      "label": "Scaffolding (Sets)",
+      "type": "number",
+      "id": "Number_02",
+      "key": "stockScaffolding",
+      "layout": {
+        "row": "row_04",
+        "col": 5
+      },
+      "readonly": true
+    },
+    {
+      "label": "Pressure Washers",
+      "type": "number",
+      "id": "Number_03",
+      "key": "stockPressureWashers",
+      "layout": {
+        "row": "row_04",
+        "col": 6
+      },
+      "readonly": true
+    },
+    {
+      "label": "Tile Cutters",
+      "type": "number",
+      "id": "Number_04",
+      "key": "stockTileCutters",
+      "layout": {
+        "row": "row_05",
+        "col": 5
+      },
+      "readonly": true
+    },
+    {
+      "label": "Heavy-Duty Drills",
+      "type": "number",
+      "id": "Number_05",
+      "key": "stockHeavyDutyDrills",
+      "layout": {
+        "row": "row_05",
+        "col": 5
+      },
+      "readonly": true
+    },
+    {
+      "label": "Power Tools (General)",
+      "type": "number",
+      "id": "Number_06",
+      "key": "stockPowerTools",
+      "layout": {
+        "row": "row_05",
+        "col": 6
+      },
+      "readonly": true
+    },
+    {
+      "text": "##### Materials",
+      "type": "text",
+      "id": "Subheading_02",
+      "layout": {
+        "row": "row_06",
+        "col": 16
+      }
+    },
+    {
+      "label": "Timber (Units)",
+      "type": "number",
+      "id": "Number_07",
+      "key": "stockTimber",
+      "layout": {
+        "row": "row_07",
+        "col": 5
+      },
+      "readonly": true
+    },
+    {
+      "label": "Insulation (sq. meters)",
+      "type": "number",
+      "id": "Number_08",
+      "key": "stockInsulation",
+      "layout": {
+        "row": "row_07",
+        "col": 5
+      },
+      "readonly": true
+    },
+    {
+      "label": "Plasterboard (Sheets)",
+      "type": "number",
+      "id": "Number_09",
+      "key": "stockPlasterboard",
+      "layout": {
+        "row": "row_07",
+        "col": 6
+      },
+      "readonly": true
+    },
+    {
+      "label": "Fasteners (Boxes)",
+      "type": "number",
+      "id": "Number_10",
+      "key": "stockFasteners",
+      "layout": {
+        "row": "row_08",
+        "col": 8
+      },
+      "readonly": true
+    },
+    {
+      "label": "Adhesives (Containers)",
+      "type": "number",
+      "id": "Number_11",
+      "key": "stockAdhesives",
+      "layout": {
+        "row": "row_08",
+        "col": 8
+      },
+      "readonly": true
+    },
+    {
+      "label": "Acknowledge",
+      "action": "submit",
+      "type": "button",
+      "id": "Button_01",
+      "layout": {
+        "row": "row_09",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

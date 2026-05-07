@@ -1,0 +1,189 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "serviceReport",
+  "components": [
+    {
+      "text": "### Service Report",
+      "type": "text",
+      "id": "Field_Heading_ServiceReport",
+      "layout": {
+        "row": "Row_1",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Tool Information",
+      "type": "text",
+      "id": "Field_Subheading_ToolInfo",
+      "layout": {
+        "row": "Row_2",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool Name",
+      "type": "textfield",
+      "id": "Field_ToolName",
+      "key": "toolName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_3",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tool ID ",
+      "type": "textfield",
+      "id": "Field_ToolID",
+      "key": "toolId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_3",
+        "col": 8
+      }
+    },
+    {
+      "text": "##### Service Details",
+      "type": "text",
+      "id": "Field_Subheading_ServiceDetails",
+      "layout": {
+        "row": "Row_4",
+        "col": 16
+      }
+    },
+    {
+      "label": "Service Type",
+      "values": [
+        {
+          "label": "Maintenance",
+          "value": "maintenance"
+        },
+        {
+          "label": "Decommissioned",
+          "value": "decommissioned"
+        },
+        {
+          "label": "Repaired",
+          "value": "repaired"
+        }
+      ],
+      "type": "select",
+      "id": "Field_ServiceType",
+      "key": "serviceType",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Reason for Decommissioning",
+      "type": "textarea",
+      "id": "Field_DecommissionReason",
+      "key": "decommissionReason",
+      "validate": {
+        "required": "=serviceType = \"decommissioned\""
+      },
+      "layout": {
+        "row": "Row_6",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=serviceType != \"decommissioned\""
+      }
+    },
+    {
+      "label": "Description of Repairs",
+      "type": "textarea",
+      "id": "Field_RepairDescription",
+      "key": "repairDescription",
+      "layout": {
+        "row": "Row_7",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=serviceType != \"repaired\""
+      }
+    },
+    {
+      "label": "Cost of Repairs",
+      "type": "number",
+      "id": "Field_RepairCost",
+      "key": "repairCost",
+      "appearance": {
+        "prefixAdorner": "$"
+      },
+      "layout": {
+        "row": "Row_8",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=serviceType != \"repaired\""
+      }
+    },
+    {
+      "text": "##### Sign-off",
+      "type": "text",
+      "id": "Field_Subheading_Signoff",
+      "layout": {
+        "row": "Row_9",
+        "col": 16
+      }
+    },
+    {
+      "label": "Technician Name",
+      "type": "textfield",
+      "id": "Field_TechnicianName",
+      "key": "technicianName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_10",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_ServiceDate",
+      "key": "serviceDate",
+      "dateLabel": "Date of Service",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_10",
+        "col": 8
+      }
+    },
+    {
+      "label": "Signature",
+      "type": "textfield",
+      "id": "Field_Signature",
+      "key": "signature",
+      "description": "Please type your full name as a digital signature.",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_11",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

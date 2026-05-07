@@ -1,0 +1,350 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "audit",
+  "components": [
+    {
+      "text": "### Audit Details",
+      "type": "text",
+      "id": "Heading_audit_details",
+      "layout": {
+        "row": "row_0",
+        "col": 16
+      }
+    },
+    {
+      "label": "Audit ID",
+      "type": "textfield",
+      "id": "Field_auditId",
+      "key": "auditId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_1",
+        "col": 4
+      }
+    },
+    {
+      "label": "Auditor Name",
+      "type": "textfield",
+      "id": "Field_auditorName",
+      "key": "auditorName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_1",
+        "col": 6
+      }
+    },
+    {
+      "label": "Location/Department",
+      "type": "textfield",
+      "id": "Field_locationDepartment",
+      "key": "locationDepartment",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_1",
+        "col": 6
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_auditDate",
+      "key": "auditDate",
+      "dateLabel": "Audit Date",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "time",
+      "type": "datetime",
+      "id": "Field_auditTime",
+      "key": "auditTime",
+      "timeLabel": "Audit Time",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_2",
+        "col": 8
+      },
+      "timeInterval": 15
+    },
+    {
+      "label": "Audit Type",
+      "values": [
+        {
+          "label": "Daily Checks",
+          "value": "Daily Checks"
+        },
+        {
+          "label": "Weekly Count",
+          "value": "Weekly Count"
+        }
+      ],
+      "type": "select",
+      "id": "Field_auditType",
+      "key": "auditType",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_3",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Daily Checks Details",
+      "type": "text",
+      "id": "Heading_daily_checks",
+      "layout": {
+        "row": "row_4",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Daily Checks\""
+      }
+    },
+    {
+      "label": "Checklist Item Description",
+      "type": "textarea",
+      "id": "Field_checklistItemDescription",
+      "key": "checklistItemDescription",
+      "layout": {
+        "row": "row_5",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Daily Checks\""
+      }
+    },
+    {
+      "label": "Status",
+      "values": [
+        {
+          "label": "Pass",
+          "value": "Pass"
+        },
+        {
+          "label": "Fail",
+          "value": "Fail"
+        },
+        {
+          "label": "N/A",
+          "value": "N/A"
+        }
+      ],
+      "type": "select",
+      "id": "Field_status",
+      "key": "status",
+      "layout": {
+        "row": "row_6",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Daily Checks\""
+      }
+    },
+    {
+      "label": "Item-specific Comments",
+      "type": "textarea",
+      "id": "Field_itemSpecificComments",
+      "key": "itemSpecificComments",
+      "layout": {
+        "row": "row_7",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Daily Checks\""
+      }
+    },
+    {
+      "label": "Corrective Action Taken",
+      "type": "textarea",
+      "id": "Field_correctiveActionTaken",
+      "key": "correctiveActionTaken",
+      "layout": {
+        "row": "row_8",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Daily Checks\""
+      }
+    },
+    {
+      "text": "### Weekly Count Details",
+      "type": "text",
+      "id": "Heading_weekly_count",
+      "layout": {
+        "row": "row_9",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "label": "Item Name/SKU",
+      "type": "textfield",
+      "id": "Field_itemNameSku",
+      "key": "itemNameSku",
+      "layout": {
+        "row": "row_10",
+        "col": 12
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "label": "Unit of Measure",
+      "type": "textfield",
+      "id": "Field_unitOfMeasure",
+      "key": "unitOfMeasure",
+      "layout": {
+        "row": "row_10",
+        "col": 4
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "label": "Expected Quantity (System)",
+      "type": "number",
+      "id": "Field_expectedQuantity",
+      "key": "expectedQuantity",
+      "layout": {
+        "row": "row_11",
+        "col": 5
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "label": "Actual Quantity (Physical)",
+      "type": "number",
+      "id": "Field_actualQuantity",
+      "key": "actualQuantity",
+      "layout": {
+        "row": "row_11",
+        "col": 5
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "label": "Variance",
+      "type": "number",
+      "id": "Field_variance",
+      "key": "variance",
+      "defaultValue": "=actualQuantity - expectedQuantity",
+      "disabled": true,
+      "layout": {
+        "row": "row_11",
+        "col": 6
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "label": "Reason for Variance",
+      "type": "textarea",
+      "id": "Field_reasonForVariance",
+      "key": "reasonForVariance",
+      "layout": {
+        "row": "row_12",
+        "col": 16
+      },
+      "conditional": {
+        "hide": "=auditType != \"Weekly Count\""
+      }
+    },
+    {
+      "text": "### Completion Details",
+      "type": "text",
+      "id": "Heading_completion_details",
+      "layout": {
+        "row": "row_13",
+        "col": 16
+      }
+    },
+    {
+      "label": "Overall Summary/Notes",
+      "type": "textarea",
+      "id": "Field_overallSummary",
+      "key": "overallSummary",
+      "layout": {
+        "row": "row_14",
+        "col": 16
+      }
+    },
+    {
+      "label": "Follow-up Required?",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "type": "radio",
+      "id": "Field_followUpRequired",
+      "key": "followUpRequired",
+      "layout": {
+        "row": "row_15",
+        "col": 16
+      }
+    },
+    {
+      "label": "Auditor Signature",
+      "type": "textfield",
+      "id": "Field_auditorSignature",
+      "key": "auditorSignature",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_16",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_dateOfSignature",
+      "key": "dateOfSignature",
+      "dateLabel": "Date of Signature",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_16",
+        "col": 8
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

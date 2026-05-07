@@ -1,0 +1,158 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "in-personQueue",
+  "components": [
+    {
+      "text": "### Tool Hire Request",
+      "type": "text",
+      "id": "Heading_main",
+      "layout": {
+        "row": "row_1",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Customer Information",
+      "type": "text",
+      "id": "Subheading_customer_info",
+      "layout": {
+        "row": "row_2",
+        "col": 16
+      }
+    },
+    {
+      "label": "First Name",
+      "type": "textfield",
+      "id": "Field_FirstName",
+      "key": "firstName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_3",
+        "col": 8
+      }
+    },
+    {
+      "label": "Last Name",
+      "type": "textfield",
+      "id": "Field_LastName",
+      "key": "lastName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_3",
+        "col": 8
+      }
+    },
+    {
+      "label": "Email",
+      "type": "textfield",
+      "id": "Field_Email",
+      "key": "email",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_4",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Tool Hire Request",
+      "type": "text",
+      "id": "Subheading_hire_request",
+      "layout": {
+        "row": "row_5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tools to Hire",
+      "values": [
+        {
+          "label": "Cement Mixers",
+          "value": "cementMixer"
+        },
+        {
+          "label": "Scaffolding",
+          "value": "scaffolding"
+        },
+        {
+          "label": "Pressure Washers",
+          "value": "pressureWasher"
+        },
+        {
+          "label": "Tile Cutters",
+          "value": "tileCutter"
+        },
+        {
+          "label": "Heavy-duty Drills",
+          "value": "heavyDutyDrill"
+        }
+      ],
+      "type": "select",
+      "id": "Field_ToolsToHire",
+      "key": "toolsToHire",
+      "description": "Select one or more tools.",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_6",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Membership Status",
+      "type": "text",
+      "id": "Subheading_membership",
+      "layout": {
+        "row": "row_7",
+        "col": 16
+      }
+    },
+    {
+      "label": "Has Trading Card Membership?",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "true"
+        },
+        {
+          "label": "No",
+          "value": "false"
+        }
+      ],
+      "type": "radio",
+      "id": "Field_HasMembership",
+      "key": "hasTradingCardMembership",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_8",
+        "col": 16
+      }
+    },
+    {
+      "label": "Submit",
+      "action": "submit",
+      "type": "button",
+      "id": "Button_Submit",
+      "layout": {
+        "row": "row_9",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

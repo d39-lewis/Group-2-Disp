@@ -1,0 +1,174 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "decom",
+  "components": [
+    {
+      "text": "### Decommissioned Tool",
+      "type": "text",
+      "level": "H2",
+      "id": "Subheading_assetInfo",
+      "layout": {
+        "row": "row_4",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool Name",
+      "type": "textfield",
+      "id": "Field_assetName",
+      "key": "assetName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_5",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tool ID",
+      "type": "textfield",
+      "id": "Field_assetId",
+      "key": "assetId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_5",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tool",
+      "values": [
+        {
+          "label": "cement mixers",
+          "value": "cementMixers"
+        },
+        {
+          "label": "scaffolding",
+          "value": "Scaffolding"
+        },
+        {
+          "label": "pressure washers",
+          "value": "pressureWashers"
+        },
+        {
+          "label": "tile cutters",
+          "value": "tileCutters"
+        },
+        {
+          "label": "heavy-duty drills",
+          "value": "heavyDutyDrills"
+        }
+      ],
+      "type": "select",
+      "id": "Field_assetType",
+      "key": "toolType",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_6",
+        "col": 8
+      }
+    },
+    {
+      "label": "Asset Location (e.g., Data Center, Rack, URL)",
+      "type": "textfield",
+      "id": "Field_assetLocation",
+      "key": "assetLocation",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_6",
+        "col": 8
+      }
+    },
+    {
+      "label": "Current Asset Owner",
+      "type": "textfield",
+      "id": "Field_currentAssetOwner",
+      "key": "currentAssetOwner",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_7",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Decommissioning Rationale",
+      "type": "text",
+      "level": "H2",
+      "id": "Subheading_rationale",
+      "layout": {
+        "row": "row_8",
+        "col": 16
+      }
+    },
+    {
+      "label": "Detailed Justification for Decomission",
+      "type": "textarea",
+      "id": "Field_justification",
+      "key": "detailedJustification",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row_10",
+        "col": 16
+      }
+    },
+    {
+      "text": "**Final Sign-off**",
+      "type": "text",
+      "id": "Paragraph_finalSignoff",
+      "layout": {
+        "row": "row_36",
+        "col": 16
+      }
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "id": "Field_finalSignoffName",
+      "key": "finalSignoffName",
+      "layout": {
+        "row": "row_37",
+        "col": 6
+      }
+    },
+    {
+      "label": "Signature (Type Name)",
+      "type": "textfield",
+      "id": "Field_finalSignoffSignature",
+      "key": "finalSignoffSignature",
+      "layout": {
+        "row": "row_37",
+        "col": 6
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_finalSignoffDate",
+      "key": "finalSignoffDate",
+      "dateLabel": "Date",
+      "layout": {
+        "row": "row_37",
+        "col": 4
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

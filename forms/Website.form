@@ -1,0 +1,815 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "6fa43d2"
+  },
+  "schemaVersion": 19,
+  "id": "Website",
+  "components": [
+    {
+      "text": "### ProBuild Supplies Ltd",
+      "type": "text",
+      "id": "Form_heading",
+      "layout": {
+        "row": "Row_0",
+        "col": 16
+      }
+    },
+    {
+      "label": "I am an existing member",
+      "type": "checkbox",
+      "id": "IsMember_field",
+      "key": "isMember",
+      "layout": {
+        "row": "Row_0q9xlax",
+        "col": 16
+      }
+    },
+    {
+      "label": "What would you like to do?",
+      "values": [
+        {
+          "label": "Purchase Products",
+          "value": "purchase"
+        },
+        {
+          "label": "Hire Tools",
+          "value": "hire"
+        },
+        {
+          "label": "Trade Card Membership",
+          "value": "membership"
+        }
+      ],
+      "type": "radio",
+      "id": "MainSelection_field",
+      "key": "mainSelection",
+      "defaultValue": "purchase",
+      "layout": {
+        "row": "Row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "login",
+      "components": [
+        {
+          "text": "##### Member Login",
+          "type": "text",
+          "id": "MemberLogin_heading",
+          "layout": {
+            "row": "Row_1qa66u0",
+            "col": 16
+          }
+        },
+        {
+          "label": "username",
+          "type": "textfield",
+          "id": "MemberName_field",
+          "key": "memberName",
+          "layout": {
+            "row": "Row_0qlgimu",
+            "col": 8
+          }
+        },
+        {
+          "label": "Password",
+          "type": "textfield",
+          "id": "MemberPassword_field",
+          "key": "memberPassword",
+          "layout": {
+            "row": "Row_0qlgimu",
+            "col": 8
+          }
+        },
+        {
+          "label": "login",
+          "action": "submit",
+          "type": "button",
+          "layout": {
+            "row": "Row_1m9jcjp",
+            "columns": null
+          },
+          "id": "Field_1wx39s2"
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_3",
+        "columns": null
+      },
+      "id": "Field_0zy9e55",
+      "path": "login",
+      "conditional": {
+        "hide": "=isMember != true"
+      }
+    },
+    {
+      "label": "buy",
+      "components": [
+        {
+          "text": "##### Purchase Products",
+          "type": "text",
+          "id": "Purchase_heading",
+          "layout": {
+            "row": "Row_0r07re5",
+            "col": 16
+          }
+        },
+        {
+          "label": "Timber",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_01z7spf",
+            "columns": null
+          },
+          "id": "Field_1kwvwxx",
+          "key": "Timber"
+        },
+        {
+          "label": "Fasteners",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_01z7spf",
+            "columns": null
+          },
+          "id": "Field_1j8dr0b",
+          "key": "Fasteners"
+        },
+        {
+          "label": "Power Tools",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_01z7spf",
+            "columns": null
+          },
+          "id": "Field_0r6sib1",
+          "key": "powerTools"
+        },
+        {
+          "label": "Insulation",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_01mdptf",
+            "columns": null
+          },
+          "id": "Field_1rb0qin",
+          "key": "Insulation"
+        },
+        {
+          "label": "Adhesives",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_01mdptf",
+            "columns": null
+          },
+          "id": "Field_0nyjvo6",
+          "key": "Adhesives"
+        },
+        {
+          "label": "Plasterboard",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_01mdptf",
+            "columns": null
+          },
+          "id": "Field_0zloffk",
+          "key": "Plasterboard"
+        },
+        {
+          "text": "##### Payment",
+          "type": "text",
+          "id": "PurchasePayment_heading",
+          "layout": {
+            "row": "Row_1uz41n2",
+            "col": 16
+          }
+        },
+        {
+          "label": "Payment Method",
+          "type": "radio",
+          "id": "PurchasePayment_field",
+          "key": "purchasePayment",
+          "layout": {
+            "row": "Row_17ayv1a",
+            "col": 16
+          },
+          "valuesExpression": "=if isMember = true then [{\"label\": \"Card\", \"value\": \"card\"}, {\"label\": \"Finance\", \"value\": \"finance\"}] else [{\"label\": \"Card\", \"value\": \"card\"}]"
+        },
+        {
+          "label": "Finance Installments",
+          "values": [
+            {
+              "label": "6 Months",
+              "value": "6"
+            },
+            {
+              "label": "12 Months",
+              "value": "12"
+            }
+          ],
+          "type": "select",
+          "id": "FinanceInstallments_field",
+          "key": "financeInstallments",
+          "layout": {
+            "row": "Row_1rzqvhd",
+            "col": 16
+          },
+          "conditional": {
+            "hide": "=purchasePayment = \"card\" or isMember != true"
+          }
+        },
+        {
+          "label": "card payment",
+          "components": [
+            {
+              "label": "name on card",
+              "type": "textfield",
+              "layout": {
+                "row": "Row_1ion77y",
+                "columns": null
+              },
+              "id": "Field_066730q",
+              "key": "textfield_q01idh"
+            },
+            {
+              "label": "16 digit",
+              "type": "number",
+              "layout": {
+                "row": "Row_18z1ny0",
+                "columns": null
+              },
+              "id": "Field_14dhd47",
+              "key": "number_fhqxph"
+            },
+            {
+              "label": "expiry",
+              "type": "number",
+              "layout": {
+                "row": "Row_1p1qsra",
+                "columns": null
+              },
+              "id": "Field_0madjuy",
+              "key": "number_kvxcef"
+            },
+            {
+              "label": "CVC",
+              "type": "number",
+              "layout": {
+                "row": "Row_1p1qsra",
+                "columns": null
+              },
+              "id": "Field_0m6ty44",
+              "key": "number_eclxib"
+            }
+          ],
+          "showOutline": true,
+          "type": "group",
+          "layout": {
+            "row": "Row_0tcvyuy",
+            "columns": null
+          },
+          "id": "Field_1gj9imv",
+          "path": "purchase.payment",
+          "conditional": {
+            "hide": "=purchasePayment = \"finance\" "
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_5",
+        "columns": null
+      },
+      "id": "Field_0v8wbca",
+      "path": "purchase",
+      "conditional": {
+        "hide": "=mainSelection != \"purchase\""
+      }
+    },
+    {
+      "label": "Hire",
+      "components": [
+        {
+          "text": "##### Hire Tools",
+          "type": "text",
+          "id": "Hire_heading",
+          "layout": {
+            "row": "Row_0i6furo",
+            "col": 16
+          }
+        },
+        {
+          "label": "Scaffolding",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_16xv4wy",
+            "columns": null
+          },
+          "id": "Field_1be7xfi",
+          "key": "Scaffolding"
+        },
+        {
+          "label": "cerement mixer",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_19tej66",
+            "columns": null
+          },
+          "id": "Field_14ai4rz",
+          "key": "cerementMixer"
+        },
+        {
+          "label": "Pressure Washer",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_1rdhkdd",
+            "columns": null
+          },
+          "id": "Field_0wy93ii",
+          "key": "PressureWasher"
+        },
+        {
+          "label": "Tile Cutter",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_0vddlbr",
+            "columns": null
+          },
+          "id": "Field_1j3eyyp",
+          "key": "tileCutter"
+        },
+        {
+          "label": "Heavy-Duty Drill",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_1t1vibs",
+            "columns": null
+          },
+          "id": "Field_1xuj3bm",
+          "key": "heavyDrill"
+        },
+        {
+          "label": "Unavailable tools",
+          "components": [
+            {
+              "label": "Scaffolding",
+              "type": "checkbox",
+              "layout": {
+                "row": "Row_0cz5ebj",
+                "columns": null
+              },
+              "id": "Field_1u9cza7",
+              "key": "unvScaffolding"
+            },
+            {
+              "label": "cerement mixer",
+              "type": "checkbox",
+              "layout": {
+                "row": "Row_15p5xez",
+                "columns": null
+              },
+              "id": "Field_0bbl5ey",
+              "key": "unvcerementMixer"
+            },
+            {
+              "label": "Pressure Washer",
+              "type": "checkbox",
+              "layout": {
+                "row": "Row_1bfp124",
+                "columns": null
+              },
+              "id": "Field_0h7dj6h",
+              "key": "unvpressureWasher"
+            },
+            {
+              "label": "Tile Cutter",
+              "type": "checkbox",
+              "layout": {
+                "row": "Row_1lsddy5",
+                "columns": null
+              },
+              "id": "Field_0j5r9w1",
+              "key": "unvtileCutter"
+            },
+            {
+              "label": "Heavy-Duty Drill",
+              "type": "checkbox",
+              "layout": {
+                "row": "Row_1xluqze",
+                "columns": null
+              },
+              "id": "Field_0vqs9a6",
+              "key": "unvheavyDrill"
+            }
+          ],
+          "showOutline": true,
+          "type": "group",
+          "layout": {
+            "row": "Row_0y61wqp",
+            "columns": null
+          },
+          "id": "Field_0l3mnsm",
+          "path": "unvTools"
+        },
+        {
+          "label": "Select",
+          "values": [
+            {
+              "label": "12 hours",
+              "value": "12h"
+            },
+            {
+              "label": "1 day",
+              "value": "1d"
+            },
+            {
+              "label": "2 days",
+              "value": "2d"
+            },
+            {
+              "label": "3 days",
+              "value": "3d"
+            },
+            {
+              "label": "1 week",
+              "value": "1w"
+            },
+            {
+              "label": "2 weeks",
+              "value": "2w"
+            },
+            {
+              "label": "1 month",
+              "value": "1m"
+            }
+          ],
+          "type": "select",
+          "layout": {
+            "row": "Row_1lqzzws",
+            "columns": null
+          },
+          "id": "Field_0ul7p6h",
+          "key": "financeDuration"
+        },
+        {
+          "text": "##### Payment",
+          "type": "text",
+          "id": "HirePayment_heading",
+          "layout": {
+            "row": "Row_1iwwkad",
+            "col": 16
+          }
+        },
+        {
+          "label": "Payment Method",
+          "values": [
+            {
+              "label": "Card",
+              "value": "card"
+            },
+            {
+              "label": "Finance",
+              "value": "finance"
+            }
+          ],
+          "type": "radio",
+          "id": "HirePayment_field",
+          "key": "hirePayment",
+          "defaultValue": "card",
+          "layout": {
+            "row": "Row_0ci2xez",
+            "col": 16
+          }
+        },
+        {
+          "label": "Finance Installments",
+          "values": [
+            {
+              "label": "6 Months",
+              "value": "6"
+            },
+            {
+              "label": "12 Months",
+              "value": "12"
+            }
+          ],
+          "type": "select",
+          "id": "HireFinanceInstallments_field",
+          "key": "hireFinanceInstallments",
+          "layout": {
+            "row": "Row_028qnvy",
+            "col": 16
+          },
+          "conditional": {
+            "hide": "=hirePayment = \"card\""
+          }
+        },
+        {
+          "label": "card payment",
+          "components": [
+            {
+              "label": "name on card",
+              "type": "textfield",
+              "layout": {
+                "row": "Row_00xdfw1",
+                "columns": null
+              },
+              "id": "Field_175g4z6",
+              "key": "hireName"
+            },
+            {
+              "label": "16 digit",
+              "type": "number",
+              "layout": {
+                "row": "Row_15g5a43",
+                "columns": null
+              },
+              "id": "Field_198jq08",
+              "key": "16digit"
+            },
+            {
+              "label": "expiry",
+              "type": "number",
+              "layout": {
+                "row": "Row_18qo3li",
+                "columns": null
+              },
+              "id": "Field_0yr8p1u",
+              "key": "number_wq4x2c"
+            },
+            {
+              "label": "CVC",
+              "type": "number",
+              "layout": {
+                "row": "Row_18qo3li",
+                "columns": null
+              },
+              "id": "Field_0n2p39j",
+              "key": "number_a59304"
+            }
+          ],
+          "showOutline": true,
+          "type": "group",
+          "layout": {
+            "row": "Row_0orxex6",
+            "columns": null
+          },
+          "id": "Field_04baotk",
+          "path": "hire.payment",
+          "conditional": {
+            "hide": "=hirePayment = \"finance\""
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_17auj1f",
+        "columns": null
+      },
+      "id": "Field_17z6yt6",
+      "path": "hire",
+      "conditional": {
+        "hide": "=mainSelection != \"hire\""
+      }
+    },
+    {
+      "label": "Trade Card Membership",
+      "components": [
+        {
+          "text": "##### Trade Card Membership",
+          "type": "text",
+          "id": "Membership_heading",
+          "layout": {
+            "row": "Row_1d8svba",
+            "col": 16
+          }
+        },
+        {
+          "text": "* Access to exclusive trade prices\n* Option to pay with finance on all purchases and hires\n* Priority access to new stock and tool availability\n* Monthly newsletter with special offers",
+          "type": "text",
+          "id": "Benefits_text",
+          "layout": {
+            "row": "Row_0q71v7o",
+            "col": 16
+          }
+        },
+        {
+          "text": "_This is an annual membership fee of £10 renewed every year._",
+          "type": "text",
+          "id": "Fee_info_text",
+          "layout": {
+            "row": "Row_1hmzvqn",
+            "col": 16
+          }
+        },
+        {
+          "text": "##### New Member Registration",
+          "type": "text",
+          "id": "Registration_heading",
+          "layout": {
+            "row": "Row_1ptxpef",
+            "col": 16
+          }
+        },
+        {
+          "label": "Full Name",
+          "type": "textfield",
+          "id": "RegFullName_field",
+          "key": "regFullName",
+          "layout": {
+            "row": "Row_0xe6vfi",
+            "col": 8
+          }
+        },
+        {
+          "label": "Email",
+          "type": "textfield",
+          "id": "RegEmail_field",
+          "key": "regEmail",
+          "validate": {
+            "pattern": "^\\S+@\\S+\\.\\S+$"
+          },
+          "layout": {
+            "row": "Row_086q67c",
+            "col": 8
+          }
+        },
+        {
+          "label": "Password",
+          "type": "textfield",
+          "id": "RegPassword_field",
+          "key": "regPassword",
+          "layout": {
+            "row": "Row_15ad40c",
+            "col": 8
+          }
+        },
+        {
+          "label": "Phone Number",
+          "type": "textfield",
+          "id": "RegPhone_field",
+          "key": "regPhone",
+          "layout": {
+            "row": "Row_149l5sd",
+            "col": 8
+          }
+        },
+        {
+          "label": "Card Payment",
+          "components": [
+            {
+              "text": "##### Card Payment",
+              "type": "text",
+              "layout": {
+                "row": "Row_0oa0qc6",
+                "columns": null
+              },
+              "id": "Field_09zujga"
+            },
+            {
+              "label": "name on card",
+              "type": "textfield",
+              "id": "MembershipPaymentCard_field",
+              "key": "membershipPaymentCard",
+              "layout": {
+                "row": "Row_1okekur",
+                "col": 16
+              }
+            },
+            {
+              "label": "16 digit number",
+              "type": "number",
+              "layout": {
+                "row": "Row_055a8ch",
+                "columns": null
+              },
+              "id": "Field_1uhsbw1",
+              "key": "16digit"
+            },
+            {
+              "label": "expiry",
+              "type": "number",
+              "layout": {
+                "row": "Row_1iaooxe",
+                "columns": null
+              },
+              "id": "Field_02y8hgc",
+              "key": "expiry"
+            },
+            {
+              "label": "CVC",
+              "type": "number",
+              "layout": {
+                "row": "Row_1iaooxe",
+                "columns": null
+              },
+              "id": "Field_1c83b63",
+              "key": "CVC"
+            }
+          ],
+          "showOutline": true,
+          "type": "group",
+          "layout": {
+            "row": "Row_0icsobr",
+            "columns": null
+          },
+          "id": "Field_0sj1oq4",
+          "path": "TradeCard.payment"
+        },
+        {
+          "label": "Address",
+          "components": [
+            {
+              "text": "##### Personal Address",
+              "type": "text",
+              "layout": {
+                "row": "Row_15b7gc8",
+                "columns": null
+              },
+              "id": "Field_04j019w"
+            },
+            {
+              "label": "1st Line of Address ",
+              "type": "textfield",
+              "layout": {
+                "row": "Row_0opjoqf",
+                "columns": null
+              },
+              "id": "Field_0loq6q4",
+              "key": "textfield_ylefjf",
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "label": "2nd line of Address",
+              "type": "textfield",
+              "layout": {
+                "row": "Row_19t29fl",
+                "columns": null
+              },
+              "id": "Field_0ewegz4",
+              "key": "textfield_spih7x"
+            },
+            {
+              "label": "City",
+              "type": "textfield",
+              "layout": {
+                "row": "Row_0rol9gu",
+                "columns": null
+              },
+              "id": "Field_1q3fy4f",
+              "key": "textfield_9yz2bf",
+              "validate": {
+                "required": true
+              }
+            },
+            {
+              "label": "Postcode",
+              "type": "textfield",
+              "layout": {
+                "row": "Row_0rol9gu",
+                "columns": null
+              },
+              "id": "Field_0doe1pc",
+              "key": "textfield_5a7f7k",
+              "validate": {
+                "required": true
+              }
+            }
+          ],
+          "showOutline": true,
+          "type": "group",
+          "layout": {
+            "row": "Row_0nx165r",
+            "columns": null
+          },
+          "id": "Field_00u2lew",
+          "path": "Address",
+          "conditional": {
+            "hide": "==mainSelection = null"
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1gl3d9q",
+        "columns": null
+      },
+      "id": "Field_1xwtq6r",
+      "path": "TradeCard",
+      "conditional": {
+        "hide": "=\nisMember = true"
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

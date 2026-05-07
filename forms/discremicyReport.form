@@ -1,0 +1,158 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "discremicyReport",
+  "components": [
+    {
+      "text": "### Discrepancy Report",
+      "type": "text",
+      "id": "Heading_DiscrepancyReport",
+      "layout": {
+        "row": "Row_0",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Report Details",
+      "type": "text",
+      "id": "Subheading_ReportDetails",
+      "layout": {
+        "row": "Row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Filed By (Name)",
+      "type": "textfield",
+      "id": "Field_FiledBy",
+      "key": "filedBy",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_2",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_DateFiled",
+      "key": "dateFiled",
+      "dateLabel": "Date Filed",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_3",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "time",
+      "type": "datetime",
+      "id": "Field_TimeFiled",
+      "key": "timeFiled",
+      "timeLabel": "Time Filed",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_3",
+        "col": 8
+      },
+      "timeInterval": 15
+    },
+    {
+      "text": "##### Discrepancy Information",
+      "type": "text",
+      "id": "Subheading_DiscrepancyInfo",
+      "layout": {
+        "row": "Row_5",
+        "col": 16
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_DateDiscrepancyFound",
+      "key": "dateDiscrepancyFound",
+      "dateLabel": "Date Discrepancy Found",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_6",
+        "col": 16
+      }
+    },
+    {
+      "text": "##### Description of Issue",
+      "type": "text",
+      "id": "Subheading_Description",
+      "layout": {
+        "row": "Row_8",
+        "col": 16
+      }
+    },
+    {
+      "label": "Expected Quantity",
+      "type": "textfield",
+      "id": "Field_Expected",
+      "key": "expectedCondition",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_9",
+        "col": 8
+      }
+    },
+    {
+      "label": "Actual Condition/Value/Quantity",
+      "type": "textfield",
+      "id": "Field_Actual",
+      "key": "actualCondition",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_9",
+        "col": 8
+      }
+    },
+    {
+      "label": "Detailed Description of the Discrepancy",
+      "type": "textarea",
+      "id": "Field_DetailedDescription",
+      "key": "detailedDescription",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_10",
+        "col": 16
+      }
+    },
+    {
+      "label": "Potential Impact (Financial, Operational, etc.)",
+      "type": "textarea",
+      "id": "Field_PotentialImpact",
+      "key": "potentialImpact",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_11",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

@@ -1,0 +1,43 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: camunda-worker-foundation
+
+camunda:
+  client:
+    # Default to a local Camunda 8 Self-Managed instance.
+    mode: self-managed
+    auth:
+      method: none
+    grpc-address: ${CAMUNDA_GRPC_ADDRESS:http://localhost:26500}
+    rest-address: ${CAMUNDA_REST_ADDRESS:http://localhost:8080}
+    # Keep disabled by default; deploy BPMN from Modeler/CLI as needed.
+    deployment:
+      enabled: false
+    worker:
+      defaults:
+        max-jobs-active: 10
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+---
+spring:
+  config:
+    activate:
+      on-profile: saas
+
+camunda:
+  client:
+    mode: saas
+    auth:
+      client-id: ${CAMUNDA_CLIENT_ID}
+      client-secret: ${CAMUNDA_CLIENT_SECRET}
+    cloud:
+      cluster-id: ${CAMUNDA_CLUSTER_ID}
+      region: ${CAMUNDA_REGION}

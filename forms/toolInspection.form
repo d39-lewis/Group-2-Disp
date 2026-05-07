@@ -1,0 +1,94 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "toolInspection",
+  "components": [
+    {
+      "text": "### Tool Return Form",
+      "type": "text",
+      "id": "Heading_1",
+      "layout": {
+        "row": "Row_1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Select returned tools",
+      "values": [
+        {
+          "label": "cement mixers",
+          "value": "cementMixers"
+        },
+        {
+          "label": "scaffolding",
+          "value": "scaffolding"
+        },
+        {
+          "label": "pressure washers",
+          "value": "pressureWashers"
+        },
+        {
+          "label": "tile cutters",
+          "value": "tileCutters"
+        },
+        {
+          "label": "heavy-duty drills",
+          "value": "heavyDutyDrills"
+        }
+      ],
+      "type": "checklist",
+      "layout": {
+        "row": "Row_1l4x6cs",
+        "columns": null
+      },
+      "id": "Field_17qbzad",
+      "key": "returnedTools"
+    },
+    {
+      "label": "Any Defects/Damages?",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        },
+        {
+          "label": "No",
+          "value": "no"
+        }
+      ],
+      "type": "radio",
+      "id": "Field_HasDefects",
+      "key": "hasDefects",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_3",
+        "col": 16
+      }
+    },
+    {
+      "label": "Damage Description",
+      "type": "textarea",
+      "id": "Field_DamageDescription",
+      "key": "damageDescription",
+      "conditional": {
+        "hide": "=hasDefects != \"yes\""
+      },
+      "validate": {
+        "required": "=hasDefects = \"yes\""
+      },
+      "layout": {
+        "row": "Row_5",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}
