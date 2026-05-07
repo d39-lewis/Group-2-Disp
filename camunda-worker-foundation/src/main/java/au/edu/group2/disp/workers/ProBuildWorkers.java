@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  * <p><b>Key process variables used across these workers:</b>
  * <ul>
  *   <li>{@code customerId} — unique customer identifier, set at the start of the process</li>
- *   <li>{@code orderTotal} — running total in GBP, updated by {@code calculate-order-amount}</li>
+ *   <li>{@code orderTotal} — running total in GBP, set by {@code calculate-rental-amount} or {@code calculate-purchase-amount}</li>
  *   <li>{@code paymentSuccessful} — "yes" or "no", read by the gateway after card payment</li>
  *   <li>{@code membershipType} — "standard", "trade", or "premium"</li>
  * </ul>
@@ -32,36 +32,15 @@ public class ProBuildWorkers {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProBuildWorkers.class);
 
-    /**
-     * Calculates the total amount due for an order or rental.
-     *
-     * <p><b>Business context:</b> Before the customer pays, the system needs to
-     * know exactly how much to charge. For rentals this is unit price × number
-     * of days × quantity. For outright purchases {@code rentalDays} defaults to 1.
-     * The result is stored as {@code orderTotal} so the downstream payment tasks
-     * know what to charge.
-     *
-     * <p><b>Task type:</b> {@code calculate-order-amount}
-     *
-     * @param job the activated job. Expected variables:
-     *            <ul>
-     *              <li>{@code unitPrice} — price per unit per day (or per item for sales)</li>
-     *              <li>{@code rentalDays} — number of days hired (default 1 for purchases)</li>
-     *              <li>{@code quantity} — number of units (default 1)</li>
-     *            </ul>
-     * @return map of output variables:
-     *         <ul>
-     *           <li>{@code orderTotal} — {@code unitPrice × rentalDays × quantity}</li>
-     *           <li>{@code itemCount} — quantity as an integer</li>
-     *         </ul>
-     */
-    @JobWorker(type = "calculate-order-amount")
-    public Map<String, Object> calculateOrderAmount(ActivatedJob job) {
+    // Inputs: unitPrice, rentalDays, quantity
+    // Outputs: orderTotal (double), itemCount (int)
+    @JobWorker(type = "calculate-rental-amount")
+    public Map<String, Object> calculateRentalAmount(ActivatedJob job) {
         Map<String, Object> vars = FoundationWorkers.safeVars(job);
         Number unitPrice = (Number) vars.getOrDefault("unitPrice", 0);
         Number rentalDays = (Number) vars.getOrDefault("rentalDays", 1);
         Number quantity = (Number) vars.getOrDefault("quantity", 1);
-        LOGGER.info("calculate-order-amount: unitPrice={}, rentalDays={}, quantity={}",
+        LOGGER.info("calculate-rental-amount: unitPrice={}, rentalDays={}, quantity={}",
                 unitPrice, rentalDays, quantity);
 
         double orderTotal = unitPrice.doubleValue() * rentalDays.doubleValue() * quantity.doubleValue();
@@ -333,62 +312,6 @@ public class ProBuildWorkers {
     }
 
     /**
-     * Applies a membership discount to the order total.
-     *
-     * <p><b>Business context:</b> Members of ProBuild's loyalty scheme receive
-     * a discount on their purchases. The discount rate depends on the membership
-     * tier. This task calculates and applies the reduction before the customer
-     * is asked to pay.
-     *
-     * <p><b>Discount rates (business rule):</b>
-     * <ul>
-     *   <li>premium — 15%</li>
-     *   <li>trade — 10%</li>
-     *   <li>standard — 5%</li>
-     * </ul>
-     *
-     * <p><b>Task type:</b> {@code membershipDiscount}
-     *
-     * @param job the activated job. Expected variables:
-     *            <ul>
-     *              <li>{@code orderTotal} — pre-discount total in GBP</li>
-     *              <li>{@code membershipType} — "standard", "trade", or "premium"</li>
-     *            </ul>
-     * @return map of output variables:
-     *         <ul>
-     *           <li>{@code discountedTotal} — new total after discount</li>
-     *           <li>{@code orderTotal} — overwritten with the discounted value so downstream
-     *               payment tasks charge the right amount</li>
-     *           <li>{@code discountApplied} — {@code true}</li>
-     *           <li>{@code discountAmount} — how much was saved in GBP</li>
-     *         </ul>
-     */
-    @JobWorker(type = "membershipDiscount")
-    public Map<String, Object> membershipDiscount(ActivatedJob job) {
-        Map<String, Object> vars = FoundationWorkers.safeVars(job);
-        Number orderTotal = (Number) vars.getOrDefault("orderTotal", 0);
-        String membershipType = (String) vars.getOrDefault("membershipType", "standard");
-        LOGGER.info("membershipDiscount: orderTotal={}, membershipType={}", orderTotal, membershipType);
-
-        // Determine discount rate from membership tier.
-        double rate = switch (membershipType) {
-            case "premium" -> 0.15;
-            case "trade"   -> 0.10;
-            default        -> 0.05; // standard
-        };
-        double discountAmount = orderTotal.doubleValue() * rate;
-        double discountedTotal = orderTotal.doubleValue() - discountAmount;
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("discountedTotal", discountedTotal);
-        result.put("discountApplied", true);
-        result.put("discountAmount", discountAmount);
-        // Overwrite orderTotal so payment tasks automatically use the reduced figure.
-        result.put("orderTotal", discountedTotal);
-        return result;
-    }
-
-    /**
      * Places the customer in a service queue and assigns their position.
      *
      * <p><b>Business context:</b> When a customer arrives in-store and all staff
@@ -565,6 +488,74 @@ public class ProBuildWorkers {
         result.put("idVerified", true);
         result.put("auditPassed", true);
         result.put("auditReference", "AUD-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        return result;
+    }
+
+    // Inputs: unitPrice, quantity
+    // Outputs: orderTotal (double), itemCount (int)
+    @JobWorker(type = "calculate-purchase-amount")
+    public Map<String, Object> calculatePurchaseAmount(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        Number unitPrice = (Number) vars.getOrDefault("unitPrice", 0);
+        Number quantity = (Number) vars.getOrDefault("quantity", 1);
+        LOGGER.info("calculate-purchase-amount: unitPrice={}, quantity={}", unitPrice, quantity);
+
+        double orderTotal = unitPrice.doubleValue() * quantity.doubleValue();
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("orderTotal", orderTotal);
+        result.put("itemCount", quantity.intValue());
+        return result;
+    }
+
+    // Inputs: customerId, membershipType ("standard" | "trade" | "premium")
+    // Outputs: membershipValid (boolean), membershipExpiry, membershipId
+    @JobWorker(type = "membership")
+    public Map<String, Object> membership(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        String membershipType = (String) vars.getOrDefault("membershipType", "standard");
+        LOGGER.info("membership: customerId={}, membershipType={}", customerId, membershipType);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("membershipValid", true);
+        result.put("membershipId", "MEM-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        result.put("membershipExpiry", java.time.LocalDate.now().plusYears(1).toString());
+        result.put("membershipType", membershipType);
+        return result;
+    }
+
+    // Inputs: orderTotal, financeInstallments (int: 6 or 12)
+    // Outputs: financeDurationMonths (int), financeEndDate (ISO date), monthlyDueDate (int day-of-month)
+    @JobWorker(type = "financeDuration")
+    public Map<String, Object> financeDuration(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        Object rawInstallments = vars.getOrDefault("financeInstallments", 12);
+        int months = rawInstallments instanceof Number
+                ? ((Number) rawInstallments).intValue()
+                : Integer.parseInt(rawInstallments.toString());
+        LOGGER.info("financeDuration: financeInstallments={}", months);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("financeDurationMonths", months);
+        result.put("financeEndDate", java.time.LocalDate.now().plusMonths(months).toString());
+        result.put("monthlyDueDate", java.time.LocalDate.now().getDayOfMonth());
+        return result;
+    }
+
+    // Inputs: customerId, orderType ("delivery" | "click-and-collect")
+    // Outputs: deliveryAddress (string), addressVerified (boolean), postcode (string)
+    @JobWorker(type = "customerAddress")
+    public Map<String, Object> customerAddress(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String customerId = (String) vars.getOrDefault("customerId", "CUST-UNKNOWN");
+        String orderType = (String) vars.getOrDefault("orderType", "delivery");
+        LOGGER.info("customerAddress: customerId={}, orderType={}", customerId, orderType);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("deliveryAddress", "123 ProBuild Way, Bristol, BS1 1AA");
+        result.put("addressVerified", true);
+        result.put("postcode", "BS1 1AA");
         return result;
     }
 }

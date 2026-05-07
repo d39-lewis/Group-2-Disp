@@ -29,10 +29,12 @@ public class InventoryWorkers {
         Number quantity = (Number) vars.getOrDefault("quantity", 0);
         LOGGER.info("IMS: productId={}, changeType={}, quantity={}", productId, changeType, quantity);
 
-        // Stub: assume 50 units after update
+        // Stub: assume 50 units after update. IMS is also exported as a variable named "IMS"
+        // because the downstream gateway condition uses =IMS >= 10 (variable name matches job type).
         Map<String, Object> result = new HashMap<>();
         result.put("imsUpdated", true);
         result.put("currentStock", 50);
+        result.put("IMS", 50);
         result.put("imsUpdateReference", "IMS-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
         result.put("imsUpdatedAt", Instant.now().toString());
         return result;
@@ -106,21 +108,6 @@ public class InventoryWorkers {
         return result;
     }
 
-    // Inputs: businessId (ABN / trade account number) for warehouse-level trade lookup
-    // Outputs: tradeDatabaseUpdated (boolean), updateReference
-    @JobWorker(type = "warehouse.tradeDatabase")
-    public Map<String, Object> warehouseTradeDatabase(ActivatedJob job) {
-        Map<String, Object> vars = FoundationWorkers.safeVars(job);
-        String businessId = (String) vars.getOrDefault("businessId", vars.getOrDefault("abn", "UNKNOWN"));
-        LOGGER.info("warehouse.tradeDatabase: businessId={}", businessId);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("tradeDatabaseUpdated", true);
-        result.put("updateReference", "WTDB-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
-        result.put("updatedAt", Instant.now().toString());
-        return result;
-    }
-
     // Inputs: supplierId, orderId, expectedItems
     // Outputs: deliveryStatus ("PENDING" | "IN_TRANSIT" | "DELIVERED"), estimatedArrival
     @JobWorker(type = "fetchDelivery")
@@ -148,22 +135,6 @@ public class InventoryWorkers {
         result.put("deliveryScheduled", true);
         result.put("courierReference", "DEL-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
         result.put("scheduledAt", Instant.now().toString());
-        return result;
-    }
-
-    // Inputs: supplierId, orderId, purchaseOrderNumber
-    // Outputs: supplierConfirmed (boolean), dispatchDate, supplierReference
-    @JobWorker(type = "supplierDelivery")
-    public Map<String, Object> supplierDelivery(ActivatedJob job) {
-        Map<String, Object> vars = FoundationWorkers.safeVars(job);
-        String supplierId = (String) vars.getOrDefault("supplierId", "SUP-UNKNOWN");
-        String orderId = (String) vars.getOrDefault("orderId", "ORD-UNKNOWN");
-        LOGGER.info("supplierDelivery: supplierId={}, orderId={}", supplierId, orderId);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("supplierConfirmed", true);
-        result.put("dispatchDate", LocalDateHelper.plusDays(2));
-        result.put("supplierReference", "SREF-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
         return result;
     }
 
@@ -195,6 +166,77 @@ public class InventoryWorkers {
         result.put("toolServiced", true);
         result.put("serviceReference", serviceRef);
         result.put("servicedAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: supplierId, orderId, damageLevel, damageDescription
+    // Outputs: notificationSent (boolean), notificationReference, notifiedAt
+    @JobWorker(type = "failedInspectionNotification")
+    public Map<String, Object> failedInspectionNotification(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String supplierId = (String) vars.getOrDefault("supplierId", "SUP-UNKNOWN");
+        String orderId = (String) vars.getOrDefault("orderId", "ORD-UNKNOWN");
+        String damageLevel = (String) vars.getOrDefault("damageLevel", "minor");
+        LOGGER.info("failedInspectionNotification: supplierId={}, orderId={}, damageLevel={}",
+                supplierId, orderId, damageLevel);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("notificationSent", true);
+        result.put("notificationReference", "FAIL-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        result.put("notifiedAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: productId, stockDelta (positive = restock, negative = sale/use), reason
+    // Outputs: imsUpdated (boolean), newStockLevel (int), updateReference
+    @JobWorker(type = "updateStock")
+    public Map<String, Object> updateStock(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String productId = (String) vars.getOrDefault("productId", "PROD-UNKNOWN");
+        Number stockDelta = (Number) vars.getOrDefault("stockDelta", 0);
+        Number currentStock = (Number) vars.getOrDefault("currentStock", 50);
+        LOGGER.info("updateStock: productId={}, stockDelta={}", productId, stockDelta);
+
+        int newStockLevel = Math.max(currentStock.intValue() + stockDelta.intValue(), 0);
+        Map<String, Object> result = new HashMap<>();
+        result.put("imsUpdated", true);
+        result.put("newStockLevel", newStockLevel);
+        result.put("updateReference", "UPD-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        result.put("updatedAt", Instant.now().toString());
+        return result;
+    }
+
+    // Inputs: productId, customerId, requestedQty
+    // Outputs: available (boolean), availableQty (int), expectedRestockDate
+    @JobWorker(type = "customerIMSAvail")
+    public Map<String, Object> customerImsAvail(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String productId = (String) vars.getOrDefault("productId", "PROD-UNKNOWN");
+        Number requestedQty = (Number) vars.getOrDefault("requestedQty", 1);
+        LOGGER.info("customerIMSAvail: productId={}, requestedQty={}", productId, requestedQty);
+
+        // Stub: product always available with 10 units in stock
+        Map<String, Object> result = new HashMap<>();
+        result.put("available", true);
+        result.put("availableQty", 10);
+        result.put("expectedRestockDate", LocalDateHelper.plusDays(7));
+        return result;
+    }
+
+    // Inputs: orderId, deliveryAddress, productId, quantity
+    // Outputs: goodsShipped (boolean), shipmentReference, estimatedDelivery
+    @JobWorker(type = "shipGoods")
+    public Map<String, Object> shipGoods(ActivatedJob job) {
+        Map<String, Object> vars = FoundationWorkers.safeVars(job);
+        String orderId = (String) vars.getOrDefault("orderId", "ORD-UNKNOWN");
+        String deliveryAddress = (String) vars.getOrDefault("deliveryAddress", "Unknown Address");
+        LOGGER.info("shipGoods: orderId={}, deliveryAddress={}", orderId, deliveryAddress);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("goodsShipped", true);
+        result.put("shipmentReference", "SHIP-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        result.put("estimatedDelivery", LocalDateHelper.plusDays(3));
+        result.put("shippedAt", Instant.now().toString());
         return result;
     }
 

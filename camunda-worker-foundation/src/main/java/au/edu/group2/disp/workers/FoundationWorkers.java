@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  *
  * <p><b>BPMN pools served:</b>
  * <ul>
- *   <li>Probuild main process ({@code Pro}) — processOrder, processOrderInPerson, financeRequest</li>
+ *   <li>Probuild main process ({@code Pro}) — processOrder, financeRequest</li>
  *   <li>FinTrust process ({@code Process_1kwzimz}) — payBill</li>
  * </ul>
  *
@@ -80,44 +80,6 @@ public class FoundationWorkers {
         result.put("orderCapturedAt", Instant.now().toString());
         result.put("orderStatus", "RECEIVED");
         result.put("orderChannel", vars.getOrDefault("orderChannel", "online"));
-        return result;
-    }
-
-    /**
-     * Captures an order placed by a customer standing at the ProBuild counter.
-     *
-     * <p><b>Business context:</b> A staff member has verified the customer's
-     * credentials (see {@code credentialCheck}) and processed their selections.
-     * This task creates the order record for an in-person transaction, mirroring
-     * what {@code processOrder} does for online sales.
-     *
-     * <p><b>BPMN task name:</b> "get order info (in-person)" / "process order (in-person)"<br>
-     * <b>Task type:</b> {@code processOrderInPerson}
-     *
-     * @param job the activated Camunda job
-     * @return map of output variables:
-     *         <ul>
-     *           <li>{@code orderId} — unique in-person order reference (prefixed "ORD-IP-")</li>
-     *           <li>{@code inPersonOrderCaptured} — always {@code true}</li>
-     *           <li>{@code orderCapturedAt} — ISO-8601 timestamp</li>
-     *           <li>{@code orderStatus} — "RECEIVED"</li>
-     *           <li>{@code orderChannel} — hardcoded "inPerson"</li>
-     *         </ul>
-     */
-    @JobWorker(type = "processOrderInPerson")
-    public Map<String, Object> processOrderInPerson(ActivatedJob job) {
-        Map<String, Object> vars = safeVars(job);
-        LOGGER.info("processOrderInPerson: jobKey={}, processInstanceKey={}", job.getKey(), job.getProcessInstanceKey());
-
-        String orderId = "ORD-IP-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
-        LOGGER.info("processOrderInPerson: customerId={}, orderId={}", vars.get("customerId"), orderId);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("orderId", orderId);
-        result.put("inPersonOrderCaptured", true);
-        result.put("orderCapturedAt", Instant.now().toString());
-        result.put("orderStatus", "RECEIVED");
-        result.put("orderChannel", "inPerson");
         return result;
     }
 

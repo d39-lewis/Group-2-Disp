@@ -1,7 +1,9 @@
 package au.edu.group2.disp.workers;
 
+import io.camunda.client.CamundaClient;
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.client.api.response.ActivatedJob;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -21,35 +23,10 @@ public class ToolRentalWorkers {
     private static final Logger LOGGER = LoggerFactory.getLogger(ToolRentalWorkers.class);
 
     private static final double LATE_FEE_PER_DAY = 15.00;
+    private final CamundaClient camundaClient;
 
-    // Inputs: toolId, warehouseLocation
-    // Outputs: toolInStock (boolean), toolLocation (string)
-    @JobWorker(type = "toolAvailable")
-    public Map<String, Object> toolAvailable(ActivatedJob job) {
-        Map<String, Object> vars = FoundationWorkers.safeVars(job);
-        String toolId = (String) vars.getOrDefault("toolId", "TOOL-UNKNOWN");
-        LOGGER.info("toolAvailable: toolId={}", toolId);
-
-        // Stub: tool always in stock at main warehouse
-        Map<String, Object> result = new HashMap<>();
-        result.put("toolInStock", true);
-        result.put("toolLocation", "Main Warehouse - Aisle 3");
-        return result;
-    }
-
-    // Inputs: toolId, rentalId, orderId
-    // Outputs: toolRetrieved (boolean), toolCondition ("good" | "damaged" | "missing")
-    @JobWorker(type = "storeRetrieveTool")
-    public Map<String, Object> storeRetrieveTool(ActivatedJob job) {
-        Map<String, Object> vars = FoundationWorkers.safeVars(job);
-        String toolId = (String) vars.getOrDefault("toolId", "TOOL-UNKNOWN");
-        String rentalId = (String) vars.getOrDefault("rentalId", "RENT-UNKNOWN");
-        LOGGER.info("storeRetrieveTool: toolId={}, rentalId={}", toolId, rentalId);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("toolRetrieved", true);
-        result.put("toolCondition", "good");
-        return result;
+    public ToolRentalWorkers(CamundaClient camundaClient) {
+        this.camundaClient = camundaClient;
     }
 
     // Inputs: rentalId, rentalEndDate (ISO-8601 date string), rentalDailyRate
@@ -204,10 +181,28 @@ public class ToolRentalWorkers {
         String damageReport = (String) vars.getOrDefault("damageReport", "No report provided");
         LOGGER.info("sendFixPro: toolId={}, damageReport={}", toolId, damageReport);
 
+        String serviceReferenceNumber = "FXP-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        String sentAt = Instant.now().toString();
+
+        Map<String, Object> messageVars = new HashMap<>();
+        messageVars.put("toolId", toolId);
+        messageVars.put("damageReport", damageReport);
+        messageVars.put("serviceReferenceNumber", serviceReferenceNumber);
+        messageVars.put("sentAt", sentAt);
+
+        // Trigger FixPro's message-start process (Process_0c6d9wt / message name: sendFixPro)
+        camundaClient.newPublishMessageCommand()
+                .messageName("sendFixPro")
+                .correlationKey(serviceReferenceNumber)
+                .timeToLive(Duration.ofMinutes(30))
+                .variables(messageVars)
+                .send()
+                .join();
+
         Map<String, Object> result = new HashMap<>();
         result.put("sentToFixPro", true);
-        result.put("serviceReferenceNumber", "FXP-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
-        result.put("sentAt", Instant.now().toString());
+        result.put("serviceReferenceNumber", serviceReferenceNumber);
+        result.put("sentAt", sentAt);
         return result;
     }
 }
